@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <!-- 用于对组件标签属性进行限制 -->
+  <script src="./js/prop-types.js"></script>
+</head>
+
+<body>
+ <!-- 
+               高阶函数：如果一个函数符合下面2个规范中的任何一个，那该函数就是高阶函数。
+                           1.若A函数，接收的参数是一个函数，那么A就可以称之为高阶函数。
+                           2.若A函数，调用的返回值依然是一个函数，那么A就可以称之为高阶函数。
+                             常见的高阶函数有：Promise、setTimeout、arr.map()等等
+
+               函数的柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式。
+                function sum(a){
+                  return (b)=>{
+                    return (c)=>{
+                      return a+b+c
+                                }
+                               }
+                            }
+                 console.log(sum(1)(2)(3))
+
+
+
+                 let person = {
+                   name: 'tom',
+                   age: 18
+                  }
+                 let person3 = {
+                   ...person,
+                   name: 'jack',
+                   address: "地球"
+                  }
+                  扩展运算符可以修改属性值
+
+ -->
+  <div id="test1"></div>
+  <script type="text/babel">
+    class Demo extends React.Component{
+      state = {
+        username:'',
+        password:''
+      }
+      render() {
+       return (
+         <div>
+          <form action="" onSubmit={this.showData}>
+            用户名：<input onChange={this.saveFormatData('username')} type="text"/>&nbsp;
+            密码：<input onChange={this.saveFormatData('password')} type="password"/>&nbsp;
+            <button>提交</button>
+            </form>
+          </div>
+       ) 
+      }
+      //这样保存可以减少代码的冗余 将所有数据都保存到saveFormatData中  其实调用的是内层函数 设置的值是自己的value值
+      saveFormatData=(typeData)=>{
+        return (event)=>{
+          this.setState({[typeData]:event.target.value})
+        }
+      }
+      
+      showData=()=>{
+        event.preventDefault();//取消跳转默认事件
+        console.log(this.state.username,this.state.password)
+      }
+
+    }
+    ReactDOM.render(<Demo/>,document.getElementById('test1'))
+  </script>
+</body>
+
+</html>
