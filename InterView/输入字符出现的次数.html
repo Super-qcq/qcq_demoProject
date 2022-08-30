@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    var strArr=[]    
+    var str=prompt('请输入字符用逗号隔开')
+     atrArr=str.split(',')
+    // 去除重复的字符放入新的数组中
+    function unique(arr){
+        // 遍历arr，把元素分别放入tmp数组(不存在才放)
+        var tmp = new Array();
+        for(var i in arr){
+            //该元素在tmp内部不存在才允许追加
+            if(tmp.indexOf(arr[i])==-1){
+                tmp.push(arr[i]);
+            }
+        }
+        return tmp;
+    }
+    function Str(str1){
+        var query=unique(str1);
+        for(i=0;i<query.length;i++){
+            var count=0
+            for(j=0;j<str1.length;j++){
+                if(query[i]==str1[j]){
+                    count++
+                }
+            }
+            console.log(query[i],count)
+        }
+
+    }
+    Str(atrArr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

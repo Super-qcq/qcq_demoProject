@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arr1 =[1,4,0,6,3,2]//定义一个无序数组 
+        //定义一个函数 
+        function quickArray(arr){ 
+            var left = [],right =[] 
+            if(arr. length <= 1){ 
+                return arr
+            } 
+            var index = Math. floor(arr.length/2)//取一个基准值， 此时取出来的为一个数组 
+            var p = arr.splice(index,1)[0]//取出数组中的基准值， (将基准值从原数组中截取出来) 
+           return p
+        }
+            console. log(quickArray(arr1))
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

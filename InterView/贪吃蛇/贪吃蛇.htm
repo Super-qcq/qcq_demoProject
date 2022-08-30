@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+  <title>qcq</title>
+  <link rel="stylesheet" href="css/love.css">
+
+  <style>
+    * {
+      margin: 0;
+    }
+
+    /*  margin盒子与它外边元素的距离display变换元素类型  快捷类型   ; border加了边框的颜色 solid表示颜色是否双倍的变化*/
+    canvas {
+      background: #afd8dc;
+      margin: 150px auto;
+      display: block;
+      border: 10px solid#c6fbf9;
+    }
+
+    #bgimg {
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-attachment: fixed;
+    }
+
+
+    #tcs {
+      width: 90%;
+      height: 100%;
+      position: relative;
+      float: right;
+    }
+  </style>
+
+</head>
+
+<body background="images/bg.png" width="100%" height="100%" border="0" id=bgimg>
+  <div id=tcs>
+    <audio autoplay="" loop="">
+      <source src="mp3/bj.mp3" type="audio/mpeg" /></audio>
+      <canvas width='450' height='450' id="canvas"></canvas>
+    <!--1.创建主界面-->
+
+    <script>
+      var canvas = document.getElementById("canvas"); //当前页面拿到画板
+      var ctx = canvas.getContext("2d"); //拿到画板的权限 2d表示平面    开始绘制   两点确定一个线段  
+      ctx.strokeStyle = "#f7fffa"; //画线 线条颜色
+      var mp3 = "mp3/eat.mp3" //吃到食物时的音乐
+      var df = 0; //当前得分
+      var sd = 300; //定时器时间
+      var snakeCount = 6;//蛇身的长度
+      var snake = [];//蛇的数组
+      var toGo = 3; //初始化蛇移动的方向 右边
+      var foodX = 150; //初始化食物的坐标
+      var foodY = 150;
+      function drawRect() //2.绘制网格线
+      {
+        for (var i = 1; i < 30; i++) {
+          ctx.beginPath(); //开始路径      竖着画
+          ctx.moveTo(15 * i, 0); //起点
+          ctx.lineTo(15 * i, 450); //终点
+          ctx.closePath(); //结束路径
+          ctx.stroke(); //连接线条 
+          ctx.beginPath(); //开始路径      横着画
+          ctx.moveTo(0, 15 * i); //起点
+          ctx.lineTo(450, 15 * i); //终点
+          ctx.closePath(); //结束路径
+          ctx.stroke(); //连接线条 
+        }
+        //绘制蛇身
+        for (var i = 0; i < snakeCount; i++) {
+          ctx.fillStyle = "green";
+          if (i == snakeCount - 1) {
+            ctx.fillStyle = "pink";
+          }
+          ctx.fillRect(snake[i].x, snake[i].y, 15, 15); //绘制矩形（蛇身），起点  宽度15 高度15
+        }
+        ctx.fillStyle = "#946ded"; //设置食物的颜色
+        ctx.fillRect(foodX, foodY, 15, 15);
+        ctx.fill(); //填充颜色
+      }
+      function start() //定义蛇的坐标
+      {
+        for (var i = 0; i < snakeCount; i++) {
+          snake[i] = {
+            x: 15 * i,
+            y: 0
+          };
+        }
+        addFood();
+        drawRect(); //调用网格线的方法
+      }
+      //食物坐标Math.floor向下取整  随机取    foodX == snake[i].x && foodY == snake[i].y   食物的x轴坐标等于蛇的x轴坐标则产生重叠  重新调用即可
+      function addFood() {
+        foodX = Math.floor(Math.random() * 30) * 15; //floor 向下取整
+        foodY = Math.floor(Math.random() * 30) * 15;
+        for (var i = 0; i < snakeCount - 1; i++) {
+          if (foodX == snake[i].x && foodY == snake[i].y) //避免蛇和食物重叠
+          {
+            addFood();
+          }
+        }
+
+      }
+
+      function isDie() {
+        if (snake[snakeCount - 1].x == -15 || snake[snakeCount - 1].x == 15 * 30 || snake[snakeCount - 1].y == -15 ||
+          snake[snakeCount - 1].y == 15 * 30) {
+            if (window.confirm('撞墙,游戏结束，当前得分为：' + df + '，是否重来？')) {
+            location.reload(true);
+            clearInterval(interval);
+          } else {
+            window.opener = null;
+            window.close();
+
+
+          }
+
+
+        }
+        for (var i = 0; i < snakeCount - 1; i++) {
+
+          if (snake[snakeCount - 1].x == snake[i].x && snake[snakeCount - 1].y == snake[i].y) {
+
+
+            if (window.confirm('吃到自己,游戏结束，当前得分为：' + df + '，是否重来？')) {
+
+              location.reload(true);
+              clearInterval(interval);
+
+            } else {
+              window.opener = null;
+              window.close();
+            }
+
+          }
+        }
+      }
+
+
+      function move() //蛇移动的方向 
+      {
+
+        switch (toGo) {
+          case 1:
+            snake.push({
+              x: snake[snakeCount - 1].x - 15,
+              y: snake[snakeCount - 1].y
+            });
+            break; //尾巴的x轴坐标去掉尾巴，，y轴不变   左移动 
+          case 2:
+            snake.push({
+              x: snake[snakeCount - 1].x,
+              y: snake[snakeCount - 1].y - 15
+            });
+            break;
+          case 3:
+            snake.push({
+              x: snake[snakeCount - 1].x + 15,
+              y: snake[snakeCount - 1].y
+            });
+            break; //头部的x轴坐标加15，，y轴不变   右移动 
+          case 4:
+            snake.push({
+              x: snake[snakeCount - 1].x,
+              y: snake[snakeCount - 1].y + 15
+            });
+            break;
+        }
+
+        snake.shift(); //不断地除数组的第一个元素；左右跑之后长度不变的
+        ctx.clearRect(0, 0, 450, 450); //清空画布
+        isEat();
+        isDie();
+        drawRect(); //重新画一次
+      }
+      //吃到食物
+      function isEat() {
+        if (snake[snakeCount - 1].x == foodX && snake[snakeCount - 1].y == foodY) {
+          var mp31 = new Audio(mp3);
+          mp31.play();
+          addFood();
+          snakeCount++; //吃到食物  蛇的长度+1
+          snake.unshift({
+            x: 15,
+            y: 15
+          }); //将坐标宽度元素加给蛇
+          sd -= 20; //每次吃到食物之后速度加快
+          df += 10; //得分加10
+        }
+        document.getElementById("df").innerHTML = df;
+      }
+      function keyDown(e) {
+        switch (e.keyCode) {
+          case 37:
+            toGo = 1;
+            break;
+          case 38:
+            toGo = 2;
+            break;
+          case 39:
+            toGo = 3;
+            break;
+          case 40:
+            toGo = 4;
+            break;
+        }
+      }
+      //当前页面加载完成  执行
+      window.onload = function () {
+
+        document.onkeydown = function (e) {
+          keyDown(e); //下键代表40，右键代表39，上  38，左键37
+        }
+        setInterval(move, sd);
+        start(); //调用蛇的坐标方法
+        drawRect(); //调用绘制网格线方法
+
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //        起点
+      //        15 0 
+      //        30 0
+      //        45 0
+      //        .....
+      //        终点
+      //        15 450
+      //        30 450
+      //        45 450
+    </script>
+
+  </div>
+
+
+
+
+
+
+  <span style="font-size:40px">得分:</span><span id="df" style="font-size:40px"></span><br />
+  <a href="贪吃蛇.htm" style="text-decoration:none;font-size:40px">重开</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container" onselectstart="return false;" unselectable="on" style="-moz-user-select:none;">
+
+    <div class="body_left">
+      <img src="images/biubiubiu.gif" alt="" ondragstart='return false;'>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="border">
+      <div class="border-top"></div>
+      <div class="border-bottom"></div>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/love.js"></script>
+</body>
+
+</html>

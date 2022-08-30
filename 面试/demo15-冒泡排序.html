@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       var a=[1,8,9,4,2,0,6,4,8,1,1,4,100,2,4,8,44,55,62,131,4,454,8456,21,55,66,88,11,44]
+       function arr(arry){
+           for(var i=0;i<arry.length-1;i++){
+               var num=0
+               for(var j=0;j<arry.length-i-1;j++){
+                   if(arry[j]>arry[j+1]){
+                       num=arry[j+1]
+                       arry[j+1]=arry[j]
+                       arry[j]=num
+               }
+            }
+        }
+        console.log(arry)
+    }
+    arr(a)
+    </script>
+</head>
+<body>
+</body>
+</html>

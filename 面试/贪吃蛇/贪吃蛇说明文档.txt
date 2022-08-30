@@ -1,0 +1,83 @@
+数组最后一个元素是头，第一个元素是尾巴
+canvas主要用在高德地图等地图应用,它是一个行内块元素。HTML5 的 canvas 元素使用 JavaScript 在网页上绘制图像。 画布是一个矩形区域，您可以控制其每一像素。
+
+canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法
+一.分析
+1.创建游戏主界面  canvas
+2.绘制网格线 拿到画板-拿到权限var ctx = canvas.getContext("2d")   确定起点终点 画线   ctx.moveTo(15 * i, 0); //起点  ctx.lineTo(15 * i, 450); //终点（格子间隔15px）   ctx.stroke();    //连接线条 
+3.绘制一条蛇  （定义蛇的长度和数组，定义蛇的坐标snake[i]={x:15*i,y:0};设置蛇的身体  ctx.fillRect(snake[i].x, snake[i].y, 15, 15);//绘制矩形（蛇身），起点  宽度15 高度15;
+ 蛇头  if (i == snakeCount - 1)
+                {
+                    ctx.fillStyle = "pink";//颜色
+                }）
+
+4.让蛇移动（键盘事件 初始化蛇移动的方向，当按下左键时x坐标尾巴减一）
+                case 1: snake.push({ x: snake[snakeCount - 1].x - 15, y: snake[snakeCount - 1].y }); break; //尾巴的x轴坐标去掉尾巴，，y轴不变   左移动 
+                case 2: snake.push({ x: snake[snakeCount - 1].x, y: snake[snakeCount - 1].y - 15 }); break;
+                case 3: snake.push({ x: snake[snakeCount - 1].x + 15, y: snake[snakeCount - 1].y }); break;//头部的x轴坐标加15，，y轴不变   右移动 
+                case 4: snake.push({ x: snake[snakeCount - 1].x, y: snake[snakeCount - 1].y + 15 }); break;
+  snake.shift();//不断地除数组的第一个元素；左右跑之后长度不变的
+            ctx.clearRect(0, 0, 450, 450); //清空画布
+定时器中调用蛇移动的方法
+
+
+5.随机生成食物
+0-1
+   foodX = Math.floor(Math.random() * 30) * 15;//floor 向下取整
+            foodY = Math.floor(Math.random() * 30) * 15;
+            for (var i = 0; i < snakeCount - 1; i++) {
+                if (foodX == snake[i].x && foodY == snake[i].y)//避免蛇和食物重叠
+                {
+                    addFood();
+                }
+            }
+ctx.fill()填充
+
+6.让蛇吃食物吃一个增长一点
+  function isEat() {
+                if (snake[snakeCount - 1].x == foodX && snake[snakeCount - 1].y == foodY) {
+				 var mp31 = new Audio(mp3);
+                       mp31.play();
+                    addFood();
+                    snakeCount++; //吃到食物  蛇的长度+1
+                    snake.unshift({ x: -15, y: -15 });//将坐标宽度元素加给蛇 给尾巴加 数组的头部加
+                    sd -=20;//每次吃到食物之后速度加快
+                   df +=10;//得分加10
+               
+             }
+
+
+
+7.判断死亡的条件
+   game over 之后警告框弹出确定并且重新开始  刷新页面   键值80暂停
+   if (snake[snakeCount - 1].x == -15 || snake[snakeCount - 1].x == 15 * 30 || snake[snakeCount - 1].y == -15 || snake[snakeCount - 1].y == 15 * 30) { 
+头的横坐标等于-15或450，纵坐标等于-15或450
+  if (snake[snakeCount - 1].x == snake[i].x && snake[snakeCount - 1].y == snake[i].y) 
+头的坐标等于身体的任何一个部分
+
+
+
+
+重点：<canvas>画板 画画的容器
+起点坐标 15  0
+               30  0
+               45  0
+终点坐标  15  450
+                30   450
+                45   450
+从起点 向下画线    起点与终点是两个端点  最后用 ctx.storke()线段连接(路径)  坐标都是15的倍数
+开始路径和结束路径指的是  一笔一笔地画而不是连着画       ctx.beginPath(); //开始路径      竖着画,  ctx.closePath(); //结束路径
+
+
+
+蛇的左右移动是：屁股减一，头加一  （屁股 x轴坐标 长度-15  y坐标不变  用snake.push()）  并且（头加一）             还要重新画一次调用drawRect()  画一次之后要清空画布  调用ctx.clearRect()             
+
+ push() 方法可向数组的末尾添加一个或多个元素，并返回新的
+长度。
+shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+
+random（）取随机数在0-1之间  乘以30和15之后 在0-450之间但是取不到450   floor指的是向下取整
+unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。
+   
+
+
