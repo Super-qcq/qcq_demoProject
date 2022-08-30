@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <!-- 用于对组件标签属性进行限制 -->
+  <script src="./js/prop-types.js"></script>
+</head>
+<body>
+  <!--
+    重要：
+    卸载容器的渲染 ReactDOM.unmountComponentAtNode(document.getElementById('test')) 
+  //组件挂载完毕componentDidMount()
+   //组件将要卸载componentWillUnmount()
+  -->
+  <!-- 
+      1. 初始化阶段: 由ReactDOM.render()触发---初次渲染
+                                1. constructor()
+                                2. componentWillMount()
+                                3. render()
+                                4. componentDidMount() =====> 常用
+                                                一般在这个钩子中做一些初始化的事，例如：开启定时器、发送网络请求、订阅消息
+            2. 更新阶段: 由组件内部this.setSate()或父组件render触发
+                                1. shouldComponentUpdate()更新组件的阀门  值为布尔值 
+                                2. componentWillUpdate()
+                                3. render() =====> 必须使用的一个
+                                4. componentDidUpdate()
+            3. 卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+                                1. componentWillUnmount()  =====> 常用
+                                                一般在这个钩子中做一些收尾的事，例如：关闭定时器、取消订阅消息
+
+   -->
+  <div id="test"></div>
+ <script type="text/babel">
+  class ChangeColor extends React.Component{
+    state={opacity:1}
+    //组件挂载完毕
+    componentDidMount() {
+      console.log('componentDidMount');
+      this.timer = setInterval(() => {
+        //获取原状态
+        let {opacity} = this.state
+        //减小0.1
+        opacity -= 0.1
+        if (opacity <= 0) opacity = 1
+        //设置新的透明度
+        this.setState({opacity})
+      }, 200);
+    }
+    //组件将要卸载
+    componentWillUnmount() {
+      //清除定时器
+      clearInterval(this.timer)
+    }
+    //是否更新的阀门
+    shouldComponentUpdate(){
+      console.log('shouldComponentUpdate')
+      return true
+    }
+    //初始化渲染、状态更新之后
+    render() {
+      console.log('render');
+      return (
+        <div>
+          <h2 style={{opacity: this.state.opacity}}>React学不会怎么办？</h2>
+          <button onClick={this.death}>不活了</button>
+          </div>
+          )
+        }
+        // 卸载容器的渲染
+        death=()=>{
+          ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+        }
+      }
+      ReactDOM.render(<ChangeColor/>,document.getElementById('test'))
+  </script>
+</body>
+</html>

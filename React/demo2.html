@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person{
+      constructor(age,name){
+        this.name = name
+        this.age = age
+      }
+      a=1//直接的赋值语句 这个属性会出现在实例对象自身上
+      setName(){
+        console.log(111)
+      }
+    }
+    const p1 = new Person(15,'qcq')
+    console.log(p1)
+  </script>
+</body>
+</html>

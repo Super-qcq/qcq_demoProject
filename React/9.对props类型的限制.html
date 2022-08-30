@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <!-- 用于对组件标签属性进行限制 -->
+  <script src="./js/prop-types.js"></script>
+</head>
+<body>
+  <div id="test1"></div>
+  <div id="test2"></div>
+  <div id="test3"></div>
+  <script type="text/babel">
+    class Demo extends React.Component{
+      render(){
+        const {name,age,hobby}=this.props//解构赋值
+        //this.props.name = "qcq" //props是只读的会报错
+        return (<div>
+          <h1>姓名：{name}</h1>
+          <h1>年龄：{age}</h1>
+          <h1>爱好：{hobby}</h1>
+          </div>)
+      }
+    }
+    //对标签属性类型和必要性的限制
+    Demo.propTypes = {
+      name:PropTypes.string.isRequired,//限制name必传且为字符串
+      age:PropTypes.number,//限制age为数值
+    }
+    Demo.defaultProps = {
+      age:18,//age默认值为18
+      hobby:'打篮球'//hobby默认值为打篮球
+    }
+    //这里的数值型加{}
+    ReactDOM.render(<Demo name="qcq" age={24} hobby="打球"/>,document.getElementById('test1'))
+    ReactDOM.render(<Demo name="jack" age={20} hobby="踢球"/>,document.getElementById('test2'))
+    //数据传回来是一个对象，可以将数据用扩展运算符展开 props标签中的属性是可以批量传递的用{...p}的形式  会收集到props上  
+    const p ={name:'张三',age:18,hobby:'赌博'}
+    ReactDOM.render(<Demo {...p}/>,document.getElementById('test3'))
+  </script>
+</body>
+</html>

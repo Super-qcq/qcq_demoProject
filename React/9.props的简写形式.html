@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <!-- 用于对组件标签属性进行限制 -->
+  <script src="./js/prop-types.js"></script>
+</head>
+<body>
+  <div id="test1"></div>
+  <div id="test2"></div>
+  <div id="test3"></div>
+  <script type="text/babel">
+    class Demo extends React.Component{
+      //构造器是否接收props，是否传递给super，取决于：是否希望在构造器中通过this访问props
+      //构造器能不写就不写
+      constructor(props){
+        super(props)
+        console.log(this.props)
+      }
+      render(){
+        const {name,age,hobby}=this.props
+        //this.props.name = "qcq" //props是只读的会报错
+        return (<div>
+          <h1>姓名：{name}</h1>
+          <h1>年龄：{age}</h1>
+          <h1>爱好：{hobby}</h1>
+          </div>)
+      }
+      //限制：只要给组件自身加上 就可以进行限制  从外面写到里面
+    static propTypes = {
+      name:PropTypes.string.isRequired,//限制name必传且为字符串
+      age:PropTypes.number,//限制age为数值
+    }
+    static defaultProps = {
+      age:18,//age默认值为18
+      hobby:'打篮球'//hobby默认值为打篮球
+    }
+    }
+    //这里的数值型加{}
+    ReactDOM.render(<Demo name="qcq" age={24} hobby="打球"/>,document.getElementById('test1'))
+    ReactDOM.render(<Demo name="jack" age={20} hobby="踢球"/>,document.getElementById('test2'))
+    //数据传回来是一个对象，可以将数据用扩展运算符展开
+    const p ={name:'张三',age:18,hobby:'赌博'}
+    ReactDOM.render(<Demo {...p}/>,document.getElementById('test3'))
+  </script>
+</body>
+</html>

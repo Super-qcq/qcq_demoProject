@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入react核心库-->
+    <script src="./js/react.development.js"></script>
+    <!--引入react-dom用于支持react操作dom-->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="./js/babel.min.js"></script>
+  </head>
+<body>
+  <!-- 没有状态的组件称之为简单组件 -->
+  <!-- 
+    理解：向外提供特定功能的js程序，一般就是一个js文件
+    作用：复用js，简化js的编写，提高js的运行效率
+    模块化：当应用的js都以模块来编写的，这个应用就是模块化的应用
+    组件化：当应用是以多组件的方式来实现，这个应用就是组件化的应用
+   -->
+   <div id="test"></div>
+   <script type="text/babel">
+     //函数式组件：适用于简单的组件的构建，同时方法名称首字母必须大写
+     function MyComponent(){
+      const myId = ['Vue','react','jQuery']
+       console.log(this)//此处的体会this是undefined，因为babel编译后开启了严格模式
+       return <div>
+        {myId.map((item,index)=>//设置唯一key
+         <li key={index}>{item}</li>)}
+        </div>
+     }
+     //渲染组件到页面 组件标签必须结束并且首字母大写
+     ReactDOM.render(<MyComponent/>,document.getElementById('test'))
+     //....之后发生了什么？1.react解析组件标签，找到了MyComponent组件
+    //2.发现组件是用函数定义的，随后调用该函数，将返回的虚拟dom转为真实dom，随后呈现在页面中
+   </script>
+</body>
+</html>

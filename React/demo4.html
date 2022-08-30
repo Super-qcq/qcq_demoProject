@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <script src="./js/prop-types.js"></script>
+</head>
+
+<body>
+  <template>
+    <div>
+      <div id="dropDiv">请将拖拽文件/文件夹至此</div>
+      <h3>
+        文件列表，更多请见console
+      </h3>
+      <div id="outPut"></div>
+    </div>
+  </template>
+  
+  <script>
+dealWithFolders(items) { 
+     if (items.length > 1) {     
+   this.loading = false;      
+  return this.$message.info("一次只允许上传一个文件夹");  
+   }  
+    var entry = items[0].webkitGetAsEntry();   
+   if (item) {    
+    this.checkFolders(entry);    
+  }  
+  },   
+ // 判断是否为文件夹  
+  checkFolders(item) {    
+  if (item.isDirectory) {  
+      let result = this.traverseFileTree(item);   
+     setTimeout(() => {   
+       this.transferFiles(result);    
+    }, 3 * 1000);   
+   } else {     
+   this.loading = false;   
+     this.$message.info("只支持上传文件夹");   
+   }   
+ },   
+ traverseFileTree(item) {   
+   let res = [];    
+  var internalProces = (item, path, res) => {     
+   if (item.isFile) {       
+   item.file(file => {          
+  file.path = path + file.name;         
+   var newFile = new File([file], file.path, { type: file.type });      
+      res.push(newFile);      
+    });      
+  } else if (item.isDirectory) {         
+ var dirReader = item.createReader();    
+      dirReader.readEntries(      
+      entries => {      
+        for (let i = 0; i < entries.length; i++) {      
+          internalProces(entries[i], path + item.name + "/", res);     
+         }      
+      },      
+      function(e) {      
+        console.log(e);      
+      }    
+      );    
+    }   
+   };   
+   internalProces(item, "", res);   
+   return res;  
+  }
+  </script>
+  
+ 
+  
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <script src="./js/prop-types.js"></script>
+</head>
+
+<body>
+  <template>
+    <div>
+      <div id="dropDiv">请将拖拽文件/文件夹至此</div>
+      <h3>
+        文件列表，更多请见console
+      </h3>
+      <div id="outPut"></div>
+    </div>
+  </template>
+  
+  <script>
+ // 仅支持选择一个文件夹，并且不会递归上传
+async function scanFiles(e) {
+  e.preventDefault()
+  const { items = [], files = [] } = e.dataTransfer
+  // 只上传第一个文件夹
+  const [item] = items
+  if (!item || !item.webkitGetAsEntry) return files
+  // 如果是文件直接返回文件
+  const entry = item.webkitGetAsEntry()
+  // 第一个类目是文件直接返回files，如果是文件夹下则返回第一层目录
+  return entry.isFile ? files : getEntryDirectoryFiles(entry)
+}
+// 获取文件夹中文件
+function getEntryDirectoryFiles(entry) {
+  const reader = entry.createReader()
+  // 一次最多只能读100，防止出现文件夹内文件个数过多，加一个变量收集最新的结果
+  let res = []
+  return read()
+  async function read() {
+    const files = await new Promise((resolve, reject) =>
+      reader.readEntries((entries) => {
+        // 只上传一层文件，过滤文件夹中包含的文件夹
+        const fileEntries = entries.filter((entry) => entry.isFile)
+        const filesPromise = fileEntries.map((entry) => new Promise((resolve) => entry.file((file) => resolve(file))))
+        Promise.all(filesPromise).then(resolve)
+      }, reject)
+    )
+    // 保存当前读取文件
+    res = [...res, ...files]
+    // chrome浏览器一次读取最多获取100个文件，多于100个需要再次读取
+    if (files.length < 100) {
+      return res
+    }
+    return read()
+  }
+}
+
+
+// 阻止浏览器打开新标签，ondrop/ondragover/ondragenter(最好加上这个防兼容问题)
+window.ondragover = (e) => e.preventDefault()
+// 获取文件夹
+window.ondrop = async (e) => {
+  const files = await scanFiles(e)
+  console.log('获取到文件', files)
+}
+  </script>
+  
+ 
+  
+</body>
+
+</html>

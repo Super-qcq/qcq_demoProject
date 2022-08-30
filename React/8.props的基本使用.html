@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+</head>
+<body>
+  <!-- props将外部标签里的东西收集到props中 -->
+  <div id="test1"></div>
+  <div id="test2"></div>
+  <script type="text/babel">
+    class Demo extends React.Component{
+      render(){
+        const {name,age,hobby}=this.props//解构赋值
+        return (<div>
+          <h1>姓名：{name}</h1>
+          <h1>年龄：{age}</h1>
+          <h1>爱好：{hobby}</h1>
+          </div>)
+      }
+    }
+    ReactDOM.render(<Demo name="qcq" age="24" hobby="打球"/>,document.getElementById('test1'))
+    ReactDOM.render(<Demo name="jack" age="18" hobby="踢球"/>,document.getElementById('test2'))
+  </script>
+</body>
+</html>

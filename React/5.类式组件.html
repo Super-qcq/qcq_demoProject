@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入react核心库-->
+    <script src="./js/react.development.js"></script>
+    <!--引入react-dom用于支持react操作dom-->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="./js/babel.min.js"></script>
+  </head>
+<body>
+  <!-- 有状态的组件称之为复杂组件 -->
+  <!-- 必须继承React.Component  必须写render且有返回值 -->
+  <!-- 准备好一个容器 -->
+   <div id="test"></div>
+   <script type="text/babel">
+    //创建类式组件
+    class MyComponent extends React.Component{
+      //这里没有属于自己的属性和方法 不用写构造器和super 
+      render() {
+        //render是放在MyComponent的原型对象上，供实例使用。
+        //render中的this是谁？——MyComponent的实例对象 <=> MyComponent组件实例对象。
+        console.log('render中的this:',this);
+        return <h2>我是用类定义的组件(适用于【复杂组件】的定义)</h2>
+      }
+    }
+    ReactDOM.render(<MyComponent/>,document.getElementById('test'))
+    // 执行了ReactDOM.render(<MyComponent/>.......之后，发生了什么？
+    // react解析组件标签，找到了MyComponent组件对象。发现该组件是用类定义的，随后new出来该类的实例，并通过该实例去调用原型上的render方法。将render返回的虚拟DOM转为真实DOM，随后呈现在页面中。
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <!-- 用于对组件标签属性进行限制 -->
+  <script src="./js/prop-types.js"></script>
+</head>
+
+<body>
+  <!-- 现用现取 是非受控组件  一个输入框就有一个ref
+ -->
+  <div id="test1"></div>
+  <script type="text/babel">
+    class Demo extends React.Component{
+      render() {
+       return (
+         <div>
+          <form action="" onSubmit={this.showData}>
+            用户名：<input ref="username" type="text"/>&nbsp;
+            密码：<input ref="password" type="password"/>&nbsp;
+            <button>提交</button>
+            </form>
+          </div>
+       ) 
+      }
+      showData=(event)=>{
+        event.preventDefault();//取消跳转默认事件
+        const {username,password} = this.refs
+        alert(`我的用户名是${username.value}`)
+      }
+
+    }
+    ReactDOM.render(<Demo/>,document.getElementById('test1'))
+  </script>
+</body>
+
+</html>

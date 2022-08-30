@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <!-- 用于对组件标签属性进行限制 -->
+  <script src="./js/prop-types.js"></script>
+</head>
+
+<body>
+  <div id="test1"></div>
+  <script type="text/babel">
+    //ref会像id一样找到该标签 由于可能存放了更多的标签，所以要用this.refs去找  也可以解构赋值
+    class Demo extends React.Component{
+      render() {
+       return (
+         <div>
+          <input ref="input1" type="text" placeholder="点击按钮提示数据"/> &nbsp;
+          <button onClick={this.showData}>点我提示数据</button> &nbsp;
+          <input ref="input2" onBlur={this.blurData} type="text" placeholder="失去焦点提示数据"/>
+          </div>
+       ) 
+      }
+      showData=()=>{
+        alert(this.refs.input1.value)
+      }
+      blurData=()=>{
+        alert(this.refs.input2.value)
+        console.log(this)
+      }
+
+    }
+    ReactDOM.render(<Demo/>,document.getElementById('test1'))
+  </script>
+</body>
+
+</html>
