@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width:200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        // 修改内联样式
+        window.onload=function(){
+             
+               myClick("btn01",function(){
+                var box1=document.getElementsByTagName("div")[0];
+                box1.style.backgroundColor="yellow";
+               box1.style.width="500px";
+            });
+              // 读取当前样式
+              myClick("btn02",function(){
+                var box1=document.getElementsByTagName("div")[0];
+                var result=getStyle(box1,"width");
+                alert(result);
+                // alert(getComputedStyle(box1,null)["width"]);
+            });
+        }
+      
+        function myClick(strBtn,fun){
+            var btn=document.getElementById(strBtn);
+            btn.onclick=fun;
+
+        }
+        //读取当前样式函数
+        function getStyle(obj,name){
+            if(window.getComputedStyle){
+                return getComputedStyle(obj,null)[name];
+            }
+            else{
+                return obj.currentStyle[name];
+            }
+           
+        }
+
+    </script>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+    <button id="btn01">修改</button>
+    <button id="btn02">提交</button>
+</body>
+</html>

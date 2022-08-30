@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标拖拽文件夹</title>
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+            left:300px;
+            top:300px;
+        }
+    </style>
+    <script>
+       
+       
+     window.onload=function(){
+            tuozhuai("box1","box01");
+            tuozhuai("box2","box02");
+
+       
+    }
+         // 获取body
+         function gethtml(){
+            var html=document.documentElement;
+            return html;
+
+        }
+        // 获取box
+        function getbox(strBox){
+            var Box=document.getElementById(strBox);
+            return Box;
+
+        }
+         // 绑定函数
+        function bind(obj,strEvent,callback){
+                if(obj.addEventListener){
+                    return obj.addEventListener(strEvent,callback,false);
+                }else{
+                    return obj.attachEvent("on"+strEvent,function(){
+                        callback.call(obj);
+                    });
+                }
+
+            }
+        // 封装拖拽函数
+        function tuozhuai(boxClass,box){
+    // 方法一
+            //调用绑定函数(绑定鼠标点击事件)
+            bind(gethtml(),"mousedown",function(event){
+                event=event||window.event
+                var target=event.target||event.srcElement;
+                if(target.className==boxClass){
+                    //  将所有的事件捕获到自己身上消除全选造成的自动搜索IE8
+                    getbox(box).setCapture && getbox(box).setCapture();
+           
+            // 获取文件夹左上移动坐标
+             //   注意加getbox("div").
+               var cl=event.clientX-getbox(box).offsetLeft;
+               var ct=event.clientY-getbox(box).offsetTop;
+            //    绑定鼠标移动事件
+               document.onmousemove=function(event){
+                event=event||window.event
+                // 获取鼠标移动坐标-文件左上移动坐标
+                var left=event.clientX-cl;
+                var top=event.clientY-ct;
+                 // 注意加px
+                 getbox(box).style.left=left+"px";
+                 getbox(box).style.top=top+"px";
+
+               }
+                //    绑定鼠标移动完毕事件
+                document.onmouseup=function(){
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                     //  取消将所有的事件捕获到自己身上消除全选造成的自动搜索 IE8
+                     getbox(box).releaseCapture && getbox(box).releaseCapture();
+                }
+                //  取消将所有的事件捕获到自己身上消除全选造成的自动搜索
+                event.preventDefault();
+               
+              
+           } 
+        });
+
+
+
+      // 方法二
+    //   getbox(box).onmousedown=function(){
+    //          //  将所有的事件捕获到自己身上消除全选造成的自动搜索IE8
+    //          getbox(box).setCapture && getbox(box).setCapture();
+           
+    //        // 获取文件夹左上移动坐标
+    //         //   注意加getbox("div").
+    //           var cl=event.clientX-getbox(box).offsetLeft;
+    //           var ct=event.clientY-getbox(box).offsetTop;
+    //        //    绑定鼠标移动事件
+    //           document.onmousemove=function(event){
+    //            event=event||window.event
+    //            // 获取鼠标移动坐标-文件左上移动坐标
+    //            var left=event.clientX-cl;
+    //            var top=event.clientY-ct;
+    //             // 注意加px
+    //             getbox(box).style.left=left+"px";
+    //             getbox(box).style.top=top+"px";
+
+    //           }
+    //            //    绑定鼠标移动完毕事件
+    //            document.onmouseup=function(){
+    //                document.onmousemove=null;
+    //                document.onmouseup=null;
+    //                 //  取消将所有的事件捕获到自己身上消除全选造成的自动搜索 IE8
+    //                 getbox(box).releaseCapture && getbox(box).releaseCapture();
+    //            }
+    //            //  取消将所有的事件捕获到自己身上消除全选造成的自动搜索
+    //            return false;
+    //     }
+    }   
+    </script>
+</head>
+<body>
+    <span>达瓦达瓦 </span>
+    <div class="box1"id="box01"></div>
+    <div class="box2"id="box02"></div>
+</body>
+</html>

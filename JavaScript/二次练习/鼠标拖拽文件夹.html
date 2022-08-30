@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            //拖拽过程分为三个步骤1.鼠标按下2.拖动3.鼠标松开
+            var box1 = document.getElementById('box1')
+            var box2 = document.getElementById('box2')
+            drag(box1)
+            drag(box2)
+            
+        }
+        function drag(box){
+            box.onmousedown = function(event){
+                // 当鼠标按下时将所有的事件捕获到自己身上,但要进行判断 谷歌浏览器不支持
+                box.setCapture && box1.setCapture()
+                //求出鼠标在文件夹的初始位置的距边框的距离
+                event = event || window.event
+                var bl = event.clientX-box.offsetLeft
+                var bt = event.clientY-box.offsetTop
+                //鼠标在那个元素里面移动就把移动事件绑定给谁
+                document.onmousemove = function(event){
+                    event = event || window.event
+                    box.style.left = event.clientX-bl+'px'
+                    box.style.top = event.clientY-bt+'px'
+
+                }
+                //鼠标松开事件不能邦给box1 因为当经过兄弟box松开时 不能发生冒泡效果则触动的是兄弟元素的鼠标松开事件
+                document.onmouseup = function(){
+                    document.onmousemove = null
+                    document.onmouseup = null
+                    // 当鼠标松开时将释放捕获,但要进行判断 谷歌浏览器不支持
+                    box.releaseCapture && box1.releaseCapture()
+                }
+                // 当我们去拖动网页中的内容时，浏览器会去搜索引擎中搜索，这是浏览器的默认行为，
+                //如果不希望发生默认行为，则可以用return false来取消默认行为
+                //但是这一招对IE8及其以下不起作用，使用setCapture
+                // 它会一次将鼠标按下所有相关的事件都捕获到自己的身上
+                // 但是谷歌浏览器不支持这一操作所以要进行判断
+                return false
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>我是一段文字</p>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

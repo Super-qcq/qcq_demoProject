@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+    <script src="./tools/js操作类.js"></script>
+    <script>
+        window.onload=function(){
+            var box=document.querySelectorAll(".box")[0];
+            var btn=document.querySelectorAll(".btn")[0];
+            btn.onclick=function(){
+                toggleClass(box,"box1");
+            }
+        }
+       
+    </script>
+</head>
+<body>
+    <button class="btn">变换</button>
+    <div class="box"></div>
+</body>
+</html>

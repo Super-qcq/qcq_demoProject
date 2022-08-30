@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,td,th{
+            border: 1px solid black;
+            border-collapse: collapse;
+
+        }
+        table{
+            margin: 0 auto;
+        }
+        .insertInfer{
+            text-align: center;
+            border: 1px solid black;
+            width:300px;
+            height: 200px;
+            position: absolute;
+            top:0px;
+        }
+        .insertInfer td{
+            border: none;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <script>
+                 window.onload=function(){
+                 var btn=document.getElementById("btn");
+                 btn.onclick=function(){
+                // 查询文本
+                var name=document.getElementById("inputName").value;
+                var email=document.getElementById("inputEmail").value;
+                var salary=document.getElementById("inputSalary").value;
+               
+                // 创建各级标签节点
+                var tr=document.createElement("tr");
+                tr.innerHTML="<td>"+name+"</td><td>"+email+"</td><td>"+salary+"</td><td><a class='link' href='javascript:;'>Delete</a></td>"
+               
+               
+                // 获取table
+                var table=document.getElementById("table1");
+                 // 查询tbody节点
+                 var tbody=table.getElementsByTagName("tbody")[0];
+                 tbody.appendChild(tr);
+                }
+                // 查询tbody节点
+                var tbody=document.getElementsByTagName("tbody")[0];
+                tbody.onclick=function(event){
+                event=event||window.event;
+                if(event.target.className=="link"){
+                    var flag=confirm("确定要删除"+ event.target.parentNode.parentNode.getElementsByTagName("td")[0].innerHTML+"吗？");
+                    if(flag){
+                        event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
+                    }
+                }
+               
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <table id="table1">
+       <tbody style="background-color: red;">
+        <tr>
+            <th>Name</th> <th>Email</th> <th>Salary</th> <th></th>
+        </tr>
+        <tr>
+            <td>Tom</td><td>tom@tom.com</td><td>5000</td><td><a class="link"href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td><td>Jerry@tom.com</td><td>8000</td><td><a class="link" href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td><td>tom@tom.com</td><td>5000</td><td><a class="link" href="javascript:;">Delete</a></td>
+        </tr>
+       </tbody>
+    </table>
+    <table class="insertInfer">
+        <tr><th>添加新员工</th></tr>
+        <tr><td>name:&nbsp;&nbsp;<input type="text"id="inputName"></td></tr>
+        <tr><td>email:&nbsp;&nbsp;<input type="text"id="inputEmail"></td></tr>
+        <tr><td>salary:&nbsp;&nbsp;<input type="text"id="inputSalary"></td></tr>
+        <tr><td><button type="submit"id="btn">Submit</button></td></tr>
+    </table>
+</body>
+</html>

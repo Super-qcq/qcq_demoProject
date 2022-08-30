@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #table1,#table1 th,#table1 td{
+            border: solid 1px black;
+            margin: 0 auto;
+            border-collapse:collapse;
+        }
+        .insertInfer{
+            border: solid 1px black;
+            width: 300px;
+            height: 200px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .insertInfer th{
+            border-bottom: black solid 1px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        //删除功能
+        function deleteA(){
+            var tr = this.parentNode.parentNode
+            var name = tr.children[0].innerHTML
+            var result = confirm('你确定要删除'+name+'吗？')
+            if(result){
+                tr.parentNode.removeChild(tr)
+            }
+        }
+       window.onload = function(){
+        var a = document.getElementsByTagName('a')
+        for(var i=0;i<a.length;i++){
+            a[i].onclick = deleteA
+
+        }
+        var btn = document.getElementById('btn')
+        btn.onclick = function(){
+            var name = document.getElementById('inputName').value
+            var email = document.getElementById('inputEmail').value
+            var salary = document.getElementById('inputSalary').value
+            var tr = document.createElement('tr')
+            tr.innerHTML = '<td>'+name+'</td><td>'+email+'</td><td>'+salary+'</td><td><a href="javascript:;">Delete</a></td>'
+            var tbody = document.getElementById('table1').getElementsByTagName('tbody')[0]
+            tbody.appendChild(tr)
+            var a = tr.getElementsByTagName('a')
+            for(var i=0;i<a.length;i++){
+            a[i].onclick = deleteA
+        }
+    }
+}
+    </script>
+</head>
+<body>
+    <table id="table1">
+        <tr>
+            <th>Name</th> <th>Email</th> <th>Salary</th> <th></th>
+        </tr>
+        <tr>
+            <td>Tom</td><td>tom@tom.com</td><td>5000</td><td><a id="Delete1" href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td><td>Jerry@tom.com</td><td>8000</td><td><a href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td><td>tom@tom.com</td><td>5000</td><td><a href="javascript:;">Delete</a></td>
+        </tr>
+    </table>
+    <table class="insertInfer">
+        <tr><th>添加新员工</th></tr>
+        <tr><td>name:&nbsp;&nbsp;<input type="text"id="inputName"></td></tr>
+        <tr><td>email:&nbsp;&nbsp;<input type="text"id="inputEmail"></td></tr>
+        <tr><td>salary:&nbsp;&nbsp;<input type="text"id="inputSalary"></td></tr>
+        <tr><td><button type="submit"id="btn">Submit</button></td></tr>
+    </table>
+</body>
+</html>

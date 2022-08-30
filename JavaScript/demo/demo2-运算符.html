@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js1</title>
+   <!-- <script src="./demo1.js"></script> -->
+    <script type="text/javascript">
+    // 算数运算符-字符串的连接
+    var a="123",b="456";
+    console.log(a+b);
+    // 算数运算符-强制转变为字符串
+    var a1=123;
+    var b1=a1+"";
+    console.log((b1));
+    console.log(typeof(b1));
+    // 一元运算符-强制转换为数字类型
+    var a2="234";
+    var b2=+a2;
+    console.log((b2));
+    console.log(typeof(b2));
+     // 逻辑运算符-强制转换为布尔类型
+    var a3="56";
+    var b3=!!a3;
+    console.log((b3));
+    console.log(typeof(b3));
+    var a4=NaN;
+    var b4=!!a4;
+    console.log((b4));
+    console.log(typeof(b4));
+    //逻辑元算符-返回值的情况
+    var c=6,d=7;
+    console.log(c&&d);
+    var c1=null,d1=7;
+    console.log(c1&&d1);
+    var c2=null,d2=undefined;
+    console.log(c2||d2);
+    var c3=1,d3=undefined;
+    console.log(c3||d3);
+    //赋值运算符o
+    var e=10;
+    console.log(e+=5);
+    //关系运算符70800o
+    var f="411",g="5";
+    console.log(f>g);
+    var f1="411",g1=+"5";
+    console.log(f1>g1);
+    var f2="411",g2=5;
+    console.log(f2>g2);
+    //相等运算符
+    console.log(null==undefined);
+    var h=NaN;
+    console.log(isNaN(h));
+    // 条件运算符
+    var i=40,j=80;
+    var result=i>j?i:j;
+    console.log(result);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

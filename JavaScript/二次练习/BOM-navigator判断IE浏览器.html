@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var btn = document.getElementById('btn')
+            //'ActiveXObject'in window用于判断是否是IE浏览器 是返回true否返回false
+            if('ActiveXObject'in window){
+                if(btn.attachEvent){//IE8及其以下浏览器
+                    btn.attachEvent('onclick',function(){
+                        Event.call(btn)
+                    })
+                }else{
+                    btn.addEventListener('click',Event,false)//IE11用addEventListener方法绑定事件
+                }
+            }else{
+                btn.addEventListener('click',Event,false)//普通浏览器
+
+            }
+        }
+        function Event(){
+            alert(this.innerHTML+' '+'绑定事件成功')
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">提交</button>
+</body>
+</html>

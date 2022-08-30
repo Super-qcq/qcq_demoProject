@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: relative;
+        }
+        body{
+            height: 2000px;
+            width: 2000px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var div = document.getElementsByTagName('div')[0]
+            document.onmousemove = function(event){
+                event = event || window.event
+                // var X = event.pageX
+                // var Y = event.pageY
+                //鼠标的坐标是相对于可见窗口的，而div的坐标是相对于实际窗口得大小的
+                var X = event.clientX
+                var Y = event.clientY
+                //火狐浏览器和chrome浏览器的兼容性不同，他们各自认为滚动条的绑定不同 一个是给html绑定另一个则是给body绑定
+                //知道了滚动的距离之后 滚动的距离加上鼠标的位置则是处理后的div的坐标
+                var st = document.body.scrollTop || document.documentElement.scrollTop
+                var sl = document.body.scrollLeft || document.documentElement.scrollLeft
+                div.style.left = X + sl +'px'
+                div.style.top = Y + st +'px'
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js1</title>
+   <!-- <script src="./demo1.js"></script> -->
+    <script type="text/javascript">
+    // 实参传入对象类型
+    function fun(o){
+        console.log("我叫"+o.name+"我今年"+o.age+"岁了");
+
+    }
+    var obj={
+        name:"孙悟空",
+        age:18
+       
+    };
+    fun(obj);
+    // 实参传入函数类型
+    function fun2(a){
+        // a(obj);
+        a(obj);
+
+    }
+    fun2(fun)
+    // 用call对象调用
+    function fun3(){
+        console.log("我叫"+this.name+"我今年"+this.age+"岁了");
+
+    }
+    var obj2={
+        name:"孙悟空",
+        age:18
+       
+    };
+    fun3.call(obj2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

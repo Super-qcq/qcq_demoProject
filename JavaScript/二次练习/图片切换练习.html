@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var img = document.getElementById('img')
+            var arr = ["./img/dom01.jpg","./img/dom02.jpg","./img/dom03.jpg","./img/dom04.jpg","./img/dom05.jpg","./img/dom06.jpg"]
+            var index = 0
+            //设置一个定时器名
+            var timer
+            var btn01 = document.getElementById('btn01')
+            var btn02 = document.getElementById('btn02')
+            btn01.onclick = function(){
+                //为了防止开启更多的定时器，在开启这次定时器时要关闭上次开启的定时器
+                clearInterval(timer)
+                timer = setInterval(function(){
+                    index++
+                    if(index > arr.length-1){
+                        index = 0
+                    }
+                    img.src = arr[index]
+                },1000)
+
+            }
+            btn02.onclick = function(){
+                clearInterval(timer)
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <img src="./img/dom01.jpg" alt=""id='img'>
+    <br><br>
+    <button id="btn01">开始</button>
+    <button id="btn02">暂停</button>
+</body>
+</html>

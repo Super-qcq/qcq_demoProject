@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            top:50px;
+            width: 520px;
+            height: 430px;
+            background-color: #bfa;
+            margin: 0 auto;
+            padding: 10px 0;
+            overflow: hidden;
+            position: relative;
+            
+        }
+        #imgList{
+            list-style: none;
+            /* 开启绝对定位，用来改变图片切换 */
+            position: absolute;
+        }
+        #imgList img{
+            width: 500px;
+            height: 430px;
+            float: left;
+            margin:0 10px;
+        }
+        #navDiv{
+            position: absolute;
+            bottom:10px;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+        #navDiv a{
+            float: left;
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            margin-left: 15px;
+            opacity: 0.5;
+        }
+        #navDiv a:hover{
+            background-color: black;
+        }
+    </style>
+    <script src="../tools.js"></script>
+    <script>
+        window.onload = function(){
+            // 定义outer的宽度
+            var outerWidth = document.getElementById('outer')
+            var imgWidth = outerWidth.clientWidth
+            //设置imgList的宽度，随着图片个数变化
+            var imgNum = document.querySelectorAll('#imgList li')
+            var imgList = document.getElementById('imgList')
+            imgList.style.width = imgNum.length*imgWidth+'px'
+            //设置导航点第一个为黑色
+            var allA = document.querySelectorAll('#navDiv a')
+            var index = 0
+            allA[index].style.backgroundColor = 'black'
+            var timer
+            reverse()
+            //设置导航点点击之后切换到对应的图片
+            for(i = 0; i < allA.length; i++){
+                allA[i].num = i//用num属性来保存索引
+                allA[i].onclick = function(){
+                    clearInterval(timer)//点击导航点时关闭自动切换计时器
+                    move(imgList,50,'left',this.num*-imgWidth,function(){
+                        reverse()//点击导航点完成之后打开计时器
+                    })
+                    index = this.num
+                    navMove()
+                }
+            }
+            //设置导航点的颜色变化
+            function navMove(){
+                //处理连续轮播：当转到最后一张时让导航按钮的索引为0,并将图片偷换到第一张
+                if(index == imgNum.length-1){
+                    index = 0
+                    imgList.style.left = 0+'px'
+                }
+                //开始让所有的导航点都为内联样式的颜色，所以给空。最后点哪个哪个为黑色
+                for(var i = 0;i < allA.length;i++){
+                    allA[i].style.backgroundColor = ''
+                }
+                allA[index].style.backgroundColor = 'black'
+                // console.log(index)
+            }
+            //设置自动轮播
+            function reverse(){
+                timer = setInterval(function(){
+                    index++
+                    move(imgList,30,'left',index*-imgWidth,function(){
+                        navMove()
+                    })
+                    
+                },4000)
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="imgList">
+          b
+            <li><img src="./img/4.jpg" alt=""></li>
+            <li><img src="./img/5.jpg" alt=""></li>
+            <li><img src="./img/6.jpg" alt=""></li>
+            <li><img src="./img/7.jpg" alt=""></li>
+            <li><img src="./img/4.jpg" alt=""></li>
+        </ul>
+        <!-- 导航点 -->
+        <div id="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+</html>

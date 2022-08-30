@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sdmenu{
+            width:180px;
+            background-color: #ECEEEB;
+            margin: 0 auto;
+            border-radius: 15px;
+            padding:1px 0 10px 0;
+
+        }
+        div.sdmenu div{
+            /* 先将所有的div里的内容隐藏起来,以便高度变化之后子元素不会溢出 */
+            overflow: hidden;
+
+        }
+        .sdmenu a,.sdmenu span{
+            display: block;
+            height:  30px;
+            /* margin-top: 10px; */
+            padding-left: 20px;
+            text-decoration: none;
+            color: #28646F;
+            line-height: 30px;
+            
+        }
+        .sdmenu span{
+            background-color: #696967;
+            color:white;
+            cursor:pointer；
+        }
+        .sdmenu a{
+            border-bottom: 1px solid #DADDDA;
+        }
+        .sdmenu a:hover{
+            background-color: #005C67;
+            color:white;
+        }
+        .collapsed{
+            /* 处理div折叠的类 */
+            height: 25px;
+        }
+    </style>
+    <script src="./tools/js操作类.js"></script>
+    <script src="./tools/动画.js"></script>
+    <script>
+        window.onload=function(){
+            var a=document.getElementsByTagName("a"); 
+            var span=document.querySelectorAll(".menuSpan");
+            // 定义一个变量用来保存第一个打开的菜单
+            var firstDiv=span[0].parentNode;
+            var div=document.querySelectorAll(".sdmenu div")
+            for(i=0;i<span.length;i++){
+                span[i].num=i;
+                span[i].onclick=function(){
+                    // 调用动画执行函数
+                    menu_Move(div[this.num])
+                    // 防止第一次点击关闭之后再打不开(本次自动关闭的不是上次关闭的);
+                    if(firstDiv!=div[this.num] && !hasClass(firstDiv,"collapsed")){
+                        //关闭之前打开的div
+                        // addClass(firstDiv,"collapsed");
+                        // 为了统一动画过渡效果将addClass改为toggleClass，此处的toggleClass不需要移除功能
+                        // toggleClass(firstDiv,"collapsed");
+                        menu_Move(firstDiv)
+                    }
+                  
+                   // 将首次打开的div更新为当前的
+                    firstDiv=div[this.num];
+                }
+            }
+            // 封装动画执行函数
+            function menu_Move(obj){
+                // 在切换之前获取高度
+                var begin=obj.offsetHeight;
+                // 切换点击时的div的执行效果
+                toggleClass(obj,"collapsed");
+                // 在切换之后获取高度
+                var end=obj.offsetHeight;
+                //  防止切换瞬间将之前的高度变成之后的高度需要执行动画的过程
+                obj.style.height=begin+"px";
+                // 调用动画
+                move(obj,15,end,"height",function(){
+                // 动画执行完毕添加的高度内联样式没用了,删除之
+                obj.style.height="";
+            });
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="my_menu" class="sdmenu">
+        <div>
+            <span class="menuSpan">在线工具</span>
+            <a href="JavaScript:;">图像优化</a>
+            <a href="JavaScript:;">收藏夹图标生成器</a>
+            <a href="JavaScript:;">邮件</a>
+            <a href="JavaScript:;">htaccess密码</a>
+            <a href="JavaScript:;">梯度图形</a>
+            <a href="JavaScript:;">按钮生成器</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">支持我们</span>
+            <a href="JavaScript:;">推荐我们</a>
+            <a href="JavaScript:;">连接我们</a>
+            <a href="JavaScript:;">网络资源</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">合作伙伴</span>
+            <a href="JavaScript:;">工具箱</a>
+            <a href="JavaScript:;">CSS架构</a>
+            <a href="JavaScript:;">CodingForums</a>
+            <a href="JavaScript:;">Css驱动</a>
+            <a href="JavaScript:;">Css例子</a>
+            <a href="JavaScript:;">按钮生成器</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">在线帮助</span>
+            <a href="JavaScript:;">代码优化</a>
+            <a href="JavaScript:;">代码生成器</a>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js1</title>
+   <!-- <script src="./demo1.js"></script> -->
+    <script type="text/javascript">
+    // 使用length添加元素和计算数组的长度
+    var shuzu=[30,40,50];
+    shuzu[shuzu.length]=70
+    console.log(shuzu);
+    console.log(shuzu.length);
+    // 数组里也可以放对象
+    var shuzu1=[{name:"孙悟空",age:18},{name:"猪八戒",age:28}];
+    console.log(shuzu1);
+    console.log(shuzu1.length);
+    // 使用push方法向数组的末尾添加元素，并返回新的长度
+    var result=shuzu1.push("d","e","f");
+    console.log(shuzu1);
+    console.log(result);
+    //用Unshift方法向数组的开头添加一个或者多个元素
+    var a=shuzu1.unshift("a","b");
+    console.log(shuzu1);
+    // 用slice提取指定的元素
+    var newShuzu=shuzu1.slice(0,1);
+    console.log(newShuzu);
+    // 用splice将指定元素从数组中删除
+    var newShuzu2=shuzu1.splice(2,1,"哈啊哈");
+    console.log(shuzu1);
+    // 用sort方法将所给定的数组进行排序
+    var paixu=[2,4,8,7,6,3,1,4,2,5,8,4]
+    paixu.sort(function(a,b){
+        return b-a;
+    })
+    console.log(paixu);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

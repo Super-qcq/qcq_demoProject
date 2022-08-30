@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width:200px;
+            height:200px;
+            background-color: red;
+            margin: 20px auto;
+            position:absolute;
+        }
+    </style>
+    <script>
+        // 通过滚动鼠标的滚轮从而使得box的宽度和长度发生变化 
+        window.onload=function(){
+            var box=document.getElementById("box");
+            box.onmousewheel=function(event){
+                event=event||window.event;
+                // 判断向哪个方向滚动
+                if(event.wheelDelta>0||event.detail<0){
+                    box.style.width=box.clientWidth+10+"px";
+                }else{
+                    box.style.width=box.clientWidth-10+"px";
+
+                }
+            };
+            bind(box,"DoMMouseScroll",box.onmousewheel);
+
+        }
+        // 事件绑定
+        function bind(obj,eventStr,callback){
+                if(obj.addEventListener){
+                    obj.addEventListener(eventStr,callback,false);
+                }else{
+                    obj.attachEvent("on"+eventStr,function(){
+                        callback.call(obj);
+                    });
+                }
+
+            }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

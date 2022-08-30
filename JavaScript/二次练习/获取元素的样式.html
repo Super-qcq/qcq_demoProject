@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:200px;
+            height:200px;
+            left:100px;
+            top:200px;
+            background-color: brown;
+            position: absolute;
+        }
+    </style>
+    <script>
+        //1.常规方法：
+        //大众浏览器的方式getComputedStyle(div,null).width
+        //IE浏览器的方式obj.currentStyle.width
+        //判断有没有此方法有此方法才返回没有则返回另一个
+        function getStyle(obj,name){
+            //由于getComputedStyle是window的方法 所以直接前面写window不会报错，否则若是找不到则直接报错
+            //不会进行下一步
+            if(window.getComputedStyle){
+                return getComputedStyle(obj,null)[name]
+            }else{
+                return obj.currentStyle[name]
+            }
+
+        }
+        window.onload = function(){
+            var btn = document.getElementsByName('submit')[0]
+            btn.onclick = function(){
+                var div = document.getElementsByTagName('div')[0]
+                // alert(getComputedStyle(div,null).width)
+                alert(getStyle1(div,'left'))
+            }
+        }
+
+
+
+
+        //2.用判断IE浏览器的方式获取
+        function getStyle1(obj,name){
+            if('ActiveXObject'in window){
+                return obj.currentStyle[name]
+            }else{
+                return getComputedStyle(obj,null)[name]
+            }
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <input type="submit"name = 'submit'value='获取'>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #qcq{
+            width:200px;
+            height: 200px;
+            border: red solid 2px;
+        }
+        #qq{
+            width:200px;
+            height: 50px;
+            border: solid red 2px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var qcq = document.getElementById('qcq')
+            var qq = document.getElementById('qq')
+            qcq.onmousemove = function(event){
+                event = event || window.event
+                qq.innerHTML = 'X ='+event.clientX+'Y ='+event.clientY
+            }
+        }
+    </script>
+</head>
+<body>
+   <div id='qcq'></div> 
+   <div id='qq'></div> 
+</body>
+</html>

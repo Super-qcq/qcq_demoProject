@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js1</title>
+   <!-- <script src="./demo1.js"></script> -->
+    <script type="text/javascript">
+    // 创建一个构造函数(用改变原型的toString方法,防止输出toString方法的返回值)
+    // function Person(name , age , gender){
+    //     this.name = name;
+    //     this.age = age;
+    //     this.gender = gender;
+
+    // }
+    // Person.prototype.toString=function(){
+  
+    //     return "(我叫"+this.name+"我是"+this.gender+"的我今年"+this.age+"岁了)";
+
+        
+    // }
+    // var per=new Person("孙悟空",18,"男");
+    // console.log(per.toString());
+    // 创建一个构造函数 直接用原型创建方法
+    function Person(name , age , gender){
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+
+    }
+    Person.prototype.sayName=function(){
+  
+        return "(我叫"+this.name+"我是"+this.gender+"的我今年"+this.age+"岁了)";
+
+        
+    }
+    var per=new Person("孙悟空",18,"男");
+    console.log(per.sayName());
+    // 检查对象是否是类的实例
+    console.log(per instanceof Person);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

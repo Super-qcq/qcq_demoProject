@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js1</title>
+   <!-- <script src="./demo1.js"></script> -->
+    <script type="text/javascript">
+    //     从键盘输入小明的期末成绩:
+    // 当成绩为100时, '奖励一辆BMW"
+    // 当成绩为[80-99]时, '奖励一台iphone15s
+    // 当成绩为[60-80]时, "奖励一本参考书
+    // 其他时，什么奖励也没有
+    var score=prompt("请输入小明的成绩！")
+    if(score>=0 && score<=100 && isNaN(score)==false)
+    {
+        if(score==100)
+        {
+            alert("奖励一辆BWM");
+        }else if(score>=80){
+            alert("奖励一台iphone15s");
+        }else if(score>=60){
+            alert("奖励一本参考书");
+        }else{
+            alert("什么也没有！！！");
+        }
+
+    }
+    else{
+        alert("拉出去毙了！！！");
+    }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

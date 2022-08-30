@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height:2000px;
+        }
+        .box1{
+            width:100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        
+    </style>
+     <script>
+         window.onload=function(){
+             var box=document.getElementsByTagName("div");
+             var html=document.documentElement;
+             var body=document.body;
+             html.onmousemove=function(event){
+                event=event||window.event;
+                // 将滚动条上多余的部分计算出来 火狐浏览器认为滚动条是html的,其他浏览器则认为是body的
+                var st=body.scrollTop||html.scrollTop;
+                var sl=body.scrollLeft||html.scrollLeft;
+                // 获取鼠标坐标给box的定位坐标 一定带单位
+                box[0].style.left=sl+event.clientX+"px";
+                box[0].style.top=st+event.clientY+"px";
+
+
+             }
+         }
+     </script>
+</head>
+<body>
+    <div class="box1"></div>
+</body>
+</html>

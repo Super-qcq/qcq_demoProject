@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        img{
+            width:100%;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var img = document.getElementsByTagName("img")[0]
+            var before = document.getElementsByName("before")[0]
+            var after = document.getElementsByName("after")[0]
+            var span = document.getElementsByTagName("span")[0]
+            var arr=["./img/dom01.jpg","./img/dom02.jpg","./img/dom03.jpg","./img/dom04.jpg","./img/dom05.jpg","./img/dom06.jpg"]
+            var index = 0
+            span.innerText = "一共"+arr.length+"张图片，当前是第"+(index+1)+"张图片"
+            before.onclick = function(){
+                index--
+                if(index < 0){
+                    index = arr.length-1
+                }
+                img.src=arr[index];
+                span.innerText = "一共"+arr.length+"张图片，当前是第"+(index+1)+"张图片"
+            }
+            after.onclick = function(){
+                index++
+                if(index > arr.length-1){
+                    index = 0
+                }
+                img.src=arr[index];
+                span.innerText = "一共"+arr.length+"张图片，当前是第"+(index+1)+"张图片"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <span></span>
+        <img src="./img/dom01.jpg" alt="">
+        <input type="button"value="上一张"name="before">
+        <input type="button"value="下一张"name="after">
+    </div>
+   
+</body>
+</html>

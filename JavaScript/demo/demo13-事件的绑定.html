@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width:300px;
+            height: 300px;
+            background-color: red;
+
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            // strBx("div").onclick=function(){
+            //     alert("hello1");
+            // }
+            // 事件绑定
+            // bind(strButton("btn01"),"click",function(){
+            //     alert(this);
+            // });
+            // 事件绑定+委派 没有this用target
+            // bind(strBx("div"),"click",function(event){
+            //     event=event||window.event;
+            //     if(event.target.tagName.toLowerCase()=="button"){
+            //         alert("hello");
+            //     }
+            // });
+
+             // 事件绑定+委派 侧重委派(绑定给共同的父元素)
+            bind(strBx("div"),"click",function(event){
+                event=event||window.event;
+                var target=event.target||event.srcElement;
+                if(target.className=="link1"){
+                    setStyle();
+
+                }
+                if(target.className=="link2"){
+                    var result=getStyle(strBx1("box1"),"width");
+                    alert(result);
+                }
+            });
+            // 事件绑定+委派 侧重绑定(一个控件完成多个事情)
+            bind(strBx("div"),"click",function(event){
+                event=event||window.event;
+                var target=event.target||event.srcElement;
+                if(target.className=="link3"){
+                    setStyle();
+                }
+            });
+            bind(strBx("div"),"click",function(event){
+                event=event||window.event;
+                var target=event.target||event.srcElement;
+                if(target.className=="link3"){
+                    var result=getStyle(strBx1("box1"),"width");
+                    alert(result);
+                }
+            });
+            
+        }
+        // 获取button
+        function strButton(strBtn){
+            var btn=document.getElementById(strBtn);
+            return btn;
+        }
+         // 获取box
+         function strBx(strBox){
+            var div=document.getElementsByTagName(strBox)[0];
+            return div;
+        }
+        // 获取box1
+           function strBx1(strBox1){
+            var box1=strBx("div").getElementsByTagName("div")[0];
+            return box1;
+        }
+        // 修改css样式
+        function setStyle(){
+            strBx1("box1").style.width="500px";
+            strBx1("box1").style.backgroundColor="yellow";
+        }
+        // 查询css样式
+        function getStyle(obj,name){
+            if(window.getComputedStyle){
+                return getComputedStyle(obj,null)[name];
+            }
+            else{
+                return obj.currentStyle[name];
+            }
+           
+        }   
+        //事件绑定
+        function bind(obj,eventStr,callback){
+                if(obj.addEventListener){
+                    obj.addEventListener(eventStr,callback,false);
+                }else{
+                    obj.attachEvent("on"+eventStr,function(){
+                        callback.call(obj);
+                    });
+                }
+
+            }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="box1"></div>
+        <button id="btn01"class="link1">修改</button>
+        <button id="btn02"class="link2">查询</button>
+        <button id="btn03"class="link3">修改+查询</button>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js1</title>
+   <!-- <script src="./demo1.js"></script> -->
+    <script type="text/javascript">
+    // 创建构造函数
+    function Person(name,age,gender){
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+    }
+    // 修改person原型的toString
+   Person.prototype.toString= function (){
+        return "name="+this.name+"age="+this.age;
+    }
+    var per = new Person ("孙悟空",18); 
+    var per2 = new Person ("猪八戒",28);
+    var per3 = new Person ("红孩儿" ,8); 
+    var per4 = new Person ("蜘蛛精",16);
+    var per5 = new Person("二郎神",38);
+    // console.log(per1);
+    // alert(per2);
+    // 将这些person对象放到一个数组中
+    perArr=[per,per2,per3,per4,per5];
+    // alert(arr);
+    function paixu(arr){
+        var newArr=[];
+        for(i=0;i<arr.length;i++)
+        {
+            if(arr[i].age>=18){
+                // newArr.push(arr[i]);
+                newArr[newArr.length]=arr[i];
+            }
+        }
+        return newArr;
+    }
+ alert(paixu(perArr));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

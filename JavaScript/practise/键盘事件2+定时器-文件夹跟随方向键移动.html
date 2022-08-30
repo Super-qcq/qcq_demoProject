@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width:100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            // 获取box对象
+            var box=document.getElementById("box");
+            // 定义速度
+            var speed=10;
+            // 定义方向值
+            var dir=0;
+            // 将执行函数放在定时器里会去掉开始的卡顿现象
+            setInterval(function(){
+                   
+                   switch(dir){
+                   case 37:
+                   box.style.left=(box.offsetLeft-speed)+"px";
+                       break;
+                   case 38:
+                   box.style.top=(box.offsetTop-speed)+"px";
+                       break;
+                   case 39:
+                   box.style.left=(box.offsetLeft+speed)+"px";
+                       break;
+                   case 40:
+                   box.style.top=(box.offsetTop+speed)+"px";
+                       break;
+               }
+               },30);
+               document.onkeydown=function(event){
+                event=event||window.event;
+                dir=event.keyCode;
+
+                if(event.ctrlKey)
+                {
+                    speed=50;
+                }
+                else{
+                    speed=10;
+                }
+       
+            }
+            document.onkeyup=function(){
+                // 不按按键则不再移动
+                dir=0;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

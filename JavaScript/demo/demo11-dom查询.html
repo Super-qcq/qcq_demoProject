@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+    // function myClick(btnStr,fun){
+    //  var btn=document.getElementById("btnStr");
+    //  btn.onclick=fun;
+    // }
+    // myClick(btn1,function(){
+    //     var div=document.getElementById("div1");
+    //     var child=div.children;
+    //     alert(child.length);
+
+
+    // })
+    // 
+    // window.onload=function(){
+    //     var btn=document.getElementById("btn1");
+    //     btn.onclick=function(){
+    //         var div=document.getElementById("div1");
+    //     var child=div.children;
+    //     alert(child[0].innerHTML);
+            
+    //     }
+    // }
+    // window.onload=function(){
+    //     var btn=document.getElementById("btn1");
+    //     btn.onclick=function(){
+    //         var div=document.getElementById("div1");
+    //     var child=div.children;
+    //     alert(child[0].id);
+            
+    //     }
+    // }
+    // window.onload=function(){
+    //     var btn=document.getElementById("btn1");
+    //     btn.onclick=function(){
+    //         var div=document.getElementById("div1");
+    //     var etn=div.getElementsByTagName("span");
+    //     alert(etn[1].innerText);
+            
+    //     }
+    // }
+    // window.onload=function(){
+    //     var btn=document.getElementById("btn1");
+    //     btn.onclick=function(){
+    //         var div=document.getElementById("div1");
+    //     var etn=div.childNodes;
+    //     alert(etn.length);
+            
+    //     }
+    //   window.onload=function(){
+    //     var btn=document.getElementById("btn1");
+    //     btn.onclick=function(){
+    //         var div=document.getElementById("span2");
+    //         var etn=div.parentNode;
+    //     alert(etn.innerText);
+            
+    //     }
+    // }
+  
+    window.onload=function(){
+        myClick("btn1",function(){
+        var div=document.getElementById("span2");
+        var etn=div.previousElementSibling;
+        alert(etn.innerText);
+        });
+
+        myClick("btn2",function(){
+        var div=document.getElementById("div1");
+        var etn=div.childNodes;
+        alert(etn.length);
+        });
+ 
+
+
+    }
+    function myClick(btnStr,fun){
+     var btn=document.getElementById(btnStr);
+     btn.onclick=fun;
+    }
+</script>
+
+</head>
+<body>
+    <div id="div1">
+        <span id="span1">哈哈哈</span>
+        <span id="span2">哈哈哈2</span>
+        <span id="span3">哈哈哈3</span>
+        <span id="span4">哈哈哈4</span>
+    
+    </div>
+    <div id="div2">
+        <button id="btn1">上一张</button>
+        <button id="btn2">下一张</button>
+    </div>
+</body>
+</html>

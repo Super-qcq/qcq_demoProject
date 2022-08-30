@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,td,th{
+            border: 1px solid black;
+            border-collapse: collapse;
+
+        }
+        table{
+            margin: 0 auto;
+        }
+        .insertInfer{
+            text-align: center;
+            border: 1px solid black;
+            width:300px;
+            height: 200px;
+            position: absolute;
+            top:0px;
+        }
+        .insertInfer td{
+            border: none;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <script>
+                 function fun(){
+                    //获取a的祖先节点table.removeChild(a的祖先接节点tr)
+                    var flag=confirm("确定要删除"+ this.parentNode.parentNode.getElementsByTagName("td")[0].innerHTML+"吗？");
+                    if(flag){
+                        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                    }
+                 }
+                 window.onload=function(){
+                    var Delete=document.getElementsByTagName("a");
+                    for(var i=0;i<Delete.length;i++){
+                        Delete[i].onclick=fun;
+                 }
+
+            // 设置添加button
+            // 方法一 按部就班
+            // var btn=document.getElementById("btn");
+            // btn.onclick=function(){
+            //     // 查询文本
+            //     var name=document.getElementById("inputName").value;
+            //     var email=document.getElementById("inputEmail").value;
+            //     var salary=document.getElementById("inputSalary").value;
+               
+            //     // 创建各级标签节点
+            //     var tr=document.createElement("tr");
+            //     var nameTd=document.createElement("td");
+            //     var emailTd=document.createElement("td");
+            //     var salaryTd=document.createElement("td");
+            //     var aTd=document.createElement("td");
+            //     var a=document.createElement("a");
+            //     // 设置a标签的属性
+            //     a.href="javascript:;"
+            //     // 创建文本节点
+            //     var nameText=document.createTextNode(name);
+            //     var emailText=document.createTextNode(email);
+            //     var salaryText=document.createTextNode(salary);
+            //     var delText=document.createTextNode("Delete");
+
+            //     //添加各级节点    
+               
+            //     nameTd.appendChild(nameText);
+            //     emailTd.appendChild(emailText);
+            //     salaryTd.appendChild(salaryText);
+            //     aTd.appendChild(a);
+            //     a.appendChild(delText);
+            //     tr.appendChild(nameTd);
+            //     tr.appendChild(emailTd);
+            //     tr.appendChild(salaryTd);
+            //     tr.appendChild(aTd);
+            //     // 获取table
+            //     var table=document.getElementById("table1");
+            //      // 查询tbody节点
+            //      var tbody=table.getElementsByTagName("tbody")[0];
+            //      tbody.appendChild(tr);
+                
+                
+            //      //重新设置删除
+            //      var Delete=document.getElementsByTagName("a");
+            // for(var i=0;i<Delete.length;i++){
+            //     Delete[i].onclick=fun;
+            // }
+
+              
+
+
+               
+            // }
+            // 方法二
+
+
+
+            var btn=document.getElementById("btn");
+            btn.onclick=function(){
+                // 查询文本
+                var name=document.getElementById("inputName").value;
+                var email=document.getElementById("inputEmail").value;
+                var salary=document.getElementById("inputSalary").value;
+               
+                // 创建各级标签节点
+                var tr=document.createElement("tr");
+                tr.innerHTML="<td>"+name+"</td><td>"+email+"</td><td>"+salary+"</td><td><a href='javascript:;'>Delete</a></td>"
+               
+               
+                // 获取table
+                var table=document.getElementById("table1");
+                 // 查询tbody节点
+                 var tbody=table.getElementsByTagName("tbody")[0];
+                 tbody.appendChild(tr);
+                
+                
+                 //重新设置删除
+                 var Delete=document.getElementsByTagName("a");
+            for(var i=0;i<Delete.length;i++){
+                Delete[i].onclick=fun;
+            }
+
+              
+
+
+               
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <table id="table1">
+        <tr>
+            <th>Name</th> <th>Email</th> <th>Salary</th> <th></th>
+        </tr>
+        <tr>
+            <td>Tom</td><td>tom@tom.com</td><td>5000</td><td><a id="Delete1" href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td><td>Jerry@tom.com</td><td>8000</td><td><a href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td><td>tom@tom.com</td><td>5000</td><td><a href="javascript:;">Delete</a></td>
+        </tr>
+    </table>
+    <table class="insertInfer">
+        <tr><th>添加新员工</th></tr>
+        <tr><td>name:&nbsp;&nbsp;<input type="text"id="inputName"></td></tr>
+        <tr><td>email:&nbsp;&nbsp;<input type="text"id="inputEmail"></td></tr>
+        <tr><td>salary:&nbsp;&nbsp;<input type="text"id="inputSalary"></td></tr>
+        <tr><td><button type="submit"id="btn">Submit</button></td></tr>
+    </table>
+</body>
+</html>

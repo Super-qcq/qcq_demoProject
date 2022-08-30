@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 设置最外层 */
+        .menus{
+            width:180px;
+            background-color: pink;
+            margin: 0 auto;
+            border-radius: 15px;
+            padding: 11px 0;
+
+        }
+        /* 先将所有的div里的内容隐藏起来,以便高度变化之后子元素不会溢出 */
+        .menus div{
+            overflow: hidden;
+
+        }
+        /* 设置每个菜单项 */
+        .menus a,.menus span{
+            display: block;
+            height:  30px;
+            padding-left: 20px;
+            text-decoration: none;
+            color: #28646F;
+            line-height: 30px;
+            /* 设置每个项目的分隔符 */
+            border-bottom: 1px solid #47fa47;
+            
+        }
+        /* 设置菜单每个项目名 */
+        .menus span{
+            background-color: #696967;
+            color:white;
+        }
+        /* 设置鼠标移入效果 */
+       .menus a:hover{
+            background-color: #58deec;
+            color:white;
+        }
+        /* 处理div折叠的类 */
+        .collapsed{
+            height: 25px;
+        }
+    </style>
+    <script src="./tools.js"></script>
+    <script>
+        window.onload = function(){
+            var menuSpan = document.querySelectorAll('.menuSpan')
+            //记录第一次打开的div
+            var firstDiv = menuSpan[0].parentNode
+            for(var i = 0; i < menuSpan.length; i++){
+                //保存所点击的索引 或者用this;menuSpan[i].num = i
+                menuSpan[i].onclick = function(){
+                    var fatherDiv = this.parentNode
+                    //如果上次记录的和这次点击的不一样且确定上次的是打开的才关闭上次打开的
+                    if(fatherDiv != firstDiv && !hasClass(firstDiv,"collapsed")){
+                        changeDiv(firstDiv)
+                    }
+                    changeDiv(fatherDiv)
+                    firstDiv = fatherDiv
+
+                }
+            }
+            function changeDiv(divName){
+                    //添加动画
+                    //获取在动画变化之前的高度
+                    var beginHeight = divName.offsetHeight
+                    toggleClass(divName,"collapsed")
+                    //获取在动画变化之后的高度
+                    var afterHeight = divName.offsetHeight
+                    //获取完之后要从开始的高度变为变化之后的高度，所以要保持到原来的高度
+                    divName.style.height = beginHeight + 'px'
+                    //添加动画
+                    move(divName,20,"height",afterHeight,function(){
+                        // 动画执行完毕添加的高度内联样式没用了,删除之
+                        divName.style.height="";
+                    })
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="menus">
+        <div>
+            <span class="menuSpan">在线工具</span>
+            <a href="JavaScript:;">图像优化</a>
+            <a href="JavaScript:;">收藏夹图标生成器</a>
+            <a href="JavaScript:;">邮件</a>
+            <a href="JavaScript:;">htaccess密码</a>
+            <a href="JavaScript:;">梯度图形</a>
+            <a href="JavaScript:;">按钮生成器</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">支持我们</span>
+            <a href="JavaScript:;">推荐我们</a>
+            <a href="JavaScript:;">连接我们</a>
+            <a href="JavaScript:;">网络资源</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">合作伙伴</span>
+            <a href="JavaScript:;">工具箱</a>
+            <a href="JavaScript:;">CSS架构</a>
+            <a href="JavaScript:;">CodingForums</a>
+            <a href="JavaScript:;">Css驱动</a>
+            <a href="JavaScript:;">Css例子</a>
+            <a href="JavaScript:;">按钮生成器</a>
+        </div>
+        <div class="collapsed">
+            <span class="menuSpan">在线帮助</span>
+            <a href="JavaScript:;">代码优化</a>
+            <a href="JavaScript:;">代码生成器</a>
+        </div>
+    </div>
+</body>
+</html>

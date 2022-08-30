@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            border:0;
+            
+        }
+        #outer{
+            width:520px;
+            height:400px;
+            margin:50px auto;
+            background-color: yellowgreen;
+            /* 开启包含块 */
+            position: relative;
+            overflow: hidden;
+
+        }
+        #slideShow{
+            list-style: none;
+            /* 设置定位之后可以移动照片移动li */
+            position:absolute;
+            /* left:-520px; */
+        }
+        #slideShow li{
+            /* 设置照片框大小 和左浮动 */
+            float:left;
+            width:500px;
+            margin:0 10px;
+           
+        }
+        #slideShow img{
+            width:100%;
+        }
+        #nav{
+            position:absolute;
+            /* 设置小方块的水平居中 */
+            left:50%;
+            transform:translateX(-50%);
+            bottom:20px;
+            width:120px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #nav a{
+            display: block;
+            width:20px;
+            height: 20px;
+            /* margin: 10px; */
+            background-color: red;
+            /* 设置小方块颜色的透明 */
+            opacity: 0.5;
+            filter:alpha(opacity=50);
+        }
+        /* 设置鼠标移入小方块的背景色 */
+        #nav a:hover{
+            background-color: blue;
+        }
+
+       
+      
+    </style>
+    <script src="../tools/动画.js"></script>
+    <script>
+        window.onload=function(){
+            // 定义一个计时器
+            var timer;
+            // 用js写出slideShow的宽度
+            var slideShow=document.getElementById("slideShow");
+            var li=document.getElementsByTagName("li");
+           // 用js写出小方块一开始的鼠标移入色
+            var a=document.getElementsByTagName("a");
+            a[0].style.backgroundColor="blue";
+            // 先设置总宽度（进去第一视角）
+            slideShow.style.width=li.length*520+"px";
+            // 定义一个图片索引
+            var index=0;
+            // 调用自动切换
+            autoChange();
+            for(i=0;i<a.length;i++){
+                // 添加一个属性用来记录看是点击了第几个图标
+                a[i].num=i;
+                a[i].onclick=function(){
+                    // 当点击的时候关闭定时器
+                    clearInterval(timer);
+                    index=this.num;
+                    // 调用动画函数
+                    setMoveColor();
+                    move(slideShow,20,-520*index,"left",function(){
+                        // 点击完成之后开启自动切换
+                        autoChange();
+                    });
+                   
+                }
+            }
+            
+            // 开启定时器 定时器每变一次 则执行一次
+            function autoChange(){
+                timer=setInterval(function(){
+                index++;
+                // 当index大于最后一张图片的索引时 让index等于0 往后转的同时 索引从0开始
+                if(index>=li.length){
+                    index=0;
+                }
+                move(slideShow,20,-520*index,"left",function(){
+                    // 在图片转动的最后调用方块变化函数
+                    setMoveColor();
+                });
+            },3000);
+        }
+            // 小方块颜色变化
+            function setMoveColor(){
+                // 判断当前索引是否是最后一张图片 如果是最后一张则第一个a变色
+                if(index>=li.length-1){
+                    index=0;
+                    //当第一个小方块变色时 要将图片真正切换成第一个
+                    slideShow.style.left=0;
+                }
+                for(i=0;i<a.length;i++){
+                    a[i].style.backgroundColor="";
+                }
+                a[index].style.backgroundColor="blue";
+            }
+        }
+        
+
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="slideShow">
+            <li><img src="./img/4.jpg" alt=""></li>
+            <li><img src="./img/5.jpg" alt=""></li>
+            <li><img src="./img/6.jpg" alt=""></li>
+            <li><img src="./img/7.jpg" alt=""></li>
+            <li><img src="./img/4.jpg" alt=""></li>
+          
+        </ul>
+        <div id="nav">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+</html>

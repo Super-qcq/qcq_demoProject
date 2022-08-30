@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // addEventListener只能IE8及其以上使用，IE8及其以下使用attachEvent
+        window.onload = function(){
+            var btn = document.getElementById('btn')
+            bind(btn,'click',function(){
+                alert('hahah')
+            })
+            bind(btn,'click',function(){
+                alert('qcq')
+            })
+        }
+        // 定义一个绑定函数来解决绑定函数的问题 如果有addEventListener这个对象则调用，没有则调用另一个
+        // 在attachEvent中事件名称需要on，而且this指的不是绑定的事件(给谁绑定的，this就是谁)
+        // 解决：1.在事件名称前面拼串加上on。2.指定一个回掉函数 函数中通过call方法指定this为obj
+        function bind(obj,strEvent,callback){
+            if(obj.addEventListener){
+                obj.addEventListener(strEvent,callback,false)
+            }else{
+                obj.attachEvent('on'+strEvent,function(){
+                    callback.call(obj)
+                })
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <button id="btn">
+        提交
+    </button>
+</body>
+</html>

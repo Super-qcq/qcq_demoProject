@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        function Wheel(event){
+            event = event || window.event
+            if(event.wheelDelta > 0 || event.detail < 0){
+                box.style.height = box.clientHeight + 10 +'px'
+            }else{
+                box.style.height = box.clientHeight - 10 +'px'
+            }
+            //但是当页面长度过长时，滚动时滚动条也会动，这是默认行为 需要取消
+            event.preventDefault && event.preventDefault()//addEventListener的默认行为取消方式
+            return false
+
+        }
+        function bind(obj,strEvent,callback){
+            if(obj.addEventListener){
+                obj.addEventListener(strEvent,callback,false)
+            }else{
+                obj.attachEvent('on'+strEvent,function(){
+                    callback.call(obj)
+                })
+            }
+
+        }
+        window.onload = function(){
+            var box = document.getElementById('box')
+            box.onmousewheel = Wheel
+            bind(box,'DOMMouseScroll',Wheel)
+
+        }
+    </script>
+</head>
+<body style="height:2000px">
+    <div id="box"></div>
+</body>
+</html>
