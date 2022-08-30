@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+    遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。
+        任何数 据结构只要部署 Iterator 接口，就可以完成遍历操作；
+    ES6 创造了一种新的遍历命令 for...of 循环，Iterator 接口主要供 for...of 消费； 
+
+    迭代器:按照我们的意愿去自定义遍历数据,所谓迭代器就是一个具有next()方法的对象，该结果对象有两个属性，value表示当前的值，done标识结果状态。而for of 是一个可以遍历迭代器对象的方式，然而还有一点就是数据只要具有Symbol.iterator属性，就可以认为是可以遍历的。但是数组对象是系统默认添加了Symbol.iterator属性，直接可以遍历成功。
+    原生具备 iterator 接口的数据(可用 for of 遍历)：
+        Array； 
+        Arguments； 
+        Set； 
+        Map； 
+        String； 
+        TypedArray； 
+        NodeList；
+  工作原理：
+            1. 创建一个指针对象，指向当前数据结构的起始位置； 
+            2. 第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员； 
+            3. 接下来不断调用 next 方法，指针一直往后移动，直到指向后一个成员；
+            4. 每调用 next 方法返回一个包含 value 和 done 属性的对象；
+            value:值 done：是否遍历完毕
+        注：需要自定义遍历数据的时候，要想到迭代器
+  <script>
+    const array = ['1a','2b','3c','4d']
+    for(let index of array){
+      console.log(index)
+    }
+    //for in遍历对象时输出所有的属性名,遍历数组会输出数组元素的下标;for of遍历对象报错,遍历数组输出数组元素的值
+    // 创建一个迭代器对象
+    const index = array[Symbol.iterator]()
+    console.log(index.next())
+    console.log(index.next())
+    console.log(index.next())
+    console.log(index.next())
+    console.log(index.next())
+    
+
+  </script>
+</body>
+</html>

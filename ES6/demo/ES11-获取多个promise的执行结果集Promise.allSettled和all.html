@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Promise.allSettled 返回的是promise对象，参数是数组参数，参数
+        //里面每个元素都是promise对象
+        //返回的结果永远是成功的 如果要求异步任务每次都返回结果 则用promise.allSettled
+        //Promise.all与之相似 但是此方法只有每个都成功才会返回成功
+        //如果需要返回的结果每个都成功才能往下执行则用all
+        const p1 = new Promise((resove,reject)=>{
+            resove('成功啦')
+        })
+        const p2 = new Promise((resove,reject)=>{
+            reject('失败')
+        })
+        const result = Promise.allSettled([p1,p2])
+        console.log(result)
+        const result1 = Promise.all([p1,p2])
+        console.log(result1)
+
+    </script>
+</body>
+</html>

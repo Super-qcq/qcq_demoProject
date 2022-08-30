@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  私有属性不能在外部访问，私有属性前加#
+  <script>
+     class person{
+       //私有属性 属性名之前加#
+       #age
+       name
+       #height
+       address
+       constructor(
+         age,name,height,address
+       ) {
+         this.#age = age
+         this.#height = height
+         this.address = address
+         this.name = name
+        }
+        pri(){
+          console.log(this.#height)
+          console.log(this.#age)
+          console.log(this.address)
+          console.log(this.name)
+
+        }
+
+     }
+     const per = new person(18,'lr',180,'陕西')
+     per.pri()
+    //  console.log(per.#age)
+  </script>
+</body>
+</html>

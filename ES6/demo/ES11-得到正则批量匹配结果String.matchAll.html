@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // 返回的是可迭代对象，可用扩展运算符展开            
+         // console.log(...result);            
+         // 使用for...of...遍历
+         let str = `            
+         <ul>                
+            <li>                    
+                <a>肖生克的救赎</a>                    
+                <p>上映日期: 1994-09-10</p>                
+            </li>                
+            <li>                    
+                <a>阿甘正传</a>                    
+                <p>上映日期: 1994-07-06</p>                
+            </li>           
+        </ul> ` 
+        const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/sg;            
+            const result = str.matchAll(reg);                   
+            for(let v of result){                
+                console.log(v);            
+            } 
+    </script>
+</body>
+</html>

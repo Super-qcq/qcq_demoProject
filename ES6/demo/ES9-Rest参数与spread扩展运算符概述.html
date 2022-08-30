@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Rest 参数与 spread 扩展运算符在 ES6 中已经引入，不过 ES6 中只针对于数组，
+        //在 ES9 中为对象提供了 像数组一样的 rest 参数和扩展运算符；
+        const per1 = {
+            name1:'孙悟空'
+        }
+        const per2 = {
+            name2:'猪八戒'
+        }
+        const per3 = {
+            name3:'沙和尚'
+        }
+        const per4 = {
+            name4:'唐僧'
+        }
+        const person = {
+            ...per1,
+            ...per2,
+            ...per3,
+            ...per4
+        }
+        console.log(person)
+    </script>
+</body>
+</html>

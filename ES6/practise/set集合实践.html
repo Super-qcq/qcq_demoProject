@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //set集合实践
+        //数组去重(还要转回字符串)
+        let arr1 = ['1','1','2','2','3']
+        const s = new Set(arr1)
+        console.log([...s])
+        //交集
+        let arr2 = ['2','3','4','4']
+        // let arr3 = [...new Set(arr1)]
+        // let arr5 = arr3.filter(function(items){
+        //     let arr4 = new Set(arr2)
+        //     if(arr4.has(items)){
+        //         return true
+        //     }else{
+        //         return false
+        //     }
+        // })
+        // console.log(arr5)
+           //交集的缩写版
+        let arr5 = [...new Set(arr1)].filter(items=>new Set(arr2).has(items))
+        console.log(arr5)
+        //并集
+        let arr6 = [...new Set([...arr1,...arr2])]
+        console.log(arr6)
+        //差集
+        let arr7 = [...new Set(arr1)].filter(items=>!new Set(arr2).has(items))
+        console.log(arr7)
+    </script>
+</body>
+</html>

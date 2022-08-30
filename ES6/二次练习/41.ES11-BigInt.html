@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BigInt</title>
+</head>
+<body>
+  <script>
+    // BigInt 
+    // 用于更大数值的运算
+    // 大整型
+    let n = 100n;
+    console.log(n, typeof (n));
+
+    // 函数：普通整型转大整型 let m = 123; console.log(BigInt(m));
+    let max = Number.MAX_SAFE_INTEGER;//最大值边界
+    console.log(max);
+    console.log(max + 1);
+    console.log(max + 2); // 出错了
+
+    console.log(BigInt(max));//转成大整形
+    console.log(BigInt(max) + BigInt(1));
+    console.log(BigInt(max) + BigInt(2));
+  </script>
+</body>
+
+</html>

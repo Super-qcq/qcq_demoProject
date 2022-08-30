@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:100px;
+            height: 100px;
+            border: solid 1px red;
+            margin-right:10px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        let items = document.getElementsByTagName('div')
+        // for(var i = 0;i < items.length;i++){
+            // items[i].num = i //方法3
+            // items[i].onclick = function(){
+            //    //方法一
+            //    // this.style.background = 'red'
+            //    //方法二 有问题 i一直等于3
+            //    //items[i].style.background = 'red'
+            //    //方法三  设置一个属性保存下标
+            //    //items[this.num].style.background = 'red'
+            // }
+            //方法4 用闭包
+        //     (function(i){
+        //       items[i].onclick = function(){
+        //         items[i].style.background = 'red'
+        //         console.log(i)
+        //         }
+        //     })(i)
+        // }
+        //方法5
+          //  for (let i = 0; i < items.length; i++) { 
+          //      items[i].onclick = function(){
+          //       items[i].style.background = 'red'
+          //       // 由于let声明的是局部变量，每一个保持着原来的值块级作用域                    
+          //       // 点击事件调用的时候拿到的是对应的i 
+          //      }
+          //   }
+        //方法6 委托
+        // var body = document.body
+        // body.onclick = function(event){
+        //     event.target.style.background = 'red'
+        // }}
+        //另外一种场景 点击之后2秒钟变颜色
+        //方法1：利用了闭包的原理，定时器函数内部的this是window 所以不能直接用this,而是将外部绑定函数中的this 先保存起来,内部函数引用外部变量 形成闭包。
+        // for(var i = 0;i < items.length;i++){
+        //   // items[i].num = i
+        //   items[i].onclick = function(){
+        //     var that = this
+        //     setInterval(function(){
+        //       // items[that.num].style.backgroundColor = 'red'
+        //        this.style.backgroundColor = 'red'
+        //     },1000)
+        //   }
+        // }
+        //方法2 利用箭头函数的this是静态的特性，是函数声明空间下的this。也就是说this是箭头函数外层函数下的this，不用提前保存
+        for(var i = 0;i < items.length;i++){
+          items[i].onclick = function(){
+            setInterval(() => {
+              this.style.backgroundColor = 'red'
+            }, 1000);
+          }
+        }
+
+    </script>
+</body>
+</html>

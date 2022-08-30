@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // 调用then方法，then方法的返回结果是promise对象，            
+         // 对象的状态有回调函数的结果决定
+          // 1、如果回调函数中返回的结果是 非promise 类型的数据，                
+          // 状态为成功，返回值为对象的成功值resolved                
+          // [[PromiseStatus]]:"resolved"                
+          // [[PromiseValue]]:123                
+          // return 123;                
+          // 2、如果...是promise类型的数据                
+          // 此Promise对象的状态决定上面Promise对象p的状态                
+          // return new Promise((resolve,reject)=>{                
+              //  // resolve("ok"); // resolved                
+              //  reject("ok"); // rejected                
+              // });                
+              // 3、抛出错误                
+              // throw new Error("失败啦！");                
+              // 状态：rejected                
+              // value：失败啦！
+        const p = new Promise((resolved,reject)=>{
+           resolved('成功')
+            // reject('失败')
+
+        })
+        let result = p.then(value=>{
+            console.log(value)
+            return 123//如果回调函数中返回的结果是 非promise 类型的数据，不写return则默认返回undefined 也是成功的标志   
+        }).then(x=>{
+            console.log(x)//输出上一个then的返回值 类型是非promise类型
+            return Promise.resolve('lr')// 2、如果...是promise类型的数据 下一个then的输出状态由此promise的方法决定     
+            return Promise.reject('qcq')
+        }).then(y=>{
+            console.log(y)
+        },z=>{
+            console.log(z)
+        })
+        console.log(result)
+        // console.log(result instanceof Promise)
+        // 调用then方法，then方法的返回结果是promise对象，  
+    </script>
+</body>
+</html>

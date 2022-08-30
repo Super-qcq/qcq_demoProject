@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            //构造函数
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            setName() {
+                console.log('我的名字叫qcq')
+            }
+        }
+        //继承父类
+        class person extends Person {
+            constructor(name, age, sex, address) {
+                super(name, age)
+                this.sex = sex
+                this.address = address
+            }
+            setAddress(){
+                console.log('陕西理工大学')
+            }
+        }
+        const per = new person('qcq',24,'男','宝鸡')
+        console.log(per.name)
+        console.log(per.age)
+        console.log(per.sex)
+        console.log(per.address)
+        per.setName()
+        per.setAddress()
+    </script>
+</body>
+
+</html>

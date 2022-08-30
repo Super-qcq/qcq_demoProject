@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!-- ES6提供了map数据结构。它类似于对象，也是键值对的集合，但是键值的范围不限于字符串，各种类型的值（包括对象）都可以当作键。map也是实现了iterator接口所以可以使用扩展运算符（...）和for...of...进行遍历。
+map的属性和方法：
+size 返回元素的个数
+set 增加一个新元素
+get 返回键名对象的键值
+delete 删除一个键名对象的元素
+has 查找是否有需要查找的元素
+clear 清空集合 返回undefined -->
+<script>
+  let arr = ['qcq','lr','zhangSan','lisi','sunwukong','shaseng']
+  let objArr = [{name:'qcq',age:20},{name:'lr',age:22}]
+  const fun = (elE,objArr) => {
+    objArr.forEach(ele=>{
+      if(ele.name === elE){
+        console.log(ele.age)
+      }
+    })
+  }
+  arr.forEach(elE=>{
+       fun(elE,objArr)
+  })
+
+  // const m = new Map()
+  // m.set('name','qcq')//增加一个新元素
+  // m.set('age',24)
+  // m.set('address','陕西宝鸡')
+  // for (const iterator of m) {
+  //   console.log(iterator.)
+  // }
+  // m.delete('age')//删除一个键名对象的元素
+  // console.log(m)
+  // console.log(m.get('address'))//返回键名对象的键值
+  // console.log(m.size)//返回元素的个数
+  // console.log(m.has('address'))//查找是否有需要查找的元素
+  // m.clear()//清空map
+  // console.log(m)
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //注意：实例对象和函数对象的属性是不相通的
+        class Person{
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            //静态属性(实例化对象无法访问，实例对象无法读取对象函数的静态属性 他们的属性不通
+            //实例化对象只能读取其构造函数的原型属性)
+            static sex = '男'
+            static setSex(){
+                console.log('我是男生')
+            }
+        }
+        const person = new Person('qcq',24)
+        console.log(person.name)
+        console.log(person.sex)
+        console.log(Person.sex)//调用静态方法（类名.方法名）
+        console.log(person)
+
+    </script>
+</body>
+</html>

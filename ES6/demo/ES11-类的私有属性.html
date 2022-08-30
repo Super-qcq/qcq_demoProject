@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class person{
+            //公有属性
+            name
+            age
+            //私有属性
+            #address
+            //构造方法赋值
+            constructor(name,age,address){
+                this.name = name
+                this.age = age
+                this.#address = address
+            }
+            setName(){
+                console.log(`我叫${this.name}`)
+            }
+            getAddress(){
+                console.log(`我住在${this.#address}`)
+            }
+        }
+        const per = new person('qcq',20,'陕西理工大学')
+        console.log(per.name)
+        per.setName()
+        //报错无法访问
+        // console.log(per.#address)
+        per.getAddress()
+    </script>
+</body>
+</html>

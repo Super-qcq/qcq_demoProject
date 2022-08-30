@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name = 'qcq',age = 12
+        const person={//对象的简化写法
+            name,
+            age,
+            setName(){
+                console.log(`${age},${name}`)//模板字符串
+            }
+        }
+        let{setName} = person//解构赋值
+       setName()
+    </script>
+</body>
+</html>

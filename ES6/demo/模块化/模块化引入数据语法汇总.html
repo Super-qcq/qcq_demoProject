@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        //1.通用方式引入
+        import * as modle from "./模块化暴露数据语法汇总.js"
+        console.log(modle.name)
+        modle.address()
+        //2.解构赋值方式引入 分别导入
+        import {name,address} from "./模块化暴露数据语法汇总.js"
+        console.log(name)
+        address()
+        //              引入 统一导入(如果出现重名属性还可以起别名)
+        import {name1 as n1,school} from "./模块化暴露数据语法汇总.js"
+        console.log(n1)
+        school()
+        //              引入 默认导入(必须使用别名 对象名as别名)
+        import {person as n2} from "./模块化暴露数据语法汇总.js"
+        console.log(n2.name2)
+        n2.setName()
+        //简便形式 只支持默认导入
+        import person from "./模块化暴露数据语法汇总.js"
+        console.log(person.name2)
+
+
+    </script>
+</body>
+</html>

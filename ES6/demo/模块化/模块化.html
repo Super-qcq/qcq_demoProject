@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type='module'>
+    //模块化是指将一个大的程序文件，拆分成许多小的文件，然后将小文件组合起来；
+    //模块功能主要由两个命令构成：export 和 import；
+    //export 命令用于规定模块的对外接口（导出模块）； 
+    //import 命令用于输入其他模块提供的功能（导入模块）；注意 <script type='module'>
+    //as后是一个对于模块js的重命名
+    import * as modle1 from "./模块化.js"
+    console.log(modle1)
+    console.log(modle1.name)
+    modle1.school()
+
+
+    </script>
+</body>
+</html>

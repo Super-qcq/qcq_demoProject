@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--因为并不是所有的浏览器都支持新特性模块化的兼容性  所以使用bable 
+        Babel 是一个 JavaScript 编译器；
+         Babel 能够将新的ES规范语法转换成ES5的语法；
+         因为不是所有的浏览器都支持新的ES规范，
+        所以，一般项目中都需要使用Babel进行转换； 
+        步骤：使用Babel转换JS代码——打包成一个文件——使用时引入即可； -->
+
+
+    <!-- 第一步：安装工具babel-cli（命令行工具） babel-preset-env（ES转换工具ES6转换为ES5语法） browserify（打包工具， 项目中使用的是webpack）；
+        第二步：初始化项目
+        第三步：安装
+        第四步：使用babel转换
+        npx babel js（当前js目录） -d dist/js（转化后的js目录） --presets=babel-preset-env(参数)          
+        第五步：打包
+        npx browserify dist/js/app.js -o(输出选项 输出到哪个位置) dist/bundle.js
+        第六步：在使用时引入bundle.js
+        <script src="./js/bundle.js" type="module"></script> -->
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <p>变量及对象的解构赋值：以后遇到方法的频繁调用和数组元素的调用，就可以使用解构赋值；之前调用对象里的方法是通过对象.方法()的形式调用，通过结构赋值就可以直接调用 方法名()
+    要注意的是：数组的解构用[]，对象的解构用{}，对象解构时let里的变量名和const里的变量名相同</p> -->
+    <script>
+      const person = {
+        name:'qcq',
+        age:24,
+        setName:function(){
+          console.log('HELLO')
+        }
+      }
+      let{name,age,setName} = person
+      setName()
+      const aa = [1,2,3,4,5]
+      let [a,b,c,d,e] = aa
+      console.log(a+b+c+d+e)
+    </script>
+</body>
+</html>

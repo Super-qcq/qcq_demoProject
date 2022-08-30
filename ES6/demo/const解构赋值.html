@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的解构赋值</title>
+</head>
+<body>
+    <script>
+        //声明对象类型用const(常量的声明) 非对象类型用let
+        const person={
+            name:'qcq',
+            age:18,
+            setName:function(){
+                console.log('qcq')
+            }
+        }
+        let{name,age,setName} = person
+        setName()
+    </script>
+</body>
+</html>

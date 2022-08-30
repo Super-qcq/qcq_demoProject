@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //模拟获取: 用户数据 订单数据 商品数据
+        function getUser(){
+            setTimeout(()=>{
+                let data = '用户数据'
+                g.next(data)//第一个yield的返回值
+
+            },1000)
+        }
+        function getData(){
+            setTimeout(()=>{
+                let data = '订单数据'
+                g.next(data)//第二个yield的返回值
+
+            },1000)
+        }
+        function getGoods(){
+            setTimeout(()=>{
+                let data = '商品数据'
+                g.next(data)//第三个yield的返回值
+
+            },1000)
+        }
+        function *gen(){
+            let user = yield getUser()
+            console.log(user)
+            let data = yield getData()
+            console.log(data)
+            let goods = yield getGoods()
+            console.log(goods)
+        }
+        let g = gen()
+        g.next()//第0个yield的返回值
+    </script>
+</body>
+</html>

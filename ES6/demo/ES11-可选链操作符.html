@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //可选链操作符（?.）允许读取位于连接对象链深处的属性值,
+        //而不必明确验证链中的每个引用是否有效。
+         fun=(o)=>{
+            //原生方法
+            //console.log(o&&o.person&&o.person.name)
+             console.log(o?.person?.name)
+
+        }
+        //调用函数，里面传入两个对象
+        fun({person:{
+            name:'qcq',
+            age:24
+        },dog:
+        {
+            name:'大黄',
+            age:10
+        }})
+    </script>
+</body>
+</html>

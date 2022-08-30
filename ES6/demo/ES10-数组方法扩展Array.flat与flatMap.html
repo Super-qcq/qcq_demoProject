@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //将多维数组转换成低维数组；
+        //用于将嵌套的数组“拉平”，变成一维数组。
+        //arr.flat()该方法返回一个新数组，对原数据没有影响
+
+        //二维转一维
+        let arr = [[1,2,3],4,5,6,[7,8,9]]
+        console.log(arr.flat())
+        //三维转二维
+        let arr2 = [1,2,[3,[4,5,6],7,8],9]
+        console.log(arr2.flat())
+        //三维转一维
+        console.log(arr2.flat(2))//深度为2层
+
+        //arr.flatMap()相当于对数组的每个成员进行一个函数  不改变原数组
+        let arr3 = [4,5,6]
+        const result = arr3.flatMap(items => [items*10])
+        console.log(result)
+    </script>
+</body>
+</html>

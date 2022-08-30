@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //await 表达式： 概述： 
+        //1. await 必须写在 async 函数中； 
+        //2. await 右侧的表达式一般为 promise 对象； 
+        //3. await 返回的是 promise 成功的值； 
+        //4. await 的 promise 失败了, 就会抛出异常, 
+             //需要通过 try...catch 捕获处理
+    
+    //成功
+        // async function fun(){
+        //     return await new Promise((resove,reject)=>resove('成功啦')) 
+        // }
+        // const result = fun()
+        // result.then(value=>console.log(value),reason=>console.error(reason))
+
+    //失败
+        async function fun(){
+            try{
+                const result = await new Promise((resove,reject)=>reject('失败啦')) 
+                console.log(result)
+            }
+            catch(e){
+                console.log(e)
+            }
+        }
+        fun()
+    </script>
+</body>
+</html>

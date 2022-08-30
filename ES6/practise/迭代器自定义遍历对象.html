@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const Person = {
+            name:'tfboys',
+            stas:['孙悟空','猪八戒','沙僧','唐僧','白骨精','牛魔王'],
+            [Symbol.iterator](){//加上接口
+                //控制下标this
+                let index = 0
+                //保存this
+                let _this = this
+                return {//返回一个对象
+                    //返回next方法
+                    next: function(){// 每调用 next 方法返回一个包含 value 和 done 属性的对象；
+                        if(index < _this.stas.length){
+                            const result = {value: _this.stas[index] , done: false}
+                            index++//下标自增
+                            return result//返回结果
+                        }else{
+                            return {value: undefined , done: true}
+                        }
+                        
+                    }
+
+                }
+
+            }
+        }
+        for(let i of Person){
+            console.log(i)
+        }
+    </script>
+</body>
+</html>

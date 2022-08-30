@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASS子类对父类方法的重写</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            setName(){
+                console.log('我叫qcq')
+            }
+        }
+        class person1 extends Person{
+            constructor(name,age,gender){
+                super(name,age)
+                this.gender = gender
+            }
+            setGender(){
+                console.log('我是男生')
+            }
+            setName(){//直接重写
+                console.log('她叫李蕊')
+            }
+        }
+        const per = new person1('lr',20,'nv')
+        console.log(per.name)
+        console.log(per.age)
+        console.log(per.gender)
+        per.setGender()
+        per.setName()
+    </script>
+</body>
+</html>

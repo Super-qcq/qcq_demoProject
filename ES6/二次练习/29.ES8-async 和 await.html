@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  async 和 await 两种语法结合可以让异步代码看起来像同步代码一样； 简化异步函数的写法；
+  async:
+  async默认返回的是promise类型的对象，只要我们返回的不是promise类型，那函数就是一个成功的promise对象；若是返回的是promise类型，则函数的成功或者失败取决于返回的promise是成功还是失败；如果直接抛出错误，那么函数返回的是一个失败的promise对象。和then差不多
+  1. async 函数的返回值为 promise 对象；
+  2. promise 对象的结果由 async 函数执行的返回值决定；
+  await 表达式：
+  1. await 必须写在 async 函数中；
+  2. await 右侧的表达式一般为 promise 对象；
+  3. await 返回的是 promise 成功的值；
+  4. await 的 promise 失败了, 就会抛出异常, 需要通过 try...catch 捕获处理；
+  <script>
+    async function p(){
+     try{
+      let result = await new Promise((resolve,reject)=>{
+        // resolve('成功')
+        reject('失败')
+      })
+      console.log(result)
+     }catch(e){
+       console.error(e)
+     }
+    }
+    p()
+  </script>
+  
+</body>
+</html>

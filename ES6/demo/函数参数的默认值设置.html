@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fun({name,age,address,gender = '男'}){//将对象解构，也可以单独赋值
+            console.log(name)
+            console.log(age)
+            console.log(address)
+            console.log(gender)
+
+        }
+        fun({//调用函数传入对象
+            name:'qcq',
+            age:18,
+            address:'陕西理工大学'
+        })
+    </script>
+</body>
+</html>

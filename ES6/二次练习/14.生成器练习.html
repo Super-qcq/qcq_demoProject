@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //需求：1秒之后输出111，两秒之后输出222，三秒之后输出333
+    // let timer1 = () => {
+    //   setTimeout(() => {
+    //     console.log(111)
+    //     g.next()
+    //   }, 1000);
+    // }
+    // let timer2 = () => {
+    //   setTimeout(() => {
+    //     console.log(222)
+    //     g.next()
+    //   }, 2000);
+    // }
+    // let timer3 = () => {
+    //   setTimeout(() => {
+    //     console.log(333)
+    //   }, 3000);
+    // }
+    // function* gen() {
+    //   yield timer1()
+    //   yield timer2()
+    //   yield timer3()
+    // }
+    // let g = gen()
+    // g.next()//输出next所指的第一个位置
+    //需求2：依次获取用户信息，产品信息，购买数量
+    function user(){
+      setTimeout(() => {
+        let userInfer = '用户信息'
+        g.next(userInfer)//第一个yield的返回值
+      }, 1000);
+    }
+    function product(){
+      setTimeout(() => {
+        let productInfer = '产品信息'
+        g.next(productInfer)
+      }, 1000);
+    }
+    function number(){
+      setTimeout(() => {
+        let numInfer = 24
+        g.next(numInfer)
+      }, 1000);
+    }
+    function *gen(){
+      console.log(yield user())
+      console.log(yield product())
+      console.log(yield number())
+    }
+    let g = gen()
+    g.next()
+  </script>
+</body>
+
+</html>

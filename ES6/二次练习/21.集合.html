@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  集合声明方式： const s = new Set([1,2,3,1,2,4,5])
+  ES6提供了新的数据结构Set(集合)。它类似于数组，但是成员值都是唯一的，结合实现了iterator接口，所以可以使用扩展运算符和for...of进行遍历
+  集合的属性和方法：
+  add()增加一个元素
+  delete()删除元素
+  has()查是否有这个元素
+  clear()清除集合
+  size集合中元素的个数
+  可以使用for of遍历，自动去重的功能
+  应用：数组去重，交集，并集，差集(扩展运算符+自动去重+has())
+  <script>
+    // const s = new Set([1,2,3,1,2,4,5])
+    // s.add(10)//增加元素
+    // s.delete(1)//删除元素
+    // let result = s.has(5)//查找元素
+    // s.clear()//清除集合
+    // console.log(s)
+    // console.log(result)
+    // console.log(s.size)//元素的个数
+    //1.数组去重
+    const array = [1,1,2,3,2,4]
+    // const s = new Set(array)
+    // console.log(...s)
+    const array1 = [1,2,1]
+    //2.交集
+    let result = [...new Set(array1)].filter(function(items){
+      if(new Set(array).has(items)){
+        return true
+      }
+    })
+    console.log(result)
+    //3.并集
+    console.log([...new Set([...array1,...array])])
+    //4.差集
+    let result2 = [...new Set(array)].filter(function(items){
+      if(!(new Set(array1).has(items))){
+        return true
+      }
+    })
+    console.log(result2)
+    
+
+
+
+
+  </script>
+</body>
+</html>

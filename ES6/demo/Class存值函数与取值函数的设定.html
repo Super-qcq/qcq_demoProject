@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //与 ES5 一样，在“类”的内部可以使用get和set关键字，
+        //对某个属性设置存值函数和取值函数，拦截该属性的访问行为。
+        class Person{
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            set setName(value){
+                this.name = value
+            }
+            get setName(){
+                return this.name
+            }
+        }
+        const per = new Person('qcq',24)
+        per.setName = 'lr'
+        console.log(per.setName)
+        console.log(per.name)
+        // per.setName()
+    </script>
+</body>
+</html>

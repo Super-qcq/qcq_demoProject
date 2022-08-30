@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments；
+         //原arguments 是一个object
+         function fun(){
+             console.log(arguments)
+         } 
+         fun(1,2,5,8)
+         //rest  是一个数组类型  rest参数必须放在后面 
+         function fun1(a,b,...argus){
+             console.log(argus)
+         } 
+         fun1(1,2,5,8)
+         //. 扩展运算符能将数组转换为逗号分隔的参数序列； 
+         //扩展运算符（spread）也是三个点（...）。它好比 rest 参数的逆运算，
+         //将一个数组转为用逗号分隔的参 数序列，对数组进行解包；
+         //扩展运算符的用处：
+                        //1.可以将伪数组转成真正的数组
+                        //2.可以将数组进行拼接（用逗号拼接）
+                        //3.可以克隆数组
+                        //4.ES9中可以合并对象
+         //必须加中括号
+         const arr = ['q','w','e','r','t']
+         function person(){
+             console.log(arguments)
+         }
+         person(...arr)
+
+    </script>
+</body>
+</html>

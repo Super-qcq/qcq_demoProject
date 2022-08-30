@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //将对象转换为数组
+        //0.Object.key()
+         //方法：返回一个给定对象的所有可枚举属性的键； 
+        //1. Object.values()
+        //方法：返回一个给定对象的所有可枚举属性值的数组； 
+        //2. Object.entries()
+        //方法：返回一个给定对象自身可遍历属性 [key,value] 的数组； 
+        //3. Object.getOwnPropertyDescriptors()
+        //该方法：返回指定对象所有自身属性的描述对象；
+        const person={
+            name:'尚硅谷',
+            address:['北京','上海','深圳','西安','武汉','成都']
+        }
+        // 获取对象所有的键
+        console.log(Object.keys(person))
+        // 获取对象所有的值
+        console.log(Object.values(person))
+        // 获取对象的entries
+        console.log(Object.entries(person))
+        //创建MAP
+        const map = new Map()
+        map.set(Object.entries(person))
+        console.log(map.get)
+        //返回指定对象所有自身属性的描述对象
+        console.log( Object.getOwnPropertyDescriptors(person))
+
+    </script>
+</body>
+</html>

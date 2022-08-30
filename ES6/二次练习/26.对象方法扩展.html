@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const person = {
+      name:'qcq',
+      age:24,
+      setName(){
+        console.log('11')
+      }
+    }
+    const dog = {
+      name:'huang',
+      address:'陕西',
+      reaction(){
+        console.log('汪汪')
+      }
+    }
+    console.log(Object.assign(dog,person))//合并
+    console.log({...dog,...person})//合并
+    console.log(Object.values(person))//查看属性值
+    console.log(Object.keys(dog))//查看属性名
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 如果形参只有一个，则小括号可以省略； 
+    2. 函数体如果只有一条语句，则花括号可以省略，函数的返回值为该条语句的执行结果； 
+    3. 箭头函数 this 指向声明时所在作用域下 this 的值； 
+    4. 箭头函数不能作为构造函数实例化； 
+    5. 不能使用 arguments -->
+    <!-- ES6内箭头函数内this 指向的固定化，并不是因为箭头函数内部有绑定 this 的机制，
+        实际原因是箭头函数内部根本没有自己的this，它内部的this 其实就是外层代码块的 this，
+        也就是定义时所在环境中的this对象 。 -->
+    <script>
+        //平常方法
+        // function add(num){
+        //     return num+1
+        // }
+        // console.log(add(9))
+        //箭头函数
+        let add=(num)=>{
+            return num+1
+        }
+        console.log(add(9))
+        //当只有一个参数或者一条语句时
+        let sum = num =>num+1
+        console.log(sum(100))
+        // 1、箭头函数的this是静态的，始终指向函数声明时所在作用域下的this的值 
+        //平常方法
+        // function fun(){
+        //     console.log(this.name)
+        // }
+        // window.name = 'qcq'
+        // fun()
+        // const person ={
+        //     name:'qq',
+        //     age:18
+        // }
+        // fun.call(person)
+        //箭头函数方法
+        // let fun2=() =>console.log(this.name)
+        // window.name = 'lr'
+        // fun2()
+        // const person ={
+        //     name:'qq',
+        //     age:18
+        // }
+        // fun2.call(person)
+        // 2、不能作为构造实例化对象
+        //原方法
+        // function person(name,age){
+        //     this.name = name
+        //     this.age = age
+        // }
+        // const per = new person('qcq',18)
+        // console.log(per.age)
+        //箭头函数方法
+        // let person=(name,age)=>{
+        //     this.name = name
+        //     this.age = age
+        // }
+        // const per = new person('qcq',18)
+        // console.log(per.age)
+        //3.不能使用arguments变量
+        //原方法
+        // function min(){
+        //     console.log(arguments[2])
+        // }
+        // min(1,2,3,4,5)
+        //箭头函数方法
+        // let min = ()=>{
+        //     console.log(arguments.length)
+        // }
+        // min(1,2,3)
+
+
+    </script>
+</body>
+</html>

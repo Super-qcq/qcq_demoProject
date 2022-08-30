@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 箭头函数：
+1.  如果形参只有一个，则小括号可以省略；函数语句只有一句return时，花括号和return都可省略，函数的返回值为该条语句的执行结果。
+2. 箭头函数 this 指向声明时所在作用域下 this 的值（就是自己箭头函数下的外一层）；
+3.  箭头函数不能作为构造函数实例化；
+4. 不能使用 arguments；
+    5.  ES6内箭头函数内this 指向的固定化，并不是因为箭头函数内部有绑定 this 的机制，
+        实际原因是箭头函数内部根本没有自己的this，它内部的this 其实就是外层代码块的 this，也就是定义时所在环境中的this对象 。
+        使用场景：
+箭头函数适合与 this 无关的回调. 定时器, 数组的方法回调       
+        箭头函数不适合与 this 有关的回调.  事件回调, 对象的方法  -->
+        <script>
+          //将偶数输出
+          const array = [100,5,6,7,9,4]
+          console.log(array.filter(item => item%2 === 0))
+
+        </script>
+</body>
+</html>

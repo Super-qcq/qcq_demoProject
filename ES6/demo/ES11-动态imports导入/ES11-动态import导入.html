@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>问候</button>
+    <script>
+        //动态导入模块，什么时候使用时候导入；
+        //使用import函数 参数是需要导入的路径 返回的值是一个promise对象 
+        //promise成功的值就是所暴露出来的对象
+        // 语法import('').then(...)
+        const btn = document.getElementsByTagName('button')[0]
+        btn.onclick = function(){
+            import('./导入模块.js').then(value=>
+            {
+                value.fun()
+                console.log(value)
+            })
+            
+        }
+    </script>
+</body>
+</html>

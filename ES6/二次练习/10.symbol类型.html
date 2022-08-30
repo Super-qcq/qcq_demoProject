@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  Symbol 值通过Symbol函数生成。这就是说，对象的属性名现在可以有两种类型，
+    一种是原来就有的字符串，另一种就是新增的 Symbol 类型。
+    凡是属性名属于 Symbol 类型，就都是独一无二的，
+    可以保证不会与其他属性名产生冲突。
+    Symbol函数可以接受一个字符串作为参数，表示对 Symbol 实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分。
+     let s = Symbol();
+  <script>
+    const person = {
+      name:'qcq',
+      age:24,
+      setName(){
+        return 'ha'
+      }
+    }
+    const demo = {//想继续添加名为setName的方法,但是要用symbol类型标注
+      name:Symbol(),
+      setName:Symbol()
+    }
+    person[demo.setName] = function(){
+      return 'qcq'
+    }
+    console.log(person.setName())
+    console.log(person[demo.setName]())
+    console.log(person)
+    //方式2  在对象一开始就想要独一无二的类型时
+    const dog = {
+      [Symbol('name')]:'大黄',
+      [Symbol('age')]:3,
+      name:'黄黄',
+      [Symbol('setName')]:function(){
+        console.log('我叫大黄子')
+      }
+    }
+    console.log(dog)
+  </script>
+</body>
+</html>

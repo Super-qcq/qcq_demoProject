@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // [...]扩展运算符 将数组转化成以逗号分隔的参数序列
+    // arguments中只有一个参数，读取时arguments[0][2]必须是0在前面
+    // 而用扩展运算符传可以将数组元素全部传进去，相当于setName(qcq,24,宝鸡)，读取时 arguments[2]
+   
+    // console.log(setName(array))
+    
+    // 扩展运算符的应用：1.数组的合并 2.数组的克隆 3.将伪数组转成真正的数组
+    const array1 = [1,2,3]
+    const array2 = [1,4,5,6]
+    console.log(...array1,...array2)
+    
+    const array3 = [...array1]
+    console.log(array3)//浅拷贝
+
+    const array = ['qcq',24,'宝鸡']
+    function setName(){
+     console.log(...arguments)
+    }
+    setName(array)
+  </script>
+</body>
+</html>

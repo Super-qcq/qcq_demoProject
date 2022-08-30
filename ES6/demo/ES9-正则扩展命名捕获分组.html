@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 0: "<a href=\"www.baidu.com\">百度</a>"
+         1: "www.baidu.com"
+         2: "百度"
+        groups: {url: "www.baidu.com", name: "百度"} -->
+
+    <script>
+        //ES9 允许命名捕获组使用符号『?』,这样获取捕获结果可读性更强；
+         // 需求：提取url和标签内文本            
+         // 之前的写法 
+        //  let str = '<a href="www.baidu.com">百度</a>'
+        //  const reg =/<a href="(.*)">(.*)<\/a>/
+        //     const result = reg.exec(str)
+        //     console.log(result)
+         // 结果是一个数组，第一个元素是所匹配的所有字符串            
+         // 第二个元素是第一个(.*)匹配到的字符串            
+         // 第三个元素是第二个(.*)匹配到的字符串            
+         // 我们将此称之为捕获
+
+
+
+         //命名捕获分组
+         let str = '<a href="www.baidu.com">百度</a>'
+         const reg =/<a href="(?<url>.*)">(?<name>.*)<\/a>/
+            const result = reg.exec(str)
+            console.log(result)
+
+         // 这里的结果多了一个groups 
+         
+    </script>
+</body>
+</html>

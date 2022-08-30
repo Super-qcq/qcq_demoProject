@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 类的声明，属性以及构造方法的书写，方法的继承，属性的继承，子类对父类的重写，静态成员(只属于函数对象的方法和属性，实例对象访问不到) -->
+  <script>
+    class Person{
+      constructor(name,age,address,setName){
+        this.name = name
+        this.age = age
+        this.address = address
+        this.setName = function(){
+        console.log(`我叫${this.name}`)
+        }
+      }//构造函数属性的声明方式
+     setAge = () => {
+       console.log(this.age)
+     }
+    }
+    class Teacher extends Person{//继承父类
+      constructor(name,age,address,price){
+        super(name,age,address)//继承父类的属性
+        this.price = price
+      }
+      setPrice(){
+        console.log(`我赚了${this.price}块钱`)
+      }
+      setName(){//子类对父类的重写
+        console.log(`我的大名叫${this.name}`)
+      }
+      //静态成员，实例对象无法访问
+      static passWord = '520'
+      static setPass = function(){
+        console.log(`我的密码是${this.passWord}`)
+      } 
+      
+    }
+    const per1 = new Person('qcq',24,'陕西')
+    const per2 = new Person('qcq2',25,'宝鸡')
+    console.log(per2)
+    console.log(per1)
+    const tea1 = new Teacher('lr',23,'陕西宝鸡',100)
+    per1.setName()
+    tea1.setName()
+    tea1.setPrice()
+    Teacher.setPass()//访问静态成员
+    console.log(per2)
+    console.log(per1)
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div></div> 
+   <div></div> 
+   <div></div>
+   <script>
+       //扩展运算符（spread）也是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参 数序列，对数组进行解包；
+       //将为数组转换为真正的数组
+       const div = document.getElementsByTagName('div')
+       const arr = [...div]
+       console.log(arr)
+       //拼接数组
+       let arr1 = ['1','2','3','4']
+       let arr2 = ['5','6','7','8']
+       console.log([...arr1,...arr2])
+       //数组的克隆
+       let arr3 = ['1','2','3','8']
+       let arr4 = [...arr3]
+       console.log(arr4)
+   </script> 
+</body>
+</html>

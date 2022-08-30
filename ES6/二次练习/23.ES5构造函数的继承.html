@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Person(name,age,address){
+      this.name = name
+      this.age = age
+      this.address = address
+
+    }
+    //静态属性，实例对象无法访问
+    Person.passWord = '520'
+    //静态方法，实例对象无法访问
+    Person.setPass = function(){
+      console.log(`我的密码是${this.passWord}`)
+    }
+    Person.prototype.setName = function(){
+      console.log(`我叫${this.name}`)
+    }
+    function Teacher(name,age,address,price){
+      Person.call(this,name,age,address)
+      this.price = price
+    }
+    Teacher.prototype = new Person
+    Teacher.prototype.constructor = Teacher
+    Teacher.prototype.setPrice = function(){
+      console.log(`我赚了${this.price}块钱`)
+    }
+    const per = new Person()
+    per.name = '齐存强'
+    per.age = 24
+    per.address = '陕西'
+    per.setName()
+    Person.setPass()//访问静态方法
+    const tea1 = new Teacher('lr',23,'宝鸡',100)
+    tea1.setName()
+    tea1.setPrice()
+    console.log(tea1)
+  </script>
+</body>
+</html>

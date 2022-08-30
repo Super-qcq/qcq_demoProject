@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Object.fromEntries() 执行与 Object.entries互逆的操作。
+        //Object.fromEntries() 方法把键值对列表转换为一个对象。
+        //数组转对象
+        const arr = [['name','qcq'],['age',18]]
+        console.log(Object.fromEntries(arr))
+        //map转对象
+        const map = new Map()
+        map.set('name','qcq')
+        map.set('age',24)
+        console.log(Object.fromEntries(map))
+    </script>
+</body>
+</html>

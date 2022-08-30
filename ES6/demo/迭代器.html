@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。
+        任何数 据结构只要部署 Iterator 接口，就可以完成遍历操作； -->
+    <!-- ES6 创造了一种新的遍历命令 for...of 循环，Iterator 接口主要供 for...of 消费； 
+        原生具备 iterator 接口的数据(可用 for of 遍历)：
+        Array； 
+        Arguments； 
+        Set； 
+        Map； 
+        String； 
+        TypedArray； 
+        NodeList； -->
+        <!--工作原理：
+            1. 创建一个指针对象，指向当前数据结构的起始位置； 
+            2. 第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员； 
+            3. 接下来不断调用 next 方法，指针一直往后移动，直到指向后一个成员；
+            4. 每调用 next 方法返回一个包含 value 和 done 属性的对象；
+            value:值 done：是否遍历完毕
+        注：需要自定义遍历数据的时候，要想到迭代器； -->
+        <script>
+            //声明一个数组
+            const arr = ['孙悟空','猪八戒','沙僧','唐僧','白骨精','牛魔王']
+            for(let v of arr){
+                console.log(v)
+            }
+            let iterator = arr[Symbol.iterator]()
+            console.log(iterator.next())
+            console.log(iterator.next())
+            console.log(iterator.next())
+            console.log(iterator.next())
+            console.log(iterator.next())
+            console.log(iterator.next())
+            console.log(iterator.next())
+            //初始化对象  指针也会重新回到最前
+            let it = arr[Symbol.iterator]()
+            console.log(it.next())
+        </script>
+
+
+
+</body>
+</html>

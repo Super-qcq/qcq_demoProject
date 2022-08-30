@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.Number.EPSILON是javascript表示的最小精度
+        console.log(Number.EPSILON)
+        equal = (a, b) => Math.abs(a-b) < Number.EPSILON;            
+        console.log(0.1 + 0.2);            
+        console.log(0.1 + 0.2 === 0.3); // false            
+        console.log(equal(0.1 + 0.2, 0.3)); // true
+        //2.二进制和八进制
+        let b = 0b1010;//二进制            
+        let o = 0o777;//八进制            
+        let d = 100;//十进制            
+        let x = 0xff;//十六进制            
+        console.log(d)
+        //3.Number.isFinite()检测一个值是否为有限数 
+        //Number.isNaN()检测一个数是否为NAN
+        const isF = 100/0
+        const isN = NaN
+        console.log(Number.isFinite(isF)) 
+        console.log(Number.isNaN(isN))
+        //4. Number.parseInt Number.parseFloat字符串转整数 
+        const str = '12315.12px'
+        console.log(Number.parseInt(str))
+        console.log(Number.parseFloat(str))
+        // 5. Number.isInteger 判断一个数是否为整数
+        const isI = 10
+        console.log(Number.isInteger(isI))
+        // 6. Math.trunc 将数字的小数部分抹掉
+        const tru = 10.0264
+        console.log(Math.trunc(tru)) 
+        // 7. Math.sign 判断一个数到底为正数 负数 还是零
+        console.log(Math.sign(0))
+        console.log(Math.sign(10))
+        console.log(Math.sign(-10))
+        //原生方法 1.转字符串 +''或者tostring(但是不会转undefined 和 null)
+        //2.转数字+'5'  字符串转数字 （非数字类型转为NaN,空串或者空格转为0）布尔转数字（true转为1，false转为0）null转为0  undefined转为NaN
+        //parseInt  parseFloat
+        //3.转布尔 !!   数字转布尔（除了0和NaN,其余都是true）字符串转布尔（除了空串其余都是true）null和undefined都转为false 对象也会转为true
+        //非字符串比大小 一位一位比较
+        //a++为自增前的值 
+        console.log(typeof (5+''))
+        console.log(typeof (+'5'))
+        console.log(typeof (!!'5'))
+ 
+        
+    </script>
+</body>
+</html>

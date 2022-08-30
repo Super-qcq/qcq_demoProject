@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise封装Ajax请求</title>
+</head>
+<body>
+    <script>
+        const promise = new Promise((resove,reject)=>{
+            const xhr = new XMLHttpRequest()
+            xhr.open('GET','http://localhost:8080/Promise')
+            xhr.send()
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    if(xhr.status>=200 && xhr.status<300){
+                        resove(xhr.response)
+                    }else{
+                        reject(xhr.status)
+                        // console.log(xhr.status)
+                    }
+                }
+            }
+        })
+        promise.then(function(value){
+            console.log(value)
+        },function(reason){
+            console.error(reason)
+        })
+    </script>
+</body>
+</html>

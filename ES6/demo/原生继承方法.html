@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //原生继承方法
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+        }
+        Person.prototype.call = function () {
+
+            console.log('我可以打电话给你吗')
+        }
+
+        function person(name, age, sex) {
+            //继承属性
+            Person.call(this, name, age)
+            this.age = age
+        }
+        person.prototype = new Person //继承方法
+        person.prototype.constructor = person //改变constructor 指向
+        person.prototype.address = () => { //声明子类的方法
+            console.log('陕西理工大学')
+        }
+        const per = new person('qcq', 25, '男')
+        console.log(per.name)
+        per.call()
+        per.address()
+    </script>
+</body>
+
+</html>

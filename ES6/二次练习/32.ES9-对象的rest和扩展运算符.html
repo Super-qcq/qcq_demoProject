@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.对象的合并(会自动去除键名一样的，保留后面对象的一样的那个键名)
+    // 2.对象的拷贝
+    const person = {
+      name:'qcq',
+      age:24,
+      address:"宝鸡"
+    }
+    const dog = {
+      name:'dahuang',
+      address:'陕西'
+    }
+    console.log({...person,...dog})
+    const per = {...person}
+    console.log(per)
+  </script>
+</body>
+</html>

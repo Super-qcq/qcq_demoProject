@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。
+    通过 class 关键字，可以定义类。基本上，ES6 的 class 可以看作只是一个语法糖，
+    它的绝大部分功能，ES5 都可以做 到，新的 class 写法只是让对象原型的写法更加清晰、
+    更像面向对象编程的语法而已；
+  知识点： 
+    1. class 声明类； 
+    2. constructor 定义构造函数初始化； 
+    3. extends 继承父类； 
+    4. super 调用父级构造方法； 
+    5. static 定义静态方法和属性； 
+    6. 父类方法可以重写； -->
+    <script>
+        //原生写法
+        function Person(name,age){
+            this.name = name
+            this.age = age
+        }
+        Person.prototype.setName=function(){
+            console.log('我叫hahaha')
+        }
+        const person = new Person('qcq',24)
+        console.log(person)
+        person.setName()
+        //class类的写法
+        class Person1{
+            //构造方法，名字是固定的
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            // setName，方法必须使用该方式写
+            setName(){
+                console.log('我叫齐存强')
+            }
+        }
+        const person1 = new Person1('qcq',24)
+        console.log(person1)
+        person1.setName()
+    </script>
+
+</body>
+</html>

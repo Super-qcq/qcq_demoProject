@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  可选链操作符（?.）：当对象类型的参数层级比较深，就不用层层判断
+  <script>
+  function person(data){
+    // const result = data && data.per1 && data.per1.age//原始判断到底有没有传参的方法
+    const result = data?.per1?.name
+    console.log(result)
+
+  }
+  const p = {
+    per1:{
+        name:'qcq',
+        age:24
+      },
+      per2:{
+        address:'陕西',
+        weight:150
+      }
+    }
+  person(p)
+  </script>
+</body>
+</html>

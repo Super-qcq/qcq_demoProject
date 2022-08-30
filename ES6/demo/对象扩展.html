@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <SCRIPT>
+        //ES6 新增了一些 Object 对象的方法： 
+        //1. Object.is 比较两个值是否严格相等，与『===』行为基本一致（+0 与 NaN）但是在判断NaN方面不太一样； 
+        //2. Object.assign 对象的合并，将源对象的所有可枚举属性，复制到目标对象； 
+        //3. proto、setPrototypeOf、 setPrototypeOf 可以直接设置对象的原型； 
+        console.log(Object.is(120.0,120))
+        console.log(Object.is(NaN,NaN))//true
+        console.log(NaN === NaN)//false
+        const o1 = {
+            name:'qcq',
+            age:18,
+            gender:'男'
+        }
+        const o2 = {
+            name:'lr',
+            age:18,
+            gender:'女',
+            address:'陕西理工大学'
+        }
+        // 如果前边有后边没有会添加，如果前后都有，后面的会覆盖前面的
+        console.log(Object.assign(o1,o2))
+        const school = {                
+            name : "尚硅谷"            
+        }            
+        const cities = {                
+            xiaoqu : ['北京','上海','深圳']            
+        }            // 并不建议这么做            
+        Object.setPrototypeOf(school,cities);            
+        console.log(Object.getPrototypeOf(school));            
+        console.log(school); 
+    </SCRIPT>
+</body>
+</html>
