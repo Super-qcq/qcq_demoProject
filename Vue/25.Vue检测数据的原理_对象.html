@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+
+<body>
+  <!-- 模拟加工过程 ： -->
+  <!-- 创建一个监视的构造函数 Observer(obj)  再创建一个实例对象  用于监视data中的属性  构造函数中  借助Object.keys()来汇总data中的所有属性  返回一个属性数组 遍历数组 拿到每一个属性  用Object.defineProperty添加   把每一个属性都加到实例对象上     最后给实例每一个对象添加get和set   最后让vm._data = 实例对象 = data -->
+  <script>
+    Vue.config.productionTip = false
+    let data = {
+      name: '尚硅谷',
+      address: '北京'
+    }
+    //创建一个监视的实例对象用于监视data中属性的变化
+    const obs = new Observe(data)
+    function Observe(obj) { //监视构造函数用于监视data中的属性
+      let arr = Object.keys(obj)//arr是属性数组
+      arr.forEach((element) => {//element时data中的每一个属性
+        Object.defineProperty(this, element, {//将属性添加到监视实例对象上
+          get() {//返回监视实例对象的属性值为data中的属性的属性值
+            return obj[element]
+          },
+          set(val) {
+            obj[element] = val
+          }
+        })
+      })
+    }
+    //加工结束后将每一个含有getter和setter的属性通过监视实例对象放到vm._data中和data中
+    //数据代理将data中的所有属性放到vm上
+    const vm={}
+    let arr = Object.keys(data)//arr是属性数组
+      arr.forEach((element) => {//element时data中的每一个属性
+        Object.defineProperty(vm, element, {//将属性添加到vm上
+          get() {//返回vm的属性值为data中的属性的属性值
+            return data[element]
+          },
+          set(val) {
+            data[element] = val
+          }
+        })
+      })
+      vm._data = data = obs
+  </script>
+
+</body>
+
+</html>

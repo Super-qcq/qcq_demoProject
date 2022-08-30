@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+<body>
+  <div id="tools">
+    <h1>hello,{{name}}</h1>
+    <a :href="url">点我去学习{{school.name.toUpperCase()}}</a>
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    new Vue ({
+      el:"#tools",
+      data:{
+        name:'齐存强',
+        url:'www.baidu.com',
+        school:{
+          name:'shananxi'
+        }
+      }
+    })
+  </script>
+  
+</body>
+</html>

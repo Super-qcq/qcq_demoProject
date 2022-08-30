@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+  <style>
+    #a{
+      width: 0px;
+      height: 0px;
+      border: transparent solid 20px;
+      border-bottom-color: red;
+    }
+    #line{
+      background-color: red;
+      height: 1px;
+      transform: scale(0.5,0.5)
+    }
+  </style>
+</head>
+
+<body>
+  <div id="line"></div>
+  <div id="a"></div>
+  <div id="root">
+    <!-- 将元素和指令进行一个绑定 区别于v-bind:将元素和指令进行一个绑定 -->
+    <!-- <input type="text" v-bag:value="n"> -->
+    <input type="text" v-fbind:value="n">
+    <button @click="n++">点我+1</button>
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        n: 1
+      },
+      directives: {
+        //模板要经过Vue编译 才能出现在页面   但是一开始页面没有input  一开始就调用 没有input不起作用
+        fbind:{
+          bind(element, binding) {
+            //自结束标签用value
+            element.value = binding.value
+          }, //当指令与元素成功绑定时调用 
+          inserted(element, binding) {
+            //input 自动获取焦点 和 input父元素改变颜色等等这些操作  要在input框展示在页面时 才执行
+            element.focus()
+          }, //指令所在元素被插入页面时调用 
+          update(element, binding) {
+            element.value = binding.value
+          }, //指令所在模板被重新解析时调用
+
+
+          //bind和update其实 里面的代码一样  也是big函数 调用的两个条件  big里面其实只写了bind和update
+
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>

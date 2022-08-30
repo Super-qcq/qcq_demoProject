@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+  <style>
+    [v-c1oak]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!--    V-pre指令:
+    1. 跳过其所在节点的编译过程。
+    2. 可利用它跳过:没有使用指令语法、没有使用插值语法的节点,会加快编译。
+   -->
+   <div id="root">
+     <!-- 一般用在固定提示信息上，没有表达式上面，当其它数据发生改变后不再动态渲染 -->
+    <h1 V-pre>学生信息</h1>
+    <span>姓名：{{name}}</span>
+   </div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el:'#root',
+      data:{
+        name:'qcq'
+      }
+    })
+  </script>
+</body>
+</html>

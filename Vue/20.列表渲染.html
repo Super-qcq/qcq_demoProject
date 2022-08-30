@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+<body>
+  <ul id="root">
+    <h1>人员列表</h1>
+    <!-- 用for-in遍历这种方式去生成同样结构的数据，必须给每个数据去绑定唯一标识  :key="p.id" -->
+    <!-- 插值语法中的item属性来自data中的属性，可能来自于没有配置的计算属性，来自于v-for的形参 -->
+    <!-- 遍历数组 -->
+    <li v-for="(element,index) in person" :key="element.id">{{element.name}}-{{element.age}}-{{element.sex}}</li>
+   
+    <!-- 遍历对象 -->
+    <li v-for="(element,index) of car" :key="index">{{index}}-{{element}}</li>
+    <li v-for="(element,index) in car" :key="index">{{index}}-{{element}}</li>
+
+    <!-- 遍历字符串 -->
+    <li v-for="(element,index) in str" :key="index">{{index}}-{{element}}</li>
+
+    <!-- 遍历指定次数 -->
+    <li v-for="(element,index) in 5" :key="index">{{index}}-{{element}}</li>
+  </ul>
+  <script>
+    Vue.config.productionTip = false
+    new Vue({
+      el:'#root',
+      data() {
+        return {
+          person:[
+            {name:'qcq',age:24,sex:'男'},
+            {name:'lr',age:23,sex:'女'},
+            {name:'rj',age:23,sex:'男'}
+          ],
+          car:{
+            name:'byd',
+            price:'20w',
+            color:'red'
+          },
+          str:'jabfjbajfb'
+        }
+      },
+    })
+  </script>
+</body>
+</html>

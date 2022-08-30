@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+  <!-- day.js会对时间做出处理 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.11.0/dayjs.min.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>显示格式化后的时间</h1>
+    <!-- 计算属性计算 -->
+    <h1>现在是:{{nowTime}}</h1>
+    <!-- methods实现 -->
+    <h1>现在是:{{methTime()}}</h1>
+    <!-- 过滤器实现 -->
+    <!-- 过滤器本质是函数，将time作为参数传给 filterTime函数中，最后返回值将整个差值语法中的内容替换掉 -->
+    <h1>现在是:{{time | filterTime}}</h1>
+    <!-- 里面可以传两个参数 第一个默认|前的参数，第二个可以自己指定 若是指定了，就要接收参数 -->
+    <h1>现在是:{{time | filterTime('YYYY年MM月DD日') | mySlice}}</h1>
+    <!-- 全局过滤器 -->
+    
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    Vue.filter('mySlice',function(value){
+      return value.slice(0, 4)
+    })
+    new Vue({
+      el: '#root',
+      data: {
+        time: 1648019933967
+      },
+      computed: {
+        nowTime() {
+          return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss')
+        }
+      },
+      methods: {
+        methTime() {
+          return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss')
+        }
+      },
+      // 局部的过滤器
+      filters: {
+        // 第一个filter没有传参数用str这里指定的参数，第二个传参了用传的参数
+        filterTime(value, str = 'YYYY年MM月DD日 HH:mm:ss') {
+          return dayjs(value).format(str)
+        },
+        // 过滤器串联 将上次执行的结果交给这次过滤器的参数进行处理 最终返回这次处理的结果
+        // mySlice(value) {
+        //   return value.slice(0, 4)
+        // }
+      }
+      //两种用法1.差值语法   2.v-bind:
+    })
+  </script>
+</body>
+
+</html>

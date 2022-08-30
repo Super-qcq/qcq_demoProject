@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+  <style>
+    .basic{
+      width: 200px;
+      height: 200px;
+      background-color: cyan;
+    }
+    .happy{
+      background-color: red;
+      outline: darkorange solid 1px;
+    }
+    .sad{
+      font-size: 30px;
+      font-weight: bold;
+      font-style: oblique;
+    }
+  </style>
+</head>
+<body>
+  <!-- 绑定class样式，字符串写法。适用于：样式的类名不确定，需要动态指定 -->
+  <!-- <div class="basic" :class="demo" @click="btn">哈哈哈</div> -->
+  <!-- 绑定class样式，数组写法。适用于：绑定样式的个数不确定，名字也不确定 -->
+  <!-- <div class="basic" :class="classArr" @click="btn">哈哈哈</div> -->
+    <!-- 绑定class样式，对象写法。适用于：绑定样式的个数确定，名字也确定，但是要动态决定用不用 -->
+    <div class="basic" :class="classObj">哈哈哈</div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el:'.basic',
+      data:{
+        classObj:{//用哪个指定哪个为true
+          sad:false,
+          happy:false
+        }
+      },
+    })
+
+  </script>
+</body>
+</html>

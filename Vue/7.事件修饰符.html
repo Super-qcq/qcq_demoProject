@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+<style>
+  #demo1{
+    background-color: blue;
+  }
+  #demo2{
+    width: 100px;
+    background-color: red;
+  }
+</style>
+<body>
+  <!-- 
+@click.prevent就是e.preventDefault取消事件默认行为，阻止a标签跳到其他页面
+@click.stop 就是e.stopPropagation  阻止事件冒泡  在vue中@click.stop就可以阻止冒泡 ，给被点击本元素添加 阻止向外冒泡
+@click.once:事件只触发一次
+@click.capture:将事件捕获到自己身上
+@click.self:只要event.target是当前操作的元素时才能触发事件
+@click.passive 事件的默认行为会立即执行，无需等待事件回调执行完毕    移动端用的多
+@scroll 给滚动条加的滚动事件  @wheel给滚轮绑定的滚动事件 -->
+<div id="a">
+  <!-- <a href="http://www.baidu.com" @click="press">点我</a> -->
+  <div id="demo1" @click.self="press(1,$event)">
+    div1
+    <div id="demo2" @click="press(2,$event)">
+      div2
+    </div>
+  </div>
+</div>
+  <script>
+    Vue.config.productionTip = false
+    new Vue({
+      el:'#a',
+      methods:{
+        press(number,event){
+          console.log(number)
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>

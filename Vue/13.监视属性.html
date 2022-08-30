@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <!-- <button @click="isHot = !isHot">切换</button> -->
+    <button @click="replace()">切换</button>
+    <span>今天天气真的{{Info}}</span>
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el:'#box',
+      data(){
+        return{
+          isHot:true
+        }
+      },
+      methods: {
+        replace(){
+          this.isHot = !this.isHot
+        }
+      },
+      computed: {
+        Info:{
+          get(){
+            return this.isHot ? '炎热':'凉爽'
+          }
+        }
+      }
+    })
+    vm.$watch('isHot',{
+      immediate:true,
+          handler(newValue,oldValue){
+          console.log(oldValue,newValue)
+        }
+    })
+
+  </script>
+</body>
+</html>

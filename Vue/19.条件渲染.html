@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <span>当前的值是{{Info}}</span>
+    <button @click="Info++">点击显示</button><br>
+    <template v-if="Info === 1">
+      <span>Vue</span><br>
+      <span>js</span><br>
+      <span>Jquery</span>
+      <span>React</span>
+    </template>
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    new Vue({
+      el: '#root',
+      data() {
+        return {
+          Info: 0
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

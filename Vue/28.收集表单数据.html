@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+<body>
+  <!-- 可以在form中指定提交 用@submit = "事件名" 当点击button时它就触发，要想页面不跳转 就.prevent阻止默认行为 -->
+  <form id="root"  @submit.prevent="Info">
+    <!-- v-model.trim去掉空格 -->
+    姓名：<input type="text" v-model.trim="name"><br>
+    密码：<input type="text" v-model.trim="password"><br>
+    <!-- type是number说明输入框只能输入数字  v-model.number 将你所写的东西转成数字类型,而不是字符串,这两个一般配合使-->
+    年龄：<input type="number" v-model.number="age"><br>
+    <!-- 单选框需要指定value，需要指定相同的name把各选项串联起来-->
+    性别：男<input type="radio" name="sex" value="male" v-model="sex">
+         女<input type="radio" name="sex" value="female" v-model="sex"><br>
+         <!-- 多选框需要指定value 和 vm中用数组收集数据 -->
+    爱好：学习<input type="checkbox" value="study" v-model="hobby">
+          打篮球<input type="checkbox" value="basketball" v-model="hobby" >
+          游泳<input type="checkbox" value="swimming" v-model="hobby"><br>
+    所选校区：<select name="school" v-model="school">
+               <option value="">请选择</option>
+               <option value="beijing">北京</option>
+               <option value="shanghai">上海</option>
+               <option value="wuhan">武汉</option>
+               <option value="xian">西安</option>
+             </select><br><br>
+    <!-- v-model.lazy  不会立刻收集数据  当去掉焦点时收集数据   -->
+    其他信息：<textarea v-model.lazy="text" cols="30" rows="10" ></textarea><br><br>
+    <!-- 确定阅读一般为多选框的勾选 不需要指定value,只要勾选后会返回true -->
+    <input type="checkbox" v-model="read">阅读并接收<a href="http://www.baidu.com">《用户协议》</a><br><br>
+    <button>提交</button>
+
+  </form>
+  <script>
+    Vue.config.productionTip = false
+    new Vue({
+      el:'#root',
+      data() {
+        return {
+          name:'',
+          password:'',
+          age:'',
+          sex:'male',
+          hobby:[],
+          school:'',
+          text:'',
+          read:''
+        }
+      },
+      methods: {
+        Info(){
+          console.log(JSON.stringify(this._data))//一次性将数据提交给服务器
+        }
+      },
+    })
+  </script>
+</body>
+</html>

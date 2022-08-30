@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let num = prompt()
+    function zhishu(number){
+      var flag = false
+      if(number == 1)return
+      for (let i = 2; i < number; i++) {
+        if(number%i==0){
+          flag = true
+        }
+      }
+      if(flag){
+        console.log(`${number}不是质数`)
+      }else{
+        console.log(`${number}是质数`)
+      }
+    }
+    zhishu(num)
+  </script>
+</body>
+</html>

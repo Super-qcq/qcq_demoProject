@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    姓：<input type="text" v-model='firstName'><br>
+    名：<input type="text" v-model='lastName'><br>
+    <span>{{fullName}}</span>
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el: '#root',
+      data() {
+        return {
+          firstName:'齐',
+          lastName:'存强'
+        }
+      },
+      computed: {
+        fullName:{
+         get(){//当有人读取fullName时，get就会被调用，且get的返回值作为fullName的值 最后会将fullName属性放在vm上
+          return `${this.firstName}-${this.lastName}`//get里面的this指的是vm，所以要在get中读取vm下的属性 直接用this
+         },
+         set(value){//通过set修改fullName的值 实则修改data中的属性在vm身上
+           let arr = value.split('-')
+           this.firstName = arr[0]
+           this.lastName = arr[1]
+         }
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <h1>当前数据是：{{n}}</h1>
+    <button @click="click">点我+1</button>
+    <button @click="bey()">点我销毁vm</button>
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el:"#root",
+      data() {
+        return {
+          n:1
+        }
+      },
+      methods: {
+        click(){
+          this.n++
+        },bey(){
+          console.log('bye')
+          this.$destroy()
+        }
+      },
+      beforeCreate() {
+        console.log('正在执行beforeCreate')
+      },
+      created() {
+        console.log('正在执行created')
+      },
+      beforeMount() {
+        console.log('正在执行beforeMount')
+      },
+      mounted() {
+        console.log('正在执行mounted')
+      },
+      beforeUpdate() {
+        console.log('正在执行beforeUpdate')
+      },
+      Updated(){
+        console.log('正在执行Update')
+      },
+      beforeDestroy(){
+        this.click()
+        console.log('我调用了click')
+      }
+      
+    })
+  </script>
+</body>
+</html>

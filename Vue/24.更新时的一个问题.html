@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 需求：当点击按钮时修改马冬梅的信息为马老师 -->
+    <!-- 但是当点击按钮时 确实是改了信息 但是Vue没有检测到数据的变化，所以页面没有任何更改的显示 -->
+    <h1>成员列表</h1>
+    <button @click="replace()">点击我更改马冬梅的信息</button>
+    <h3 v-for="element of person">{{element.id}}-{{element.name}}-{{element.age}}-{{element.sex}}</h3>
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el: '#root',
+      data() {
+        return {
+          person: [
+          {id:001,name:'马冬梅',age:23,sex:'女'},
+          {id:002,name:'周冬雨',age:19,sex:'女'},
+          {id:003,name:'周杰伦',age:20,sex:'男'},
+          {id:004,name:'温兆伦',age:17,sex:'男'}
+          ]
+        }
+      },
+      methods: {
+        replace(){
+          // this.person[0] = {id:005,name:"马老师",age:50,sex:"男"}
+          //解决
+          this.person.splice(0,1,{id:005,name:"马老师",age:50,sex:"男"})
+          this.$set(this.person,0,{id:005,name:"马老师",age:50,sex:"男"})
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
