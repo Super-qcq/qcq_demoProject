@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX get请求</title>
+    <style>
+        .result{
+            width:200px;
+            height:200px;
+            border:solid red 1px;
+        }
+    </style>
+</head>
+<!--点击按钮后将服务端返回的响应体结果在div中呈现出来页面不刷新 -->
+<body>
+    <div class="result"></div>
+    <button>点击发送请求</button>
+    <button>点击取消请求</button>
+    <script>
+        //获取显示框元素
+        const result = document.querySelectorAll('.result')[0]
+        //获取button元素
+        const btn = document.getElementsByTagName('button')
+        let xhr = null
+        //绑定事件
+        btn[0].onclick = function(){
+            //1.创建对象
+            xhr = new XMLHttpRequest()
+            //2.初始化 设置请求方法和url
+            xhr.open('GET','http://localhost:8080/delay')
+            //3.发送
+            xhr.send()//post在这里设置请求体
+        }
+        //abort
+        btn[1].onclick = function(){
+            xhr.abort()
+        }
+    </script>
+</body>
+</html>

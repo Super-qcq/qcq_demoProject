@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var btn = document.getElementById('btn')
+      var box = document.getElementById('box')
+      var xhr = null
+      //为了防止不断地点击发送请求，需要保留最新的请求将上一个请求关掉
+      //创建一个是否发送的标识
+      var isSending = false
+      btn.onclick = function () {
+        //如果正在发送，将上一个发送取消掉
+        if(isSending) xhr.abort()
+        //创建对象
+        xhr = new XMLHttpRequest()
+        //修改标识变量的值
+        isSending = true
+        //自动转换json
+        xhr.responseType = 'json'
+        //超时时间设置
+        xhr.timeout = 2000
+        //超时回调
+        xhr.ontimeout = function(){
+          alert('网络超时请重试')
+        }
+        //网络异常回调
+        xhr.onerror = function(){
+          alert('您的网络似乎出了点问题')
+        }
+        //初始化+IE浏览器处理缓存?t='+Date.now() 加时间戳
+        xhr.open('POST', 'http://localhost:8080/cancel?t='+Date.now())
+        //设置请求头
+        xhr.setRequestHeader('name','qcq')
+        //发送（设置请求体）
+        xhr.send('a=100&b=200&c=300')
+        //事件取消按钮控制
+        document.getElementById('btn2').onclick = function(){
+          xhr.abort()//没有块级作用域直接用就可以
+        }
+
+        //事件绑定
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            //发送完毕，改变标识
+            isSending = false
+            if (200 <= xhr.status < 300) {
+              console.log(xhr.status) //状态码
+              console.log(xhr.statusText) //状态字符串
+              console.log(xhr.getAllResponseHeaders()) //所有响应头
+              //1.手动转换json数据
+              // let data = JSON.parse(xhr.response)
+              // console.log(data) //响应体
+              // box.innerHTML = data.name
+              //2.自动转换json数据
+              console.log(xhr.response) //响应体
+              box.innerHTML = xhr.response.name
+             
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <button id="btn">响应json数据</button>
+  <button id="btn2">取消json数据</button>
+  <div id="box"></div>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX get请求</title>
+    <style>
+        .result{
+            width:200px;
+            height:200px;
+            border:solid red 1px;
+        }
+    </style>
+</head>
+<!--点击按钮后将服务端返回的响应体结果在div中呈现出来页面不刷新 -->
+<body>
+    <div class="result"></div>
+    <button>点击axios发送请求</button>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+     var btn = document.getElementsByTagName('button')
+     //配置baseURL
+     axios.defaults.baseURL = 'http://localhost:5000'
+     btn[0].onclick=function(){
+        //  //get请求
+        // axios.get('/axios-server',{
+        //     //url参数
+        //     params:{
+        //         id:100,
+        //         vip:7
+
+        //     },
+        //     //请求头信息
+        //     headers:{
+        //         name:'qcq',
+        //         age:18
+        //     }
+        // }).then(value => {//回调函数
+        //     console.log(value)
+        // })
+         //post请求
+        //  axios.post('/axios-server',{//第二个参数是请求体
+        //         username:'qcq',
+        //         password:'qcq'
+        //     },{
+        //     //url参数
+        //     params:{
+        //         id:100,
+        //         vip:7
+
+        //     },
+        //     //请求头信息
+        //     headers:{
+        //         name:'qcq',
+        //         age:18
+        //     }
+        // }).then(value => {//回调函数
+        //     console.log(value)
+        // })
+        //axios通用方法
+        axios({
+            //请求方法
+            method:'POST',
+            //url
+            url:'/axios-server',
+             //url参数
+            params:{
+                id:100,
+                vip:100
+
+            },
+            //请求头信息
+            headers:{
+                name:'qcq',
+                age:24
+            },
+            //请求体
+            data:{
+                username:'qcq',
+                password:'qcq'
+            }
+        }).then(value => {//回调函数
+            //响应状态码
+            console.log(value.status)
+            //响应状态字符串
+            console.log(value.statusText)
+            //头信息
+            console.log(value.headers)
+            //响应体
+            console.log(value.data)
+        })
+     }
+    </script>
+</body>
+</html>

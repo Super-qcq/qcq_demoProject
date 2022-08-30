@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text">
+  <p></p>
+  <script>
+     var input = document.querySelectorAll('input')[0]
+      var p = document.querySelectorAll('p')[0]
+      //函数必须提前声明
+      function handle(value){
+        p.innerHTML = value.msg
+      }
+      input.onblur = function(){
+        this.style.border = 'solid red 1px'
+        var script = document.createElement('script')
+        script.src = "http://localhost:8080/jsonp-check"
+        document.body.appendChild(script)
+       
+       
+
+      }
+  </script>
+</body>
+</html>

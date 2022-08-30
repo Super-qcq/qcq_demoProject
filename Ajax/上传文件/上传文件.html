@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+
+</script>
+<body>
+  <form>
+    <input type="text" name="user" id="userID">
+    <input type="file" name="file-name" id="fileID" multiple>
+</form>
+<button>上传文件</button>
+<script>
+   //01 获取页面中的btn标签
+   var oBtn    = document.getElementsByTagName("button")[0];
+    var oUser   = document.getElementById("userID");
+    var oFileID = document.getElementById("fileID");
+​
+    //02 给按钮标签添加点击事件
+    oBtn.onclick = function(){
+   console.log(11)
+//         //03 获取表单中的文件内容
+//         var data = new FormData();
+//         data.set("user",oUser.value);
+//         Array.from(oFileID.files).forEach(function(file){
+//             data.append("fileName",file);
+//         })
+// ​
+//         //04 使用Ajax发送GET请求
+//         var xhr = new XMLHttpRequest();
+//         xhr.open("POST","http://127.0.0.1:5000/api",true);
+//         xhr.send(data);
+//         xhr.onreadystatechange = function(){
+//             if(xhr.status >= 200 && xhr.status <=300 || xhr.status == 304)
+//             {
+//                 console.log("请求成功"+xhr.responseText);
+//             }else{
+//                 console.log("请求失败"+xhr.statusText);
+//             }
+//         }
+    }
+</script>
+</body>
+</html>

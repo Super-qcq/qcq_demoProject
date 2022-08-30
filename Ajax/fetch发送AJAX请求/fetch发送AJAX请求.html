@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX get请求</title>
+    <style>
+        .result{
+            width:200px;
+            height:200px;
+            border:solid red 1px;
+        }
+    </style>
+</head>
+<!--点击按钮后将服务端返回的响应体结果在div中呈现出来页面不刷新 -->
+<body>
+    <div class="result"></div>
+    <button>点击axios发送请求</button>
+    <script>
+     var btn = document.getElementsByTagName('button')
+     btn[0].onclick=function(){
+        fetch('http://localhost:8080/fetch-server?vip=10'//url参数
+        ,{
+            method:'POST',
+            //请求头信息
+            headers:{
+                name:'qcq'
+            },
+            //请求体
+            body:'username=qcq&password=qcq'
+        }).then(value => {//回调函数
+            return value.json()
+        }).then(value => {//回调函数
+           console.log(value)
+        })
+     }
+    </script>
+</body>
+</html>

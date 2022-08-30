@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX get请求</title>
+    <style>
+       .result{
+           width:200px;
+           height:200px;
+           border: solid 1px red;
+       }
+    </style>
+</head>
+<!--点击按钮后将服务端返回的响应体结果在div中呈现出来页面不刷新 -->
+<body>
+    <div class='result'></div>
+    <button>点击发送请求</button>
+    <script src="./jquery-1.10.1.js"></script>
+    <script>
+        $("button").click(function(){
+           $.getJSON('http://localhost:8080/jsonp-jQuery?callback=?',function(data){
+               $('.result').html(`
+               名称:${data.name},
+               城市:${data.city}
+               `
+               )
+           })
+        })
+    </script>
+</body>
+</html>

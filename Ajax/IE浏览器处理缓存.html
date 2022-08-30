@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var btn = document.getElementById('btn')
+      var box = document.getElementById('box')
+      btn.onclick = function () {
+        //创建对象
+        var xhr = new XMLHttpRequest()
+        //自动转换json
+        xhr.responseType = 'json'
+        //初始化+IE浏览器处理缓存?t='+Date.now()
+        xhr.open('POST', 'http://localhost:8080/ie?t='+Date.now())
+        //设置请求头
+        xhr.setRequestHeader('name','qcq')
+        //发送（设置请求体）
+        xhr.send('a=100&b=200&c=300')
+        //事件绑定
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (200 <= xhr.status < 300) {
+
+              console.log(xhr.status) //状态码
+              console.log(xhr.statusText) //状态字符串
+              console.log(xhr.getAllResponseHeaders()) //所有响应头
+              //1.手动转换json数据
+              // let data = JSON.parse(xhr.response)
+              // console.log(data) //响应体
+              // box.innerHTML = data.name
+              //2.自动转换json数据
+              console.log(xhr.response) //响应体
+              box.innerHTML = xhr.response.name
+             
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <button id="btn">响应json数据</button>
+  <div id="box"></div>
+</body>
+
+</html>

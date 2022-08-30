@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX get请求</title>
+    <style>
+        .result{
+            width:200px;
+            height:200px;
+            border:solid red 1px;
+        }
+    </style>
+</head>
+<script crossorigin="anonymous" src='./jquery-1.10.1.js'></script>
+<!--点击按钮后将服务端返回的响应体结果在div中呈现出来页面不刷新 -->
+<body>
+    <div class="result"></div>
+    <button>点击发送1请求</button>
+    <button>点击发送2请求</button>
+    <script>
+     $('button').eq(0).click(function(){
+         $.get('http://localhost:8080/Jquery-server',{a:100,b:200},function(data){
+             console.log(data)
+            $('.result').html(data.name)
+             
+         },'json')
+         $.post('http://localhost:8080/Jquery-server',{a:100,b:200},function(data){
+             console.log(data)
+            $('.result').html(data.name)
+             
+         },'json')
+     })
+     //通用方法
+     $('button').eq(1).click(function(){
+        $.ajax({
+            //url
+            url:'http://localhost:8080/Jquery-server',
+            //参数
+            data:{a:100,b:200},
+            //请求类型
+            type:'GET',
+            //响应体结果的设置
+            dataType:'json',
+            //成功的回调
+            success:function(data){
+                console.log(data)
+            },
+            //超出时间
+            timeout:2000,
+            //超时回调
+            error:function(){
+                console.log('出错啦')
+            },
+            //头信息
+            Headers:{c:300,d:400}
+        })
+     })
+    </script>
+</body>
+</html>

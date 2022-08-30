@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX get请求</title>
+    <style>
+       
+    </style>
+</head>
+<!--点击按钮后将服务端返回的响应体结果在div中呈现出来页面不刷新 -->
+<body>
+   用户名:<input type="text">
+   <p></p>
+    <script>
+         var input = document.getElementsByTagName('input')[0]
+         var p = document.getElementsByTagName('p')[0]
+        //处理数据
+        function handle(data){
+            //获取result元素
+            input.style.border = "solid red 1px"
+            p.innerHTML = data.msg
+        }
+        input.onblur = function(){//获取焦点事件
+            //获取用户的输入值
+            var username = this.value
+            //创建script
+            var script = document.createElement('script')
+            script.src = "http://localhost:8080/jsonp-check"
+            document.body.appendChild(script)
+        }
+    </script>
+</body>
+</html>
