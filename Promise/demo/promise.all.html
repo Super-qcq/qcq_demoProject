@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //promise.all()参数是一个promise对象的一个数组，返回的也是一个promise对象
+        //只有数组中的每个对象都是一个成功的状态  返回的才是一个成功的promise对象，如果有一个失败了则返回失败的结果
+        //成功的结果是数组中每个promise组成的数组，失败的结果是 失败的那个promise对象的结果
+        let p1 = Promise.resolve('成功了p1')
+        let p2 = Promise.resolve('成功了p2')
+        let p3 = Promise.reject('失败了p3')
+        let p = Promise.all([p1,p2,p3])
+        console.log(p)
+        p.then(value=>console.log(value),reason=>console.log(reason))
+    </script>
+</body>
+</html>

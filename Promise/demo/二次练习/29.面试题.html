@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  setTimeout(() => {
+    console.log("0")
+  }, 0)
+  new Promise((resolve, reject) => {
+    console.log("1")
+    resolve()
+  }).then(() => {
+    console.log("2")
+    new Promise((resolve, reject) => {
+      console.log("3")
+      resolve()
+    }).then(() => {
+      console.log("4")
+      }).then(() => {
+      console.log("5")
+    })
+  }).then(() => {
+    console.log("6")
+  })
+  new Promise((resolve, reject) => {
+    console.log("7")
+    resolve()
+  }).then(() => {
+    console.log("8")
+  })
+  </script>
+  <!--
+    L为行
+    微[6,5]
+    从上往下：定时器0进入宏任务(L13)--同步输出1(L16)--resolve先改变状态(L17)--2进入微任务队列(L19)--同步输出7(L32)--resolve状态改变(L33)--8进入微任务队列(L35)--输出微任务2(L19)--同步输出3(L21)--resolve状态改变(L22)--4进入微任务队列(L24)--5已经指定回调但是由于4还未执行5就不能放入队列(L26)--内部then执行完，外部then 6进入微任务队列(L29)--输出微任务8(L35)--输出微任务4(L24)--5进入微任务队列(L26)--输出微任务6(L29)--输出微任务5(L26)--输出宏任务0(L13)
+    最终:1 7 2 3 8 4 6 5 0
+   -->
+</body>
+
+</html>

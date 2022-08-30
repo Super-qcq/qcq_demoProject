@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./promise同步任务then方法返回结果的实现.js"></script>
+    <script>
+        //then方法返回的是一个Promise对象  而且 如果进入到回调函数当中去返回then的结果的话，
+        //那么就状态已经成功了
+        //解决 整体代码 套在return Promise{}中在Onresolved函数中接收它的返回
+        //判断返回是否是Promise类型 如果不是就调用成功的方法  如果是那么状态由Promise类型的状态决定 
+        //如果是抛出异常 直接调用失败的函数
+        let p = new Promise((resove,reject)=>{
+            reject('同步封装成功')
+        })
+        const re = p.then(value=>{
+            console.log(value)
+            
+            // return new Promise((resove,reject)=>{resove('成功')})
+            // throw '失败'
+        },reason=>{
+            console.warn(reason)
+            return 'bhb'
+        })
+        console.log(re)
+    </script>
+</body>
+</html>

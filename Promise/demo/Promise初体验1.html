@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise初体验-抽奖</title>
+    <style>
+        button {
+            font-size: 20px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1.2.2. 异步回调
+      1. 理解: 不会立即执行, 会放入回调队列中将来执行
+      2. 例子: 定时器回调 /ajax 回调 /Promise 的成功|失败的回调 -->
+
+      
+    <!-- promise是ES6引入的异步编程新的解决方案 从语法上来说是一个构造函数，可以实例化对象
+    封装异步操作，获取成功和失败的结果，
+                                 其优点是：支持链式调用，可以解决回调地狱问题
+                                                    指定回调的方式更为灵活 -->
+    
+    
+    <!--1. 什么是回调地狱?
+              回调函数嵌套调用, 外部回调函数异步执行的结果是嵌套的回调执行的条件 
+        2. 回调地狱的缺点?
+              不便于阅读
+              不便于异常处理 
+        3. 解决方案? promise 链式调用 
+        4. 终极解决方案? async/await -->
+       
+        
+        
+    <!-- 1.3. JS 的 error 处理
+        1.3.1. 错误的类型
+              1. Error: 所有错误的父类型 
+              2. ReferenceError: 引用的变量不存在 
+              3. TypeError: 数据类型不正确的错误 
+              4. RangeError: 数据值不在其所允许的范围内 
+              5. SyntaxError: 语法错误
+        1.3.2. 错误处理
+              1. 捕获错误:try...catch 2. 抛出错误:throwerror
+        1.3.3. error对象的结构
+              1. message 属性: 错误相关信息
+              2. stack 属性: 函数调用栈记录信息 -->
+
+    <button>点击抽奖</button>
+    <script>
+        function round(x, y) {
+            return Math.round((Math.random() * (y - x)) + x)
+        }
+        let btn = document.getElementsByTagName('button')[0]
+        btn.addEventListener('click', function () {
+            const promise = new Promise((resove, reject) => {
+                setTimeout(function () {
+                    let num = round(1, 100)
+                    if (num <= 30) {
+                        resove(num)
+                    } else {
+                        reject(num)
+                    }
+                    // console.log(num)
+                }, 1000)
+            })
+            promise.then(value => alert(`中奖啦，您的中奖数字为${value}`),
+                reason => alert(`再接再厉,数字为${reason}`))
+        })
+    </script>
+</body>
+
+</html>

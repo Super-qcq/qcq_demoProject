@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.25.0/axios.js"></script>
+<body>
+  <button id="btn">发送请求</button>
+  <script>
+    function ajax(path, url) {
+      axios.defaults.baseURL = path
+      return axios({
+        // 请求方法
+        method: 'GET',
+        // 请求路径
+        url: url,
+        // 请求参数
+        // params: {
+        //   id: 'atguigu',
+        //   name: '尚硅谷'
+        // },
+        // //请求头
+        // headers: {
+        //   name: 'qcq',
+        //   price: '500'
+        // },
+        // //请求体
+        // data: {
+        //   userName: 'qcq',
+        //   passWord: '520'
+        // }
+
+      })
+    }
+    const btn = document.getElementById('btn')
+    btn.onclick = async function() {
+      const result = await ajax('https://api.apiopen.top', '/getJoke')
+      console.log(result.data)
+    }
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  then方法指定成功还是失败的回调
+        //  Promise.prototype.catch 方法 只能指定失败的回调
+        let p = new Promise((resove,reject)=>{
+            reject('失败了')
+        })
+        p.catch(value=>console.log(value))
+    </script>
+</body>
+</html>

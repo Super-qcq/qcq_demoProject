@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./promise异步自定义多个回调.js"></script>
+    <script>
+        let p = new Promise((resove,reject)=>{
+            setTimeout(() => {
+                // resove('异步封装成功')
+                reject('异步封装成功')
+            }, 1000);
+    })
+        // console.log(p)
+        //将以上改变状态代码同步执行改为异步执行之后 由于需要等待1秒钟之后执行resove，但是p.then方法
+        //会立即调用 但是p.then方法里面的状态还没有来得及改变还是初始化pending状态
+        //then方法内部没有对pending状态做出判断 所以 永远不会有结果显示
+
+        //解决 在改变状态之后才执行回掉函数   申明一个对象将回掉函数保存起来
+        p.then(value=>console.log(value),reason=>console.warn(reason))
+        p.then(value=>alert(value),reason=>alert(reason))
+        //多个回调之后由于最后面的状态也是pending  会将上面的回调覆盖
+        //解决 将回调函数用数组保存起来
+    </script>
+</body>
+</html>

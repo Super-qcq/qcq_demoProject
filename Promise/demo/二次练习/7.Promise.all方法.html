@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  promise.allSettled和promise.all都可以做批量一部任务的场景
+  如果想得到每个任务的结果 用promise.allSettled
+  如果想每个任务都成功才能执行下去 用promise.all
+  promise.allSettled:接收一个promise数组,返回的结果是一个promise对象，也永远是一个成功的状态，里面的值是每一个promise对象成功的状态和结果。
+  promise.all:接收一个promise数组,返回的结果是一个promise对象，只有所有的promise对象都是成功的才会返回成功的promise数组，否则有一个失败，则返回的结果是失败的那个promise对象的状态和结果
+  <script>
+    const p1 = new Promise((resolve,reject)=>{
+      setTimeout(function(){
+        resolve('用户数据')
+      },1000)
+    })
+    const p2 = new Promise((resolve,reject)=>{
+      setTimeout(function(){
+        resolve('商品数据')
+        // reject('商品数据')
+      },1000)
+    })
+    const p = Promise.allSettled([p1,p2])
+    console.log(p)
+  </script>
+</body>
+</html>

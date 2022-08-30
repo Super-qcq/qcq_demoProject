@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //这个方法是Promise函数对象的方法  不是实例对象的方法，为了更快的创建promise对象  返回的也是promise对象
+    const result = Promise.resolve(new Promise((resolve,reject)=>{
+      reject('失败')
+    }))
+    result.then(value=>{
+      console.log(value)
+    },reason=>{
+      console.warn(reason)
+    })
+  </script>
+</body>
+</html>

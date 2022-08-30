@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 一个 promise 指定多个成功/失败回调函数, 都会调用吗? 
+        // 当promise改变为对应状态时都会调用（对应then的状态）
+        //只要状态是成功的 那么就会调用有关成功的 所有回调
+        let p = Promise.resolve('成功啦')
+        p.then(value=>console.log(value),reason=>console.warn(reason))
+        p.then(value=>alert(value),reason=>alert(reason))
+    </script>
+</body>
+</html>

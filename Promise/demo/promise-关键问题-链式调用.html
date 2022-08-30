@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         //promise 如何串连多个操作任务? 
+         //(1) promise 的 then()返回一个新的 promise, 可以开成 then()的链式调用 
+         //(2) 通过 then 的链式调用串连多个同步/异步任务 
+         let p = new Promise((resove,reject)=>resove('成功啦'))
+         p.then(value=>{
+            console.log(value)
+            //  return 123
+            // throw '失败'
+            // return new Promise((resove,reject)=>reject('没有了'))
+            
+            })
+            .then(value=>console.log(value),reason=>console.warn(reason))
+    </script>
+</body>
+</html>

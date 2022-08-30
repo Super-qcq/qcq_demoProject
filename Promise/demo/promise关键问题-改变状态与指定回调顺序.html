@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 改变 promise 状态和指定回调函数谁先谁后? 
+        (1) 都有可能, 正常情况下是先指定回调再改变状态, 但也可以先改状态再指定回调 
+        (2) 如何先改状态再指定回调? 
+           1 在执行器中直接调用 resolve()/reject() 
+           2 延迟更长时间才调用 then() 
+        (3) 什么时候才能得到数据? 
+           1 如果先指定的回调, 那当状态发生改变时, 回调函数就会调用, 得到数据(改变状态以后，再去调用成功或者失败的结果)
+             回调的执行时机是在调用完resolve之后 再去执行回调函数中的代码 对成功或者失败的结果进行处理
+           2 如果先改变的状态, 那当指定回调时, 回调函数就会调用, 得到数据 -->
+    <script>
+        //先改变状态再指定回调(由于参数 执行器是同步的，直接调用resove  这样是先改变的状态)
+        let p = new Promise((resove,reject)=>{
+            resove('成功啦p')
+        })
+        p.then(value=>console.log(value),reason=>console.log(reason)) 
+        //先指定回调再改变状态(当执行器函数是一个异步任务的时候 也就是说当 执行器需要等待一定的时间的时候，需要进入模块队列中，则then方法先执行，改变状态后执行)
+        let p1 = new Promise((resove,reject)=>{
+            setTimeout(()=>resove('成功啦p1'),1000)
+        })
+        p1.then(value=>console.log(value),reason=>console.log(reason)) 
+    </script>
+</body>
+</html>

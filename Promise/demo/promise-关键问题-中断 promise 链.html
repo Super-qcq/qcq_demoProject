@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       //(1) 当使用 promise 的 then 链式调用时, 在中间中断, 不再调用后面的回调函数 
+       //(2) 办法: 在回调函数中返回一个 pendding 状态的 promise 对象
+       let p = new Promise((resove,reject)=>resove('成功啦'))
+         p.then(value=>{
+            console.log(value)
+            return 123
+            })
+            .then(value=>{console.log(value) 
+                return  new Promise(()=>{}) //pendding状态 状态没有改变 后面的均不能执行
+            })
+            .then(value=>{console.log(value) 
+                return  new Promise((resove,reject)=>resove('success')) 
+            })
+            .then(value=>console.log(value))
+            .catch(reason=>console.warn(reason))
+
+    </script>
+</body>
+</html>

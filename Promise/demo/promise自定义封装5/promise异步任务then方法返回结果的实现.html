@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./promise异步任务then方法返回结果的实现.js"></script>
+    <script>
+        //由于异步任务的then方法虽然返回的是Promise对象  但是由于pending状态中没有用resove和reject对返回值进行判断 所以返回的类型永远是pending  值永远是null
+        //解决：当状态改变之后 会在js中16行执行then中保存的函数 所以说保存的函数最终会被强制调用执行
+        //基于这一点  我们可以在保存的代码中实现对 then方法返回值的一个判断
+        let p = new Promise((resove,reject)=>{
+            setInterval(() => {
+                // resove('异步封装成功')
+                reject('异步封装失败')
+            }, 1000);
+        })
+        const re = p.then(value=>{
+            console.log(value)
+            return 'bhb'
+            // return new Promise((resove,reject)=>{resove('成功')})
+            // throw '失败'
+        },reason=>{
+            console.warn(reason)
+            // return '失败'
+            throw '失败'
+        })
+        console.log(re)
+    </script>
+</body>
+</html>

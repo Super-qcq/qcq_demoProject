@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //promise.resolve是promise对象的方法并不是 实例对象的方法
+        //接收一个参数然后得到一个成功或者失败的promise的对象
+        //作用就是快速返回一个promise对象，而且还会封装一个值，将这个值转换为promise对象
+        //如果传的是一个非promise类型的值则返回的是一个成功的结果，如果传的是promise对象，则参数结果决定返回的结果
+        let p1 = Promise.resolve('成功了')
+        console.log(p1)
+        let p2 = Promise.resolve(new Promise((resove,reject)=>resove('成功')))
+        console.log(p2)
+        let p3 = Promise.resolve(new Promise((resove,reject)=>reject('失败')))
+        p3.catch(reason=>console.log(reason))
+        
+    </script>
+</body>
+</html>
