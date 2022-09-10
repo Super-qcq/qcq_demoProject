@@ -1,0 +1,126 @@
+@fz:750px;
+html{
+    font-size:(100vw/@fz)*40;
+    background-color:#eff0f4 ;
+}
+body ul{
+    padding: 0;
+    border:0 ;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.w{
+    width:(693rem/40);
+    margin: 0 auto;
+}
+.top-bar:extend(.w){
+    display: flex;
+    justify-content: space-between;
+    height:(175rem/40);
+    align-items: center;
+    a{
+        color:black;
+        font-size:30px;
+        i{
+            color:#999;
+            font-size: 27px;
+        }
+    }
+}
+.img-bar:extend(.w){
+    a img{
+        width: 100%;
+    }
+
+}
+.menue:extend(.w):extend(.w){
+    height:(329rem/40);
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content:space-around ;
+    li{
+        border-radius: 5px 5px;
+        width:(327/40rem);
+        height:(104/40rem);
+        line-height:(104/40rem) ;
+        text-align: center;
+        a{
+            color:white;
+            font-size: 14px;
+            i{
+                margin-right: 10px;
+            }
+        }
+    }
+    & li:nth-child(1){
+        background-color: #f97053;
+    }
+    & li:nth-child(2){
+        background-color: #c657ff;
+    }
+    & li:nth-child(3){
+        background-color: #ff3971;
+    }
+    & li:nth-child(4){
+        background-color: #1d92ff;
+    }
+}
+.latest-bar:extend(.w){
+    height:(118rem/40);
+    // background-color: #bfa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .latest-course{
+        border-left: 2px solid #3a84ff;
+        padding-left:10px ;
+        color: #24253d;
+        font-weight: bold;
+        // background-color: blue;
+    }
+    .more{
+        color:#656565;
+    }
+}
+.course-bar:extend(.w){
+    // width:(329rem/40);
+    height:(323rem/40);
+    // background-color: red;
+    display: flex;
+    // justify-content: space-between;
+    .takephoto{
+        margin-right:(24rem/40) ;
+    }
+    .takephoto,.flower{
+        width:(327rem/40);
+        height:100%;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+       
+        text-align: center;
+        img{
+            margin-top: (25rem/40);
+            width:(285rem/40);
+        }
+        .course-name{
+            margin-top: (10rem/40);
+            font-size: (30rem/40);
+        }
+        .userinf{
+            line-height:(91rem/40) ;
+            padding-left: (25rem/40);
+            img{
+                width:(42rem/40);
+                float: left;
+                margin-right: 10px;
+            }
+            span{
+                float: left;
+                font-size: (24rem/40);
+                color: #969393;
+            }
+        }
+    }
+}

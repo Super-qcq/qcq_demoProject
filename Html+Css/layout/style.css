@@ -1,0 +1,89 @@
+/* p{
+   color:blue;
+   font-size: 20px;
+
+} */
+/* .ys{
+   color:brown;
+} */
+/* span.ys{
+   color: blue;
+} */
+/* h1,h2,span.yuansu4{
+   color: red;
+} */
+/* span.guanxi1>span{
+   color: orange
+} */
+/* span.guanxi1>span>p{
+   color: orange
+} */
+/* span p{color: royalblue;} */
+/* p+p{color: orchid;}  */
+/* p~p{color: pink;}
+/* p[title=shuxing2]{color: red;} */
+/* p[title^=s]{color: red;} */
+/* span[title$=g1]{color: red;} */
+/* p[title*=shu]{color: red;} */
+/* ul>li:last-child{color:red;}
+ul>li:first-child{color:blue;}
+ul>li:nth-child(4){color:orange;}
+ul>li:nth-child(2n){color:green;}
+ul>li:nth-child(2n+1){color:pink;} */
+/* ul>li:first-of-type{color:blue;}
+ul>li:last-of-type{color:blue;}
+ul>li:nth-of-type(3){color:blue;}
+ul>li:nth-of-type(2n){color:red;}
+ul>li:nth-of-type(2n+1){color:orange;} */
+/* ul>li:not(:nth-child(3)){color:blue;} */
+/* ul>li:not(:nth-child(2n)){color:blue;} */
+/* ul>li:not(:nth-child(2n+1)){color:blue;} */
+/* a:link{color:red;}
+a:visited{color: green;}
+a:hover{color: hotpink;}
+a:active{color: yellow;} */
+/* p.weiyuansu::first-letter{color:red}
+p.weiyuansu::first-line{color:blue} */
+/* p.weiyuansu::selection{background-color:red;}
+p.weiyuansu::before{content: 'TMD';color: blue;} 
+p.weiyuansu::after{content: 'TMD';color: blue;} 
+p.jicheng{color:red}
+p.jicheng{background-color:blue;} */
+/* #qz{color:red} */
+/* .quanzhong{color:blue} */
+/* p.quanzhong1{color: red;}
+p.quanzhong{color: blue;}
+.quanzhong3{color:orange} */
+/* .box1{
+   background-color:rgb(255,0,0);
+   width:200px;
+   height:200px; */
+   /* border-width:10px 20px 30px 40px;
+   border-color:black black yellow blue;
+   border-style: solid dotted dashed double; */
+   /* border-top: blue 20px solid;
+   border-bottom: blue 20px solid;
+   border-left:rgba(255,0,255) 20px solid;
+   border-right:rgb(150,100,255) 20px solid; */
+   /* border-right:none; */
+   /* padding: 20px 20px 40px; */
+}
+/* .box2{
+   background-color:rgb(255,255,0);
+   width:50%;
+   height:50%;
+   margin:10px auto 20px auto;
+
+} */
+/* .box3{
+   background-color: salmon;
+   width: 30%;
+   height: 30%;
+   margin:10px auto;
+}
+*/
+.box4{
+   width: 400px;
+   height: 400px;
+   background-color: aqua;
+}

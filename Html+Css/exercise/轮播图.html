@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../重置样式表/reset.css">
+    <title>轮播图</title>
+    <style>
+        .lunbo{
+            /* 设置总体大小 以及包含块的开启定位*/
+            width:590px;
+            height: 470px;
+            margin: 50px  auto;
+            position: relative;
+        }
+        .img{
+           /* 设置绝对定位 使其脱离文档流分层 */
+            position: absolute;
+        }
+         .img:nth-child(8){
+           /* 设置第8层为最上面显示层级 */
+            z-index: 8;  
+        }
+        .zhuanhuan{
+            /* 设置转换点的父元素为绝对定位 以及位置 和设置为最高显示层级 */
+            /* width: 113px;
+            height: 15px; */
+            position: absolute;
+            bottom:20px;
+            left:30px;
+            z-index: 999;
+        }
+        .zhuanhuan div{
+            /* 设置转换点的大小圆角 以及在父元素内的浮动 以及边框 */
+            width:8px;
+            height: 8px;
+            background-color: rgba(255,255,255,0.4);
+            float:left; 
+            margin:0 1px;
+            border-radius: 50%;
+            background-clip: content-box;
+            border:2px solid transparent;
+          
+          
+        }
+        .zhuanhuan div:hover,.zhuanhuan div:active{
+            /* 设置鼠标移动上去的颜色以及边框 */
+            background-color:#fff;
+            border:2px solid rgba(255,255,255,0.4) ;
+        }
+
+       
+       
+    </style>
+</head>
+<body>
+    <div class="lunbo">
+        <div class="img"><a href="javascript:;"><img src="./img/lunbo1.jpg" alt=""></a></div>
+        <div class="img"><a href="javascript:;"><img src="./img/lunbo2.jpg" alt=""></a></div>
+        <div class="img"><a href="javascript:;"><img src="./img/lunbo3.jpg" alt=""></a></div>
+        <div class="img"><a href="javascript:;"><img src="./img/lunbo4.jpg" alt=""></a></div>
+        <div class="img"><a href="javascript:;"><img src="./img/lunbo5.jpg" alt=""></a></div>
+        <div class="img"><a href="javascript:;"><img src="./img/lunbo6.jpg" alt=""></a></div>
+        <div class="img"><a href="javascript:;"><img src="./img/lunbo7.jpg" alt=""></a></div>
+        <div class="img"><a href="javascript:;"><img src="./img/lunbo8.jpg" alt=""></a></div>
+        <div class="zhuanhuan">
+            <div class="active"></div>
+            <div></div><div></div><div></div><div></div><div></div> <div></div> <div></div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

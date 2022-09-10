@@ -1,0 +1,636 @@
+.topbar-wrapper{
+    /* 设置导航条最外框架的宽度 高度 字体大小
+     字体颜色 背景颜色 以及字居中 */
+    width: 100%;
+    height: 40px;
+    font-size: 12px;
+    color: #b0b0b0;
+    background: #333;
+    line-height: 40px;
+}
+.topbar{
+    /* 为购物车开启包含块 */
+    position: relative;
+}
+.topbar a{
+    /* 设置每个超链接的字体颜色 去掉下划线和
+    设置链接的上下都可以点击 */
+    text-decoration: none;
+    color:#b0b0b0;
+    /* 变成块元素之后 链接的上下就都可以点击 */
+    display: block;
+    height: 100%;
+}
+.topbar a:hover{
+    /* 设置所有的超链接鼠标移入之后字体的颜色 */
+    color:#fff;
+}
+.topbar .line{
+    /* 设置分割线的颜色大小 以及将左右链接分隔开的距离 */
+    margin: 0 6.7px;
+    color: #424242;
+    font-size: 12px;
+}
+.left-serives,.topbar li{
+    /* 设置左边服务部分和所有的Li左浮动 */
+    float: left;
+}
+.left-serives .appkuai{
+    /* 设置相对定位 目的是给二维码的绝对定位开启包含块 */
+    position: relative;
+}
+.left-serives .appkuai .appAddress{
+    /* margin-top: 10px; */
+    /* 设置二维码的尺寸 绝对定位 背景颜色 阴影 里面的字体大小 字的居中 隐藏 */
+    position: absolute;
+    width:124px ;
+    height:0px ;
+    overflow: hidden;
+    background-color:#fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 14px;
+    text-align: center;
+    left: -39px;
+    /* display: none; */
+    transition: height 0.3s;
+    z-index: 998;
+}
+   
+
+
+.left-serives .appkuai .sanjiaoIcon{
+    /* 设置二维码块上方的小三角*/
+    /* 小三角的设置方法 */
+    width: 0px;
+    height: 0px;
+    border: solid 7px transparent;
+    border-top: none;
+    /* border-bottom-color: rgb(255,255,255); */
+    /* 开启绝对定位 并且水平居中 设置小三角的垂直位置 并隐藏
+    隐藏去掉底边框就行 并增加底边框的过度效果*/
+    position: absolute;
+    top:32.6px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    /* display: none; */
+    z-index: 999;
+    transition: border-bottom-color 0.3s;
+   
+
+}
+.left-serives .appkuai:hover .sanjiaoIcon
+{
+    /* 鼠标移入时小三角底边框的出现 */
+    /* display: block; */
+   
+    border-bottom-color: rgb(255,255,255);
+}
+.left-serives .appkuai:hover .appAddress
+{
+    /* 设置鼠标移入二维码时的出现状态 */
+    height: 148px;
+}
+.left-serives .appkuai:hover .appLink{
+    /* 设置鼠标移入二维码块时 下载app 字样变白色 */
+    color:#fff;
+}
+.left-serives .appAddress img{
+    /* 设置隐藏块二维码照片的大小 以及与下面文字的距离 */
+    width:90px;
+    margin: 17px;
+    margin-bottom: -15px;
+}
+.left-serives .appkuai .appAddress a{
+    /* 设置二维码内的字体颜色 */
+    color:rgb(51, 51,51 );
+}
+.right-shopCart,.right-userInf{
+    /* 设置右边购物车以及用户信息的右浮动 */
+    float: right;
+    /* background-color: aqua; */
+}
+.right-shopCart i{
+    /* 设置购物车与图标之间的距离*/
+    margin-right:5px;
+}
+.right-shopCart .shopCartlink{
+    /* 设置购物车超链接的大小背景颜色 与左边元素的距离 里面子元素（购物车字）的水平居中 */
+    width:120px;
+    height:100%;
+    background-color:#424242;
+    margin-left: 25px;
+    text-align: center;
+    /* 设置购物车超链接的背景颜色和字体颜色 以便按照过度效果出现 */
+    color:#b0b0b0;
+    transition: background-color 0.3s;
+    
+    
+    
+}
+
+.right-shopCart .shopCart{
+    /* 设置购物车下隐藏块的大小背景颜色 以及定位
+    阴影和隐藏显示*/
+    width:316px;
+    height: 0px;
+    background-color: #fff;
+    position: absolute;
+    right: 0px;
+    /* 设置与上面元素不重叠 */
+    top:40px;
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.3);
+    /* 设置隐藏块的内容的隐藏 和过度效果 */
+    overflow: hidden;
+    transition: height 0.3s;
+    /* 设置隐藏块内的字体的大小颜色 */
+    text-align: center;
+    font-size: 12px;
+    color:rgb(66,66,66);
+    line-height: 100px;
+    /* 设置隐藏块的层级 */
+    z-index: 999;
+}
+.right-shopCart{
+    overflow: hidden;
+}
+
+.right-shopCart:hover .shopCart{
+    /* 设置鼠标移入时购物车隐藏块的显示 */
+    height: 100px;
+   
+}
+
+.right-shopCart:hover .shopCartlink{
+    /* 所有的a都是块元素了 这里的a撑开shopCartlink
+    所以给a设置鼠标移入背景和字体颜色 */
+    background-color: #fff;
+    color:#ff6700;
+}
+.headbar-wrapper{
+    /* 设置头部元素块的大小 字体颜色背景颜色以及字体的居中 */
+    width: 100%;
+    height: 100px;
+    font-size: 12px;
+    color: #333;
+    background: #fff;
+    line-height: 100px;
+    /* 对商品列表下的下拉框开启包含块 */
+    position:relative;
+    
+}
+
+
+.headbar .left-mi-logo{
+    /* 设置头部元素块中间块左侧logo块的大小 左浮动 以及开启子元素的包含块
+    */
+    width: 56px;
+    height: 100px;
+    /* background-color:red; */
+    float: left;
+    position: relative;
+    /* 将子元素home图标隐藏 */
+    overflow: hidden;
+}
+.headbar .left-mi-logo a{
+    /* 设置小米logo块以及home块的大小背景色 绝对定位和上下居中 
+    */
+    width:56px;
+    height: 56px;
+    background-color:#ff6a00;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto 0;
+    background-size: 100% auto;
+    /* border-radius: 16px; */
+    /* 移动隐藏块的起始位置 */
+    left:0px;
+    /* 设置两个logo和home隐藏块的过渡效果 */
+    transition: left 0.3s;
+    
+}
+.headbar .left-mi-logo .mi-img{
+    /* 设置小米logo */
+    background-image: url(../img/logo-mi2.png);
+}
+
+.headbar .left-mi-logo .mi-home{
+    /* 设置home隐藏块在左边的位置 */
+    left:-56px;
+}
+.headbar .left-mi-logo .mi-home .fa{
+    /* 设置home隐藏块的图标的大小 颜色和在背景里的居中效果 */
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    top: 15px;
+    left:14px;
+}
+.headbar .left-mi-logo:hover .mi-img{
+    /* 设置鼠标移入时logo的右移 */
+    left:56px;
+}
+.headbar .left-mi-logo:hover .mi-home{
+    /* 设置鼠标移入时home的右移 */
+    left:0px;
+}
+.headbar .center-shop-list{
+    /* 设置头部元素块中间块的最中间的大小背景颜色
+    以及向左浮动 距离左边logo7个像素距离 统一向右58个像素*/
+    width: 810px;
+    height: 100px;
+    background-color: #fff;
+    float: left;
+    margin-left: 7px;
+    padding-left: 58px;
+    
+}
+.headbar .center-shop-list a{
+    /* 设置商品列表每个超链接的字体颜色 去掉下划线和
+    设置链接的上下都可以点击 */
+    text-decoration: none;
+    color:rgb(51,51,51);
+    /* 变成块元素之后 链接的上下就都可以点击 */
+    display: block;
+    height: 100%;
+    font-size: 16px;
+}
+.headbar .center-shop-list .shop-list{
+    /* 设置商品列表的每个超链接左浮动 之间的距离为20个像素 */
+    float: left;
+    margin-right:20px;
+    
+}
+.headbar .center-shop-list .all-shop{
+    /* 设置商品列表的第一个类别 所有商品 的隐藏 */
+    visibility: hidden;
+}
+.headbar .center-shop-list a:hover{
+    /* 设置鼠标移入商品列表的字体颜色的变化 */
+    color:#ff7f00;
+}
+.headbar .center-shop-list .xiaomi{
+    /* 设置商品列表下的下拉框的大小 跨度依照包含块的宽度(headbar-wrapper)
+    以及定位位置和 过度效果+层级*/
+    width:100%;
+    height:0px;
+    background-color: #fff;
+    position: absolute;
+    left:0;
+    top:100px;
+    
+    /* border-top: solid 1px #e0e0e0 ; */
+    transition: height 0.3s;
+    z-index: 888;
+
+}
+.center-shop-list .goods-show:hover ~ .xiaomi,
+.center-shop-list .xiaomi:hover{
+    /* 设置鼠标移入商品列表时 兄弟元素隐藏快的出现以及边框和阴影的出现 */
+    height: 230px;
+    border-top: solid 1px #e0e0e0 ;
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.1);
+}
+.center-shop-list .shop-list:first-child{
+    /* 设置开启左侧菜单栏的包含块 */
+    position: relative;
+}
+.center-shop-list .left-menu{
+    /* 设置左侧菜单栏的大小背景颜色 定位位置 以及上下内边距 1倍的行距
+    和层级 */
+    width: 234px;
+    height: 420px;
+    background-color: rgba(105,101,101,0.6);
+    position: absolute;
+    left:-121px;
+    padding:20px 0;
+    line-height:1;
+    z-index: 777;
+}
+.center-shop-list .left-menu .menu{
+    /* 设置左侧菜单栏内每一个条目的大小以及 对内字的垂直居中 */
+   width: 100%;
+   height: 42px;
+   line-height: 42px;
+   /* background-color: aqua; */
+    /* margin-right: 0px; */
+    
+}
+.center-shop-list .left-menu .menu a{
+    /* 设置左侧菜单栏内字体的大小和颜色 以及加上内边距让其字在中间 */
+    font-size: 14px;
+    color:#fff;
+    /* margin:0 30px 20px; */
+   padding: 0 30px 20px;
+}
+
+
+.center-shop-list .left-menu .menu i{
+    /* 设置左侧菜单栏三角箭头的位置以及颜色 */
+    float: right;
+    margin-top: 13px;
+    color:#dedede
+}
+.center-shop-list .left-menu .menu:hover{
+    /* 设置鼠标移入左侧菜单栏的显示样式 */
+    background-color: #ff6700;
+}
+
+.headbar .right-input{
+    /* 设置头部元素块 右边搜索块的大小 背景颜色 右浮动 以及为子元素开启
+    包含块 */
+    width: 295px;
+    height:100px;
+    background-color:#fff;
+    float: right;
+    position: relative;
+    
+}
+.headbar .right-input input{
+    /* 设置右边搜索框的大小 去除轮廓线 box-sizing长宽作为盒子真实的
+    大小显示 开启绝对定位  垂直居中贴着左侧显示 以及搜索框里面一个字宽后显示
+       去除两个像素的自带边框 最后加上一个像素的边框 */
+    height: 50px;
+    width: 245px;
+    outline: none;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto 0;
+    left:0;
+    text-indent:1em;
+   /* 因为开启了box-sizing  所以增加了边框之后不用在尺寸里面减去边框 */
+    border: none;
+    border:solid 1px #e0e0e0;
+
+    
+    
+}
+.headbar .right-input button{
+    /* 设置搜索框右边的button的大小 和box-sizing
+    定位 以及垂直居中 去除原有边框 右边以及上下各加一个像素的边框 去除原有内边距
+    加上背景颜色*/
+    height: 50px;
+    width:50px;
+    box-sizing: border-box;
+    left:245px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto 0;
+    border: none;
+    border:solid 1px #e0e0e0;
+    /* border-top:solid 1px #e0e0e0;
+    border-bottom:solid 1px #e0e0e0; */
+    border-left:none;
+    padding:none;
+    background-color: #fff;
+
+}
+.headbar .right-input a{
+    /* 设置button里超链接转变为块元素 设置放大镜图标的大小以及垂直和水平居中 */
+      display: block;
+      width:100%;
+      height: 100%;
+      font-size: 18px;
+      color:#616161;
+      text-align: center;
+      line-height: 50px;
+      /* vertical-align: middle; */
+}
+.headbar .right-input:hover input,
+.headbar .right-input:hover button{
+    /* 设置鼠标移入搜索框时的边框的背景颜色的改变 */
+    border-color: #b0b0b0;
+}
+.headbar .right-input button:hover{
+    /* 设置鼠标移入搜索图标时的图标的背景颜色的改变 */
+   background-color: #ff6700;
+   border:none;
+}
+.headbar .right-input button:hover i{
+     /* 设置鼠标移入搜索图标时放大镜图标的背景颜色的改变 */
+    color:#fff;
+
+}
+.headbar .right-input input:focus,
+.headbar .right-input input:focus ~ button
+{
+     /* 设置鼠标点击搜索框时边框颜色的改变 */
+    border-color:#ff6700 ;
+}
+.bannerbar{
+    /* 设置中间图片区域的高度和开启图片以及小圆圈的包含块 */
+    position: relative;
+    height: 460px;
+    /* height: 500px; */
+    /* background-color: #ff6700; */
+  
+}
+.bannerbar li img{
+    /* 设置中间图片的宽度参考直接包含块的宽度 以及开启绝对定位 和去除图片
+    顶部的边缝 */
+    width:100%;
+    /* height: 500px; */
+    position: absolute;
+    vertical-align: top;
+
+}
+.bannerbar .pointer{
+   /* 开启图片底下小圆圈的绝对定位 以及定位 */
+    position: absolute;
+    right:34px;
+    bottom:28px;
+    /* background-color: red; */
+    
+
+}
+.bannerbar .pointer a{
+    /* 设置每个小圆圈内超链接的大小 将超链接变为块元素 背景颜色 边框
+    将方块设置成圆形 在父元素内左浮动 往左微调9个像素 */
+    display: block;
+    width:5px;
+    height: 5px;
+    background-color: rgba(94,100,110,0.6);
+    border:2px solid rgba(117,121,127,0.8);
+    border-radius: 50%;
+    float: left;
+    margin-left:9px ;
+
+}
+.bannerbar .pointer a:hover,
+.bannerbar .pointer .point{
+    /* 设置鼠标移入圆圈内背景颜色的变化 */
+    background-color: rgba(202,206,216,0.5);
+    /* border:2px solid rgba(117,121,127,0.8); */
+}
+.bannerbar .angle a{
+    /* 设置图片两侧指示箭头的父元素超链接编程块元素 以及元素的大小 指示箭头
+    背景图  以及在两侧垂直居中 */
+    display: block;
+    width:41px;
+    height: 69px;
+    /* background-color: #ff6700; */
+    background-image: url(../img/icon-slides.png);
+    position: absolute;
+    top:0;
+    bottom:0;
+    margin: auto 0;
+
+}
+.bannerbar .angle .left{
+    /* 设置左侧箭头 在左侧的位置 雪碧图的初始位置 */
+    left:234px;
+    background-position: -84px 0;
+}
+.bannerbar .angle .right{
+     /* 设置右侧箭头 在右侧的位置 雪碧图的初始位置 */
+    right:0;
+    background-position:-125px 0;
+}
+.bannerbar .angle .left:hover{
+    /* 设置鼠标移入左侧箭头图标时 雪碧图的变化 */
+    background-position:0 0;
+}
+.bannerbar .angle .right:hover{
+     /* 设置鼠标移入右侧箭头图标时 雪碧图的变化 */
+    background-position:-42px 0;
+}
+.to-top{
+    /* 设置右侧回到顶部框的大小 固定定位 背景颜色 以及右边定位不变形
+     和上下内边距 以及阴影 */
+    width:27px;
+    height: 181px;
+    position: fixed;
+    bottom:57px;
+    background-color: #fff;
+    /* 如此设置 则在缩放屏幕下都不会变形 */
+    right:50%;
+    margin-right: -640px;
+    padding: 12px 0;
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+
+}
+.to-top li{
+    /* 设置每个图标的间距 左右居中 以及图标颜色 图标大小 */
+    margin-bottom: 15px;
+    text-align: center;
+    color:#999;
+    font-size: 16px;
+
+}
+.service-wrapper{
+    /* 设置最底下的服务块的高度 以及14px的上外边距 */
+    height:170px;
+    /* background-color: red; */
+    margin-top: 14px;
+}
+  
+.service-bar .to-service{
+    /* 设置服务块的中间块里的左边广告块的大小 背景颜色 以及左浮动 对于溢出的子元素开启隐藏
+    以及对于里面元素设置一个左内边距 */
+    height: 170px;
+    width: 231px;
+    background-color: #5f5750;
+    float: left;
+    /* padding:3px; */
+    /* line-height: 30px; */
+    overflow: hidden;
+
+    padding-left: 3px;
+   
+   
+}
+.service-bar .to-service a{
+    /* 对于左侧广告栏目的每一个广告块设置大小 左浮动 字体颜色 去掉超链接下划线 水平居中
+    字体大小  以及对内部元素开启的上内边距和每垂直两个块之间的下外边距的挤压 */
+    display: block;
+    float: left;
+    text-decoration: none;
+    color:#cfccca;
+    height: 70px;
+    width: 76px;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 20px;
+    overflow: hidden;
+    margin-bottom: -8px;
+    /* padding-top:15px; */
+   
+   
+
+}
+.service-bar .to-service a i{
+    /* 图标的名字在图标下面换行显示 图标字体变成块元素 */
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 5px;
+
+
+}
+.service-bar .to-service a:hover{
+    /* 设置鼠标移入图标的背景颜色 */
+    color:#fff;
+}
+.service-bar .to-service a{
+    /* 为广告栏目里的小短线开启包含块只能和每一块广告一样高 */
+    position: relative;
+}
+.service-bar .to-service a::after{
+    /* 利用伪元素设置竖向小短线的大小颜色定位 和上下居中 */
+    content: "";
+    width: 1px;
+    height: 64px;
+    background-color:#665e57;
+    position: absolute;
+    top:0;
+    bottom:0;
+    margin: auto 0;
+    left:0px;
+    
+}
+.service-bar .to-service a::before{
+     /* 利用伪元素设置横向小短线的大小颜色定位 和上下居中 */
+    content: "";
+    width: 64px;
+    height: 1px;
+    background-color:#665e57;
+    position: absolute;
+   
+    margin: 0 auto;
+    left:0px;
+    right:0;
+    margin-top:-15px;
+   
+    
+}
+.service-bar .mi-equ{
+    /* 设置底下服务块的右边图片栏目的大小 右浮动 以及左外边距 */
+    height: 100%;
+    width:978px;
+    /* background-color: turquoise; */
+    float: right;
+    margin-left: 14px;
+    
+}
+
+.service-bar .mi-equ li{
+    /* 设置每个图片栏的左浮动 宽度 以及之间的距离用右外边距表示 */
+    width:316px;
+    float: left;
+    margin-right: 15px;
+}
+.service-bar .mi-equ li:last-child{
+    /* 去除最后一个图片的右外边距 */
+    margin-right: 0;
+}
+.service-bar .mi-equ img{
+    /* 设置控制每个图片的大小 */
+    width:100%;
+}
+
+
+

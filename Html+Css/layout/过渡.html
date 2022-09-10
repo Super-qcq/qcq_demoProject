@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../重置样式表/reset.css">
+    <style>
+        /* 过渡效果 */
+        .box1{
+            width:400px;
+            height: 400px;
+            background-color: aqua;
+        }
+        .box2{
+            margin-left: 0px;
+            width:100px;
+            height:100px;
+            background-color: red;
+            /* transition:all 3s 1s; */
+            transition-property: all;
+            transition-duration: 2s;
+            /* transition-timing-function:ease-out; */
+            /* transition-timing-function:cubic-bezier(1,.83,0,.93); */
+            transition-timing-function:steps(5,end);
+            transition-delay:1s;
+        }
+        .box1:hover .box2{
+            background-color: royalblue;
+            margin-left: 300px;
+
+        }
+        /*动画效果 */
+        .box3{
+            width:500px;
+            height: 500px;
+            background-color: yellow;
+        }
+        .box4{
+            width:100px;
+            height: 100px;
+            background-color: pink;
+            animation-name:text;
+            animation-duration: 3s;
+            animation-delay:0.3s;
+            animation-timing-function: ease-in;
+            animation-iteration-count: infinite;
+            /* animation-direction: alternate; */
+            /* animation-fill-mode: both; */
+        }
+        @keyframes text{
+            from{
+                margin-left:10px;
+            }
+            to{
+                margin-left:400px;
+
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">
+
+        </div>
+    </div>
+    <div class="box3">
+        <div class="box4">
+
+        </div>
+    </div>
+</body>
+</html>

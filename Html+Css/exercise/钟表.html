@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../重置样式表/reset.css">
+    <title>钟表</title>
+    <style>
+        .clock{
+            width:500px;
+            height:500px;
+            /* background-color: aqua; */
+            background-image: url(./img/钟表.png);
+            background-position:center center;
+            background-size: cover;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+        }
+        .clock .a{
+            position: absolute;
+            left:0;
+            top:0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .clock .b{
+            position: absolute;
+            left:50%;
+            top:0;
+            transform: translateX(-50%);
+        }
+        .time-wrapper{
+            width:200px;
+            height:200px;
+            /* background-color: aqua; */
+           
+            animation: 43200s run infinite;
+        }
+        .time{
+           
+            width:7px;
+            height:50%;
+            background-color: black;
+        }
+        .min-wrapper{
+            width:300px;
+            height:300px;
+            /* background-color: aqua; */
+           
+            animation: 3600s run steps(60) infinite;
+        }
+        .min{
+           
+            width:6px;
+            height:50%;
+            background-color: black;
+        }
+        .sec-wrapper{
+            width:380px;
+            height:380px;
+            /* background-color: aqua; */
+           
+            animation: 60s run infinite steps(60);
+        }
+        .sec{
+           
+            width:3px;
+            height:50%;
+            background-color: red;
+        }
+
+        @keyframes run{
+            from{
+                transform: rotateZ(0);
+            }
+            to{
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="time-wrapper a">
+            <div class="time b"></div>
+        </div>
+        <div class="min-wrapper a">
+            <div class="min b"></div>
+        </div>
+        <div class="sec-wrapper a">
+            <div class="sec b"></div>
+        </div>
+
+    </div>
+</body>
+</html>

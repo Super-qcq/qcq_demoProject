@@ -1,0 +1,35 @@
+.box4{
+    width: 400px;
+    height: 200px;
+    background-color: aqua;
+    /* overflow:scroll; */
+    /* border-top:10px aqua solid ; */
+    padding-top: 200px;
+
+
+
+ }
+ .box5{
+   
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    /* margin-top: 200px;  */
+    
+    
+ }
+ .box6{
+    width: 400px;
+    height: 400px;
+    background-color: green;
+    margin-top:100px ;
+    
+ }
+ .box7{
+     height: 100px;
+     width: 100px;
+     border: 50px yellow solid;
+     margin:10px;
+     /* display: block; */
+     visibility: visible;
+ }

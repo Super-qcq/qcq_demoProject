@@ -1,0 +1,162 @@
+a{
+    text-decoration: none;
+}
+*{
+    padding: 0;
+    border: 0;
+    list-style: none;
+}
+.top-bar-wrapper{
+       
+    background-color: #020002;
+    .top-bar{
+        // 设置导航条的高度颜色内边距 开启弹性盒 垂直居中 水平space-between
+        margin: 0 auto;
+        height:48px;
+        max-width:1200px;
+        background-color: #020002;
+        padding:0 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        .stream{
+            // 设置三道条
+            width:20px;
+            height: 48px;
+            padding-top:34px;
+            &:hover .set{
+                display: block;
+            }
+    
+           a{
+             
+            li{ 
+                
+                width:100%;
+                height:3px;
+                margin-bottom: 3px;
+                background-color: #b8b5bb;
+                transition:0.5s;
+                // transition:opacity 3s;
+                transform-origin:left center;
+            }
+          
+            &:hover{
+               
+                li:nth-child(1){
+                    transform: rotateZ(45deg);
+                   
+                }
+                li:nth-child(2){
+                    opacity: 0;
+                }
+                li:nth-child(3){
+                    transform: rotateZ(-45deg);
+                }
+             }
+            
+           }
+           .set{
+               position: absolute;
+               background-color: #020002;
+               left:0;
+               right:0;
+               top:48px;
+               bottom:0;
+               padding: 40px 0 0 50px; 
+               display: none;
+               ul{
+                   width:90%;
+                   margin: 0 auto;
+                   li{
+                    color:white;
+                    font-size: 14px;
+                    border-bottom: 1px solid darken(#dbdbdb,50%);
+                    a{
+                        display: block;
+                        line-height: 44px;
+                        color:white;
+                        &:hover{
+                            color:rgb(196,196,196);
+                        }
+                    }
+                    &:last-child a{
+                        display:inline-block ;
+                        margin-right: 15px;
+                    }
+                 }
+               }
+              
+               
+           }
+        }
+        .meitu-logo a{
+            // 设置中间的logo
+            display: block;
+            background-image: url(../img/dff63979.sprites-index@2x.png);
+            background-size: 400px 400px;
+            text-indent: -9999;
+            width:122px;
+            height: 32px;
+        }
+        .user i{
+            // 设置图标字体颜色
+            color:#b8b5bb ;
+        }
+    
+    }
+
+}
+
+@media only screen and (min-width:768px) {
+    .top-bar{
+        .stream{
+            order: 2;
+            
+            .set{
+                // background-color: red !important;
+              
+                 display: block !important;
+                 background-color:transparent !important;
+                 position: static !important;
+                 padding:0 !important;
+                 
+                 ul{
+              
+                     margin: 0 !important;
+                     
+                    li{
+                       
+
+                        border: none !important;
+                        text-align: center;
+                        width:60px !important;
+                        a{
+                           
+                            color:red !important;
+                        }
+                        span{
+                            display: none;
+                        }
+                    }
+                }
+                 
+            }
+            a li{
+                display: none;
+            }
+            
+        }
+        & div:nth-child(2){
+            margin-right: 300px;
+            order: 1;
+        }
+        & div:nth-child(3){
+            order: 3;
+            margin-left: 300px;
+        }
+    
+    }
+    
+}

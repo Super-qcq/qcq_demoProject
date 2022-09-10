@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* div span{
+      color: red;
+    }
+    div>p>span {
+      color:aqua;
+    }
+    #d2 {
+      color:black
+    }
+    .c2 {
+      color: yellow !important;
+    }
+    span#d2{
+      color:blue !important;
+    }
+    .box1 .c1 .c2#d2{
+      color:green !important;
+    } */
+    /* .c1:first-child{
+      color:brown !important;
+    } */
+    .c1:nth-child(1){
+      color:red !important;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <div class="box1" id="lr">
+    <p class="c1" id="d1">
+      <span id="d2" class="c2">hhh</span>
+      <span id="d2" class="c2">aaa</span>
+    </p>
+  </div> 
+</body>
+</html>

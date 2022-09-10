@@ -1,0 +1,144 @@
+@c:average(red,green);
+.box{
+    font-size: 50px;
+    color:@c;
+}
+.box1{
+    width:200px;
+    height: 200px;
+    border: 10px solid red;
+    display: flex;
+    // flex-direction:column-reverse;
+    flex-direction: row-reverse;
+    // flex-direction: column;
+    
+}
+   
+.text(@w,@h,@bc){
+    width:@w;
+    height: @h;
+    background-color: @bc;
+}
+.box2{
+    .text(200px,200px,yellow);
+    .box;
+    flex-grow: 2;
+}
+.box3{
+    .text(200px,200px,red);
+    .box;
+    flex-grow: 2;
+}
+.box4{
+    .text(200px,200px,blue);
+    .box;
+    flex-shrink: 3;
+}
+// 弹性容器的属性
+.box5{
+    .text(800px,800px,yellow);
+    display: flex;
+    // 设置是否自动换行
+    // flex-wrap: wrap-reverse;
+    // 简写属性
+    flex-flow: row-reverse wrap;
+    & div{
+        .box
+    }
+    .box6{
+        .text(200px,200px,blue);
+    }
+    .box7{
+        .text(200px,200px,red);
+    }
+    .box8{
+        .text(500px,200px,pink);
+    }
+}
+.box9{
+    .text(800px,800px,blue);
+    display: flex;
+    // 设置如何在主轴上分配空间
+    // justify-content: flex-end;
+    // 居中对齐
+    justify-content: center;
+    align-items: center;
+    // justify-content: space-around;
+    // justify-content: space-between;
+    & div{
+        .box
+    }
+    .box10{
+        .text(200px,200px,average(green,orange));
+    }
+    .box11{
+        .text(200px,200px,red);
+    }
+    .box11-1{
+        .text(200px,200px,pink);
+    }
+}
+.box12{
+    .text(800px,800px,#bfa);
+    display: flex;
+    // 设置如何在辅轴上如何对齐
+    // 垂直居中
+    // align-items: center;
+    // 沿着辅轴起边对齐
+    // align-items: flex-start;
+    // 沿着辅轴终边对齐
+    // align-items: flex-end;
+    // 基线对齐
+    // align-items: baseline;
+
+
+    // 辅轴空白空间的分布
+    // 首先要先换行
+    flex-wrap: wrap;
+    align-content: space-between;
+
+    & div{
+        .box
+    }
+    .box13{
+        .text(200px,200px,average(green,blue));
+       
+    }
+    .box14{
+        .text(200px,200px,green);
+        
+    }
+    .box14-4{
+        .text(500px,200px,red);
+        // 单独设置
+        align-self: flex-start;
+    }
+}
+.box15{
+    .text(800px,800px,blue);
+    display: flex;
+    // flex-direction: column
+    ;
+    & div{
+        .box
+    }
+    .box16{
+        .text(200px,200px,average(green,orange));
+        // 设置弹性元素的缩减系数
+        // flex-shrink: 1;
+        // flex-basis: 800px;
+        order:2;
+    }
+    .box17{
+        .text(200px,200px,black);
+        // 设置弹性样式的简写
+        // flex:增长 缩减 基础 auto(1 1 auto)
+        flex:auto;
+       order:3;
+    }
+    .box17-7{
+        .text(300px,200px,pink);
+        
+      order: 1;
+    }
+}

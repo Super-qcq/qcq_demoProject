@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .box1{
+
+            width: 200px;
+            height: 200px;
+            padding: 20px ;
+            border: 30px red solid;
+            background-color: rebeccapurple ;
+            border-radius: 100px 80px 50px;
+            box-shadow:10px 10px 20px rgba(65, 65, 160, 0.8) ;
+            margin: 150px auto;
+            box-sizing: border-box;
+        } */
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        
+            float: left;
+        
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+    
+           
+        }
+        .box3{
+        
+            background-color:red;
+         
+        }
+        .box4{
+            width: 100px;
+            height: 200px;
+            background-color:#bfa;
+        
+            float: left;
+        }
+        .box5{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        
+        }
+        .box6{
+            width: 100px;
+            height: 100px;
+            background-color:pink;
+            margin-top: 100px;
+           
+        }
+        
+        .clearfix::before,
+        .clearfix::after
+        {
+            content:'';
+            display: table;
+            clear: both;
+        }
+
+        
+    </style>
+</head>
+<body>
+   
+   
+    <div class="box1 "></div>
+    <div class="box2 clearfix"></div>
+    <div class="box3 clearfix"><div class="box4"></div></div>
+    
+    <div class="box5 clearfix"> <div class="box6"></div></div>
+   
+  
+   
+</body>
+</html>

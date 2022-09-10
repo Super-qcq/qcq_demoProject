@@ -1,0 +1,84 @@
+//less中的注释不会解释到css 中
+/* 但是css中的注释会解释到css中 */
+
+
+
+// 变量
+@w:200px;
+@h:200px;
+@bc:yellow;
+@b:box5;
+.box1{
+    width:800px;
+    height: 800px;
+    background-color: red;
+    .box2{
+        float:left;
+        .box3{
+            width:@w;
+            height: @h;
+            background-color: aqua;
+        }
+        .box4{
+            width:200px;
+            height: 200px;
+            background-color: @bc;
+        }
+        @{b}{
+            width:@w;
+            height: @h;
+            background-color: blue;
+        }
+    }
+}
+.box2{
+    // &代表本元素
+    &:hover{
+        transform: translateX(100px);
+    }
+    & .box3:hover{
+        transform: translateX(100px);
+    }
+    .box1 &:hover{
+        transform: translateY(100px);
+
+    }
+
+}
+.p1{
+    // extend并集选择器 除此之外还可以扩展
+    width:100px;
+    height: 100px;
+    border: 10px yellow solid;
+}
+.p2:extend(.p1){
+    background-color: green;
+}
+// 混合函数 方便维护
+.p(){width:200px;}
+.p3{
+    .p;
+    height:200px;
+    background-color: orange;
+    
+
+}
+// 函数调用
+.text(@w,@h,@bc){
+    width:@w;
+    height: @h;
+    background-color: @bc;
+}
+// 普通传值
+.p4{
+    .text(300px,300px,#bfa);
+}
+// 可以调换顺序传值
+.p5{
+    .text(@bc:black,@h:100px,@w:100px);
+}
+// 可以进行颜色的平均数计算  和 加深颜色
+.p6{
+    .text(300px,300px,average(red,blue));
+    color:darken(black,10%);
+}

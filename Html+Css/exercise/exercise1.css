@@ -1,0 +1,18 @@
+.exercise{
+    /* 最外父元素的宽度 长度 重点:处理子元素的溢出 居中 */
+    width:190px ;
+    height:470px;
+    overflow: hidden;
+    margin: 0px auto;
+
+
+}
+.exercise li:not(:last-child){
+    /* 图片元素下移 */
+    margin-bottom: 10px;
+}
+.exercise img{
+    /*重点: 照片的宽度等于父元素的宽度 */
+
+    width:100%;
+}

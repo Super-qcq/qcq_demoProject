@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../重置样式表/reset.css">
+    <link rel="stylesheet" href="../layout/iconFont/fontawesome-free-5.10.2-web/css/all.css">
+    <style>
+        
+        body{
+            /* 设置总的字体样式 */
+            font:12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+        }
+        .clearfix::after,
+        .clearfix::before{
+            /* 设置左右导航浮动后会zao成没有设置高度的父元素塌陷，所以clearfix避免塌陷 */
+            content: '';
+            display: table;
+            clear: both;
+        }
+        
+        .framework{
+            /* 设置导航栏总框架的宽度 字体居中 背景颜色以及下边框 */
+            width:100%;
+            line-height: 30px;
+            background-color:#e3e4e5 ;
+            border-bottom: solid 1px #ddd;
+        }
+        .navigation{
+            /* 导航栏中间次框架的宽度 和居中 */
+            width:1190px;
+            margin: 0 auto;
+            height: 30px;
+            position: relative;
+            
+        }
+        
+        .navigation a,
+        .navigation span,
+        .navigation i{
+            /* 设置所有字体的颜色和去掉超链接的下划线 */
+            color: #999;
+            text-decoration: none;
+           
+        }
+        .navigation a .hightlight,
+        .navigation a:hover,
+        .left-location .local:hover
+        
+        {
+            /* 设置鼠标移入时和高亮部分的颜色 */
+            color:#f10215;
+
+        }
+        .left-location{
+            /* 左边定位部分在次框架左浮动 */
+            float:left;
+            
+        }
+   
+     
+        .left-location .current-citykuai .citylink .fas{
+            /* 设置定位图标的大小以及颜色 */
+            color:#f10215 ;
+            font-size: 13px;
+
+        }
+        .left-location .current-citykuai{
+            /* background-color: tomato; */
+            float:left;
+        }
+        .left-location .current-citykuai:hover .lacal-list{
+            /* 设置鼠标移入时定位块和地址列表的出现（必须给父元素设置hover包含给子元素才会不间断） */
+           display: block;
+        }
+        .left-location .current-citykuai .lacal-list{
+            /* 设置地理列表的宽和高背景 以及定位（避免撑开父元素）
+            和层级和上外边距避免和父元素重叠  还有阴影边框 最后在正常情况下隐藏*/
+            width:300px;
+            height:465px;
+            background-color:white;
+            position: absolute;
+            z-index: 998;
+            margin-top: 1px;
+            box-shadow: 2px 3px 10px rgba(204,204,204,0.5);
+            border-bottom: rgb(204,204,204) solid 1px;
+            border-left: rgb(204,204,204) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            /* background-color: tomato; */
+            display: none;
+        }
+        .left-location .current-citykuai:hover .citylink {
+            /* 设置鼠标移入时定位块的背景颜色和边框 
+            （必须给父元素设置hover包含给子元素才会不间断） */
+            background-color: white;
+            border-left: rgb(204,204,204) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            border-top: rgb(204,204,204) solid 1px;
+        }
+        .left-location .citylink{
+            /* 定位块在定位部分的左浮动 以及加入了鼠标移入时的边框（目的是加入原始的透明边框
+            让鼠标移入时不会动）以及必须盖住下面的边框设置的下内边距 */
+           
+            height: 31px;
+            border-left: transparent solid 1px;
+            border-right:transparent solid 1px ;
+            border-top: transparent solid 1px;
+            margin-top: -1px;
+            padding:0 10px ;
+         }
+       
+
+        
+        
+        .right-navigation{
+             /* 右边导航部分在次框架右浮动 */
+            float:right;
+        }
+        .right-navigation li{
+            /* 导航条目在导航部分的左浮动 */
+            float: left;
+        }
+        .right-navigation li.line{
+            /* 分割线的宽度 高度 颜色 以及位置 */
+            width: 1px;
+            height: 10px;
+            background-color:#ccc;
+            margin: 10px 12px 10px;
+        }
+        
+        .right-navigation .myjdkuai:hover .myjd-box{
+            /* 鼠标移入时我的京东下拉框显示 */
+            display: block;
+        }
+        .right-navigation .myjdkuai .myjd-box{
+            /* 我的京东下拉框的设置以及隐藏 */
+            width:290px;
+            height: 160px;
+            position: absolute;
+            margin-top: 1px;
+            box-shadow: 2px 3px 10px rgba(204,204,204,0.5);
+            border-bottom: rgb(204,204,204) solid 1px;
+            border-left: rgb(204,204,204) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            /* background-color: tomato; */
+            display: none;
+        }
+        .right-navigation .myjdkuai:hover .myjdLink
+        {
+            /* 鼠标移入时我的京东的样式 并且不间断 */
+            background-color: white;
+            border-left: rgb(204,204,204) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            border-top: rgb(204,204,204) solid 1px;
+        }
+   
+        .right-navigation .myjdLink
+        {
+            /* 鼠标移入时我的京东字体会动 这样设置就不会动 设置高度是为了
+            字不往下走 */
+            height: 31px;
+            border-left: transparent solid 1px;
+            border-right:transparent solid 1px ;
+            border-top: transparent solid 1px;
+            margin-top: -1px;
+            padding:0 5px ;
+        }
+       
+        .right-navigation .caigoukuai .caigou-box{
+            width:140px;
+            height: 120px;
+            position: absolute;
+            box-shadow: 2px 3px 10px rgba(204,204,204,0.5);
+            border-bottom: rgb(204,204,204) solid 1px;
+            border-left: rgb(139, 131, 131) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            /* background-color: tomato; */
+            display: none;
+
+        }
+        .right-navigation .caigoukuai:hover .caigou-box{
+           
+            display: block;
+        }
+        .right-navigation .caigoukuai:hover .caigouLink
+        {
+            
+            background-color: white;
+            border-left: rgb(204,204,204) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            border-top: rgb(204,204,204) solid 1px;
+        }
+        .right-navigation .caigouLink
+        {
+           
+            height: 31px;
+            border-left: transparent solid 1px;
+            border-right:transparent solid 1px ;
+            border-top: transparent solid 1px;
+            margin-top: -1px;
+            padding:0 5px ;
+        }
+        .right-navigation .serverkuai{
+            position: relative;
+        }
+
+        .right-navigation .serverkuai .server-box{
+            width:170px;
+            height: 272px;
+            position: absolute;
+            right: 0px;
+            box-shadow: 2px 3px 10px rgba(204,204,204,0.5);
+            border-bottom: rgb(204,204,204) solid 1px;
+            border-left: rgb(139, 131, 131) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            /* background-color: tomato; */
+            display: none;
+        }
+        .right-navigation .serverlink
+        {
+            height: 31px;
+            border-left: transparent solid 1px;
+            border-right:transparent solid 1px ;
+            border-top: transparent solid 1px;
+            margin-top: -1px;
+            padding:0 5px ;
+            
+        }
+        .right-navigation .serverkuai:hover .server-box{
+       
+            display: block;
+        }
+        .right-navigation .serverkuai:hover .serverlink
+        {
+   
+            background-color: white;
+            border-left: rgb(204,204,204) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            border-top: rgb(204,204,204) solid 1px;
+        }
+
+        .right-navigation .daohangkuai .daohang-box{
+            width:1190px;
+            height: 181px;
+            position: absolute;
+            right: 0px;
+            box-shadow: 2px 3px 10px rgba(204,204,204,0.5);
+            border-bottom: rgb(204,204,204) solid 1px;
+            border-left: rgb(139, 131, 131) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            /* background-color: tomato; */
+            display: none;
+        }
+        .right-navigation .daohanglink
+        {
+            
+            height: 31px;
+            border-left: transparent solid 1px;
+            border-right:transparent solid 1px ;
+            border-top: transparent solid 1px;
+            margin-top: -1px;
+            padding:0 5px ;
+            
+        }
+        .right-navigation .daohangkuai:hover .daohang-box{
+            
+            display: block;
+        }
+        .right-navigation .daohangkuai:hover .daohanglink
+        {
+         
+            background-color: white;
+            border-left: rgb(204,204,204) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            border-top: rgb(204,204,204) solid 1px;
+        }
+        
+
+        
+        .right-navigation .sjjdkuai .sjjd-box{
+            width:190px;
+            height: 404px;
+            position: absolute;
+            right: 0px;
+            box-shadow: 2px 3px 10px rgba(204,204,204,0.5);
+            border-bottom: rgb(204,204,204) solid 1px;
+            border-left: rgb(139, 131, 131) solid 1px;
+            border-right:rgb(204,204,204) solid 1px ;
+            /* background-color: tomato; */
+            display: none;
+        }
+        .right-navigation .sjjdlink
+        {
+            
+            height: 31px;
+            border-left: transparent solid 1px;
+            border-right:transparent solid 1px ;
+            border-top: transparent solid 1px;
+            margin-top: -1px;
+            padding:0 5px ;
+            
+        }
+        .right-navigation .sjjdkuai:hover .sjjd-box{
+         
+            display: block;
+        }
+       
+        
+    </style>
+</head>
+<body>
+    <div class="framework ">
+        <div class="navigation clearfix">
+            <div class="left-location">
+                <div class="current-citykuai">
+                    <div class="citylink">
+                        <a href="javascript:;">
+                            <!-- 设置定位图标 -->
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="local">陕西</span>           
+                        </a>
+                    </div>
+                     <!-- 设置地理列表 -->
+                    <div class="lacal-list"></div>
+
+                </div>
+                
+               
+            </div>
+            <ul class="right-navigation">
+                <li>
+                    <a href="javascript:;">你好，请登陆</a>
+                    <a href="javascript:;">
+                        <span class="hightlight">免费注册</span>
+                    </a>
+                </li>
+                <!-- 设置分割线 -->
+                <li class="line"></li>
+                <li>
+                    <a href="javascript:;">我的订单</a>
+                </li>
+                <li class="line"></li>
+                <li class="myjdkuai">
+                    <div class="myjdLink">
+                        <a href="javascript:;">我的京东</a>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    
+                        
+                    
+                    <div class="myjd-box"></div>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a href="javascript:;">京东会员</a>
+                </li>
+                <li class="line"></li>
+                <li class="caigoukuai">
+                    <div class="caigouLink">
+                        <a href="javascript:;">
+                            <span class="hightlight">企业采购</span>
+                        </a>
+                        <!-- 设置下拉图标 -->
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <div class="caigou-box"></div>
+                </li>
+                <li class="line"></li>
+                <li class="serverkuai">
+                   <div class="serverlink">
+                       <span>客户服务</span>
+                       <i class="fa fa-angle-down"></i>
+                   </div>
+                   <div class="server-box"></div>
+                </li>
+                <li class="line"></li>
+                <li class="daohangkuai">
+                    <div class="daohanglink">
+                        <span>网站导航</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <div class="daohang-box"></div>
+                    
+                </li>
+                <li class="line"></li>
+                <li class="sjjdkuai">
+                    <div class="sjjdlink">
+                        <span>手机京东</span>
+                    </div>
+                    <div class="sjjd-box"></div>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>

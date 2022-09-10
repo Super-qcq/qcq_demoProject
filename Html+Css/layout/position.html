@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../重置样式表/reset.css">
+    <style>
+        div{
+            font-size: 20px;
+        }
+        .box1{
+            width: 100%;
+            height: 1500px;
+            background-color: aqua;
+            position: relative;
+            
+        }
+        .box1>div:first-child{
+            width: 150px;
+            height: 150px;
+            position: fixed;
+           
+            top: 0px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background-color: red;
+          
+            
+        }
+       
+        .box1>div:nth-of-type(2){
+            width: 550px;
+            /* height: 550px; */
+            background-color: blue;
+            top: 0px;
+            position: sticky;
+            /* 开启BFC; */
+            /* overflow:hidden; */
+            /* position: absolute; */
+           
+            
+
+       
+
+
+          
+            
+        }
+        /* 利用clear避免子元素浮动父元素高度塌陷。还解决了父子元素相邻外边距重叠的危险 */
+        .box3::before,
+        .box3::after{
+            clear: both;
+            content: "";
+            display: table;
+        }
+        .box1 .box4{
+            width: 100px;
+            height: 100px;
+           
+            background-color: orange;
+          }
+          .box5{
+            width: 100px;
+            height: 100px;
+            float: right;
+            background-color: #565656;
+            
+          }
+ 
+ 
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">2我是固定定位</div>
+        <div class="box3">3我是粘滞定位
+            <div class="box4">4</div>
+            <div class="box5">5</div>
+            <!-- 取色器 -->
+            <input type="color">
+            <!-- 表示任务进度 -->
+            <progress value=10 meter></progress>>
+        </div>
+    </div>
+    
+ 
+   
+</body>
+</html>

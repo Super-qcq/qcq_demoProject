@@ -1,0 +1,37 @@
+body{
+    background-color: beige;
+}
+nav.nav{
+    /* 父元素的宽度 长度 上下内边距 背景颜色 居中 */
+    width:190px;
+    height:450px;
+    padding: 10px 0px; 
+    background-color: #fff;
+    margin: 0 auto;
+}
+nav.nav .item{
+    /* 每一行块的高度 字体的居中 左内边距 */
+    height: 25px;
+    line-height: 25px;
+    padding-left: 20px;
+}
+nav.nav .item:hover{
+    /* 鼠标移入的背景颜色 */
+    background-color:#d9d9d9;
+
+}
+.item a{
+    /* 字体的大小 颜色 去除超链接的下划线 */
+    font-size: 14px;
+    color:#333;
+    text-decoration: none;
+}
+a:hover{
+    /* 鼠标移入的字体颜色 */
+color:#c81623;
+}
+.span1{
+    /* 处理/的大小和内边距 */
+    padding:0 2px;
+    font-size: 12px;
+}

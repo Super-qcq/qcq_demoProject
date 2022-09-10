@@ -1,0 +1,73 @@
+a{
+    /* 去掉超链接下划线 */
+    text-decoration:none;
+}
+.newList li a:hover{
+    /* 新闻链接鼠标移入变红 */
+    color:rgb(243,69,64);
+}
+.wangyiTitle a:hover{
+    /* 标题鼠标移入变红 */
+    color:rgb(243,69,64);
+}
+
+.wangyiNews{
+    /* 设置总体框架的长 宽 背景颜色 上边框 居中*/
+    width:300px;
+    height:324px;
+    background-color:rgb(255,255,255);
+    border-top:1px rgb(221,221,221) solid ;
+    margin: 50px auto;
+
+}
+.wangyiTitle{
+    /* 重点 :设置标题块的高度 字体居中 红色上边框 ,红色短边框的设置需要转行内块元素 
+    并且上外边距上移1px   字体下挪加上内边距5px */
+    height: 30px;
+    line-height:30px;
+    border-top: 1px red solid;
+    display: inline-block;
+    margin-top: -1px;
+    padding-top: 5px;
+    
+}
+.wangyiTitle a{
+    /* 体育标题的大小 颜色 加粗 */
+    font-size: 16px;
+    color:rgb(64,64,64);
+    font-weight:bold;
+
+}
+.wangyiImg{
+    /*重点: 图片块的高度  防止下面新闻标题元素上移 */
+    height:150px;
+}
+.wangyiImg .wangyiimgTitle{
+    /* 图片标题上移 加粗 颜色 左移 */
+    margin-top: -25px;
+    font-weight:bold;
+    color:rgb(255,255,255);
+    padding-left: 35px;
+}
+.newList{
+    /* 新闻标题块下移 */
+    margin-top:17px;
+}
+.newList li{
+    /* 重点:新闻标题块相互挤出间距  */
+    margin-bottom: 14px;
+    /* padding-bottom: 14px; */
+}
+.newList li a{
+    /* 超链接字体大小和颜色 */
+    font-size: 14px;
+    color:rgb(102,102,102)
+
+}
+.newList li a::before{
+    /* 重点:项目符号的加入 字体大小 颜色 挤压文字右移 */
+    content: "▪";
+    font-size: 15px;
+    color: rgb(218,218,218);
+    margin-right: 8px;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../重置样式表/reset.css">
+    <style>
+        li{
+            list-style: none;
+        }
+        nav.w3c{
+            /* 大框架的宽和高 以及背景颜色 */
+            width: 1210px;
+            height: 48px;
+            background-color:#e8e7e3 ;
+            margin: 0 auto;
+
+        }
+        nav.w3c li{
+            /* 每一个list的高和加文字居中 以及浮动 */
+            height: 48px;
+            float: left;
+            line-height: 48px;
+        }
+        nav.w3c li a{
+            /* 去掉超链接的下划线，设置内边距目的是相互挤开，
+            重点：设置成行内块元素目的是上下也能得到鼠标的点击，
+            以及设置字体的大小和颜色 */
+            text-decoration: none;
+            padding:0 37px;
+            display: block;
+            color:#7a7a7a;
+            font-size: 18px;
+            font-family:"SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC", Verdana, Arial, '微软雅黑','宋体';
+
+        }
+        nav.w3c li:last-child a{
+            /* 设置最后一个元素的精确位置 */
+            padding:0 40px 0 40px; 
+        }
+        nav.w3c li a:hover{
+            /* 设置鼠标移入时的背景颜色以及字体颜色 */
+           background-color: #3f3f3f; 
+           color:#deddd9;
+        }
+    </style>
+</head>
+<body>
+    <nav class="w3c">
+        <li><a href="#">HTML/CSS</a></li>
+        <li><a href="#">Browser Side</a></li>
+        <li><a href="#">Server Side</a></li>
+        <li><a href="#">Programming</a></li>
+        <li><a href="#">XML</a></li>
+        <li><a href="#">Web Building</a></li>
+        <li><a href="#">Reference</a></li>
+    </nav>
+    
+</body>
+</html>
