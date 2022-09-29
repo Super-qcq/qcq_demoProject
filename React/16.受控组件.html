@@ -2,53 +2,53 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="./js/react.development.js"></script>
-  <script src="./js/react-dom.development.js"></script>
-  <script src="./js/babel.min.js"></script>
-  <!-- 用于对组件标签属性进行限制 -->
-  <script src="./js/prop-types.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <!-- 用于对组件标签属性进行限制 -->
+    <script src="./js/prop-types.js"></script>
 </head>
 
 <body>
-  <!-- 表单中的onChange在数据发生变化时实时的更新 -->
-  <!-- 受控组件  页面中输入的dom 放到状态中 当用的时候再取出来就叫受控组件   一个ref都没有 -->
-  <div id="test1"></div>
-  <script type="text/babel">
-    class Demo extends React.Component{
-      state = {
-        username:'',
-        password:''
-      }
-      render() {
-       return (
-         <div>
-          <form action="" onSubmit={this.showData}>
-            用户名：<input onChange={this.showUsername} type="text"/>&nbsp;
-            密码：<input onChange={this.showPassword} type="password"/>&nbsp;
-            <button>提交</button>
-            </form>
-          </div>
-       ) 
-      }
-      showUsername=(event)=>{
-        this.setState({username:event.target.value})
-        // console.log(event.target.value)
-      }
-      showPassword=(event)=>{
-        this.setState({password:event.target.value})
-      }
-      showData=()=>{
-        event.preventDefault();//取消跳转默认事件
-        console.log(this.state.username,this.state.password)
-      }
+    <!-- 表单中的onChange在数据发生变化时实时的更新 -->
+    <!-- 受控组件  页面中输入的dom 放到状态中 当用的时候再取出来就叫受控组件   一个ref都没有 -->
+    <div id="test1"></div>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            state = {
+                username: '',
+                password: ''
+            }
+            render() {
+                return (
+                    <div>
+                        <form action="" onSubmit={this.showData}>
+                            用户名：<input onChange={this.showUsername} type="text" />&nbsp;
+                            密码：<input onChange={this.showPassword} type="password" />&nbsp;
+                            <button>提交</button>
+                        </form>
+                    </div>
+                )
+            }
+            showUsername = (event) => {
+                this.setState({ username: event.target.value })
+                // console.log(event.target.value)
+            }
+            showPassword = (event) => {
+                this.setState({ password: event.target.value })
+            }
+            showData = () => {
+                event.preventDefault();//取消跳转默认事件
+                console.log(this.state.username, this.state.password)
+            }
 
-    }
-    ReactDOM.render(<Demo/>,document.getElementById('test1'))
-  </script>
+        }
+        ReactDOM.render(<Demo />, document.getElementById('test1'))
+    </script>
 </body>
 
 </html>
