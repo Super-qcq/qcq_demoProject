@@ -1,12 +1,15 @@
 {
-    "name": "typescript",
-    "version": "1.0.0",
-    "main": "demo.js",
-    "scripts": {
-        "test": "echo",
-        "dev": "webpack --mode development",
-        "build": "webpack --mode production",
-        "start": "webpack server --open"
-    },
-    "description": ""
+  "name": "typescript",
+  "version": "1.0.0",
+  "main": "demo.js",
+  "scripts": {
+    "test": "echo",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack server --open"
+  },
+  "description": "",
+  "dependencies": {
+    "@types/lodash": "^4.14.186"
+  }
 }

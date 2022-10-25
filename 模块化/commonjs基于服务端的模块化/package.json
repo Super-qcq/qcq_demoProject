@@ -1,0 +1,14 @@
+{
+  "name": "commonjs-servers",
+  "version": "1.0.0",
+  "description": "给本次的项目创建包和版本直接npm init 在项目的根路径下，第一步提示是需要更改包名，必须全部是小写 不能有特殊字符",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uniq": "^1.0.1"
+  }
+}

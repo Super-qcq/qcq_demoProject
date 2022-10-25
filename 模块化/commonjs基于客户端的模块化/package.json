@@ -1,0 +1,17 @@
+{
+    "name": "commonjs-servers",
+    "version": "1.0.0",
+    "description": "给本次的项目创建包和版本直接npm init 在项目的根路径下，第一步提示是需要更改包名，必须全部是小写 不能有特殊字符。 devDependencies指的是开发模式的运行依赖包的目录，dependencies是运行模式",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "uniq": "^1.0.1"
+    },
+    "devDependencies": {
+        "browserify": "^17.0.0"
+    }
+}
