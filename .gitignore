@@ -1,1 +1,4 @@
-TypeScript/node_modules/.package_versions.json
+TypeScript/
+node_modules/
+.package_versions.json
+.gitignore
