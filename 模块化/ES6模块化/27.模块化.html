@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 模块化是指将一个大的程序文件拆分成许多小的文件，然后将小文件组合起来
+  模块化的好处： 
+  1.防止命名冲突
+  2.代码复用
+  3.高维护性
+  模块功能主要由两个命令构成：export和import；script标签里必须有type = 'module'
+  export命令用于规定模块的对外接口（导出模块）；
+import命令用于输入其他模块提供的功能（导入模块）； -->
+    <!-- css的导入需要使用@import './qcq.less' -->
+    <!-- 常规的操作是需要使用babel去将es6语法转换为es5的语法，再用browserify打包编译成原生的require('')方式来引入，module.exports的方式导出  最终是需要在html中引入打包编译好的script文件 -->
+    <script src="./模块化//模块化3.js"></script>
+    <script>
+        //原生模块化解构赋值（闭包+匿名函数自调用）
+        const { setName, name } = module
+        setName()
+        console.log(name)
+    </script>
+    <script type='module'>
+        // 方式1引入
+        import * as m1 from './模块化/模块化1.js'
+        import * as m2 from './模块化/模块化2.js'//m为别名 必须有
+        console.log(m1)
+        console.log(m2.setAge())
+        // 方式2 解构赋值引入
+        import { name, setName } from './模块化/模块化1.js'
+        import { age, setAge } from './模块化/模块化2.js'
+        import fun from './模块化/模块化4.js'
+        console.log(name)
+        console.log(setName())
+        console.log(age)
+        console.log(setAge())
+        console.log(`默认导出${fun()}`)
+
+    </script>
+
+</body>
+
+</html>
