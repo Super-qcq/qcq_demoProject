@@ -10,6 +10,6 @@
 // export default fun
 
 
-export default function fun() { 
-    return "no"
-}
+// export default function fun() { 
+//     return "no"
+// }
